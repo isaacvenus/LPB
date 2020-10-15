@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.9.28)  15 OCT 2020 15:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.9.28)  15 OCT 2020 15:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -51,8 +51,7 @@ Package: titling 2009/09/04 v2.1d maketitle typesetting
 \thanksmarkwidth=\skip43
 \thanksmargin=\skip44
 \droptitle=\skip45
-)
-No file voorblad(1).aux.
+) (./voorblad(1).aux)
 \openout1 = `voorblad(1).aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -67,6 +66,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
+
 (c:/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count88
@@ -131,41 +131,30 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+<2013-kulak-cmyk-highres.jpg, id=1, 602.25pt x 125.46875pt>
+File: 2013-kulak-cmyk-highres.jpg Graphic file (type jpg)
+<use 2013-kulak-cmyk-highres.jpg>
+Package pdftex.def Info: 2013-kulak-cmyk-highres.jpg  used on input line 20.
+(pdftex.def)             Requested size: 170.71652pt x 35.5656pt.
+ [1
 
-LaTeX Warning: File `2013-kulak-cmyk-highres.jpg' not found on input line 20.
-
-
-! Package pdftex.def Error: File `2013-kulak-cmyk-highres.jpg' not found: using
- draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.20 ...cs[width=6cm]{2013-kulak-cmyk-highres.jpg}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[1
-
-{c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-(./voorblad(1).aux) ) 
+{c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./2013-kulak-cm
+yk-highres.jpg>] (./voorblad(1).aux) ) 
 Here is how much of TeX's memory you used:
- 1471 strings out of 492609
- 21014 string characters out of 6132818
+ 1475 strings out of 492609
+ 21156 string characters out of 6132818
  83087 words of memory out of 5000000
- 5405 multiletter control sequences out of 15000+600000
- 5019 words of font info for 19 fonts, out of 8000000 for 9000
+ 5408 multiletter control sequences out of 15000+600000
+ 4851 words of font info for 18 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,4n,25p,278b,192s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmbx12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pf
-b><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on voorblad(1).pdf (2 pages, 39120 bytes).
+ 41i,4n,25p,278b,185s stack positions out of 5000i,500n,10000p,200000b,80000s
+<c:/texlive/2019/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmbx12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr12.pfb>
+Output written on voorblad(1).pdf (1 page, 79988 bytes).
 PDF statistics:
- 23 PDF objects out of 1000 (max. 8388607)
- 15 compressed objects within 1 object stream
+ 17 PDF objects out of 1000 (max. 8388607)
+ 10 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
