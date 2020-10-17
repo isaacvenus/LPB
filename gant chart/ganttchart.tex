@@ -1,0 +1,89 @@
+\documentclass[landscape,12pt]{article}
+  
+% style
+\usepackage[left=2.5cm,top=2cm,right=2.5cm,bottom=2cm,a4paper]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Team 2}
+\rhead{Gantt chart}
+\renewcommand{\headrulewidth}{0.4pt}
+\usepackage{color}
+
+% gantt
+\usepackage{pgfgantt}
+\def\pgfcalendarweekdayletter#1{%
+	\ifcase#1M\or T\or W\or T\or F\or S\or S\fi%
+}
+
+\definecolor{foobarblue}{RGB}{0,153,255}
+\definecolor{foobaryellow}{RGB}{234,187,0}
+\definecolor{grey}{RGB}{170,170,170}
+
+\newganttchartelement{foobar}{
+	foobar/.style={
+		shape= rectangle,
+		inner sep=0pt,
+		draw=grey!70!blue,
+		thick,
+		fill=white,
+		inner color=blue!10, outer color=blue!40, opacity=0.95
+	},
+	foobar incomplete/.style={
+		/pgfgantt/foobar,
+		draw=foobaryellow,
+		bottom color=foobaryellow!50
+	},
+	foobar label font=\slshape,
+	foobar left shift=0,%.1,
+	foobar right shift=0%-.1
+}
+
+\begin{document}
+
+% Een goede Gantt-chart maakt gebruik van \emph{links} en \emph{milestones}. Deze laatste definieer je in een lijstje onder de Gantt chart.
+
+	\begin{figure}
+		\centering
+		\begin{ganttchart}[hgrid, vgrid, x unit=5mm, time slot format=isodate]{2020-10-01}{2020-11-08}
+			\gantttitlecalendar{week,month=shortname,day,weekday=letter} \\
+			\ganttgroup{Voorbereiding}{2020-10-01}{2020-10-8}\\
+			\ganttfoobar[name = 1]{openpose installatie}{2020-10-01}{2020-10-8}\\
+			\ganttfoobar[name = 2]{brainstom}{2020-10-01}{2020-10-8}\\
+			\ganttfoobar[name = 3]{openpose testen}{2020-10-08}{2020-10-15}\\
+			\ganttlink{1}{3}
+		\end{ganttchart}	
+	
+	\end{figure}
+	\begin{figure}
+		\centering
+		\begin{ganttchart}[hgrid, vgrid, x unit=5mm, time slot format=isodate]{2020-11-09}{2020-12-20}
+			\gantttitlecalendar{week=7,month=shortname,day,weekday=letter} \\
+			\ganttfoobar[name=1]{nog aan te vullen}{2020-02-13}{2020-02-18} \\
+			\ganttvrule{eindpresentatie}{2020-12-17}
+			
+		\end{ganttchart}
+		
+
+	\end{figure}
+%	\ganttgroup{voorbereiding}{2020-02-13}{2020-02-18} \\
+%\ganttfoobar[name=1]{TO 1}{2020-02-13}{2020-02-18} \\
+%\ganttfoobar[name=2]{indienen}{2020-02-18}{2020-02-18} \\
+%\ganttlink{1}{2} % 21 must be completed before 22
+%\ganttgroup{ontwerpen}{2020-02-13}{2020-03-13}\\
+%\ganttfoobar[name=3]{ontwerp}{2020-02-13}{2020-02-28} \\
+%\ganttfoobar[name=4]{bestelling}{2020-02-28}{2020-02-28} \\
+%\ganttfoobar[name=5]{Solid edge model}{2020-02-28}{2020-03-06} \\	
+%\ganttfoobar[name=6]{CAD model}{2020-03-06}{2020-03-13}\\					
+%\ganttfoobar[name=7]{prototype}{2020-03-20}{2020-03-20}\\
+%\ganttgroup{prototyping en testen}{2020-03-20}{2020-03-22}\\			
+%\ganttlink{3}{4}
+%\ganttlink{4}{7}
+%\ganttlink{5}{7}
+%\ganttlink{6}{7}
+%\ganttfoobar[name=8]{programmeren}{2020-02-28}{2020-03-20}\\
+%\ganttfoobar[name=9]{testen}{2020-03-20}{2020-03-22}\\
+%\ganttmilestone{Mijlpaal I}{2020-03-05} % milestone completed	
+
+
+
+\end{document}
