@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.9.30)  22 OCT 2020 15:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.9.30)  22 OCT 2020 16:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -59,34 +59,54 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box27
 \@float@everytoks=\toks16
 \@floatcapt=\box28
-) (./voorblad(1).aux)
+)
+(c:/texlive/2019/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2019/09/27 3.34 The Babel package
+
+(c:/texlive/2019/texmf-dist/tex/generic/babel/switch.def
+File: switch.def 2019/09/27 3.34 Babel switching mechanism
+)
+(c:/texlive/2019/texmf-dist/tex/generic/babel-dutch/dutch.ldf
+Language: dutch 2005/03/30 v3.8i Dutch support from the babel system
+
+(c:/texlive/2019/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2019/09/27 3.34 Babel common definitions
+\babel@savecnt=\count89
+\U@D=\dimen105
+
+(c:/texlive/2019/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@dirlevel=\count90
+)
+Package babel Info: Making " an active character on input line 132.
+))
+(./voorblad(1).aux)
 \openout1 = `voorblad(1).aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
 
 (c:/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count89
-\scratchdimen=\dimen105
+\scratchcounter=\count91
+\scratchdimen=\dimen106
 \scratchbox=\box29
-\nofMPsegments=\count90
-\nofMParguments=\count91
+\nofMPsegments=\count92
+\nofMParguments=\count93
 \everyMPshowfont=\toks17
-\MPscratchCnt=\count92
-\MPscratchDim=\dimen106
-\MPnumerator=\count93
-\makeMPintoPDFobject=\count94
+\MPscratchCnt=\count94
+\MPscratchDim=\dimen107
+\MPnumerator=\count95
+\makeMPintoPDFobject=\count96
 \everyMPtoPDFconversion=\toks18
 ) (c:/texlive/2019/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -142,52 +162,62 @@ e
 <2013-kulak-cmyk-highres.jpg, id=1, 602.25pt x 125.46875pt>
 File: 2013-kulak-cmyk-highres.jpg Graphic file (type jpg)
 <use 2013-kulak-cmyk-highres.jpg>
-Package pdftex.def Info: 2013-kulak-cmyk-highres.jpg  used on input line 21.
+Package pdftex.def Info: 2013-kulak-cmyk-highres.jpg  used on input line 23.
 (pdftex.def)             Requested size: 170.71652pt x 35.5656pt.
-
-Overfull \hbox (0.3617pt too wide) in paragraph at lines 57--58
-\OT1/cmr/m/n/10 Aan ma-te-ri-aal in de medis-che wereld hangt steeds een ste-vi
-g pri-jskaartje, daarom
- []
-
-[1
+ [1
 
 {c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./2013-kulak-cm
-yk-highres.jpg>]
-Overfull \hbox (23.7945pt too wide) in paragraph at lines 71--71
-[]\OT1/cmr/bx/n/14.4 Toepassing 1: opvol-gen van reval-i-datie na schoud-
+yk-highres.jpg>] (./voorblad(1).toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 4.
+)
+\tf@toc=\write3
+\openout3 = `voorblad(1).toc'.
+
+ [2
+
+]
+Overfull \hbox (0.3617pt too wide) in paragraph at lines 63--64
+\OT1/cmr/m/n/10 Aan ma-te-ri-aal in de me-di-sche we-reld hangt steeds een ste-
+vig prijs-kaartje, daarom
  []
 
-[2]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 76.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 76.
-<HPE_skelet.jpg, id=13, 361.35pt x 479.54156pt>
+
+Overfull \hbox (14.79451pt too wide) in paragraph at lines 77--77
+[]\OT1/cmr/bx/n/14.4 Toepassing 1: op-vol-gen van re-va-li-da-tie na schou-
+ []
+
+[3
+
+]
+<HPE_skelet.jpg, id=17, 361.35pt x 479.54156pt>
 File: HPE_skelet.jpg Graphic file (type jpg)
 <use HPE_skelet.jpg>
-Package pdftex.def Info: HPE_skelet.jpg  used on input line 89.
+Package pdftex.def Info: HPE_skelet.jpg  used on input line 95.
 (pdftex.def)             Requested size: 172.5pt x 228.91878pt.
- [3] [4 <./HPE_skelet.jpg>] [5] (./voorblad(1).aux) ) 
+ [4] [5 <./HPE_skelet.jpg>] [6] (./voorblad(1).aux) ) 
 Here is how much of TeX's memory you used:
- 1553 strings out of 492609
- 22151 string characters out of 6132818
- 87475 words of memory out of 5000000
- 5478 multiletter control sequences out of 15000+600000
- 5970 words of font info for 22 fonts, out of 8000000 for 9000
+ 2145 strings out of 492609
+ 30116 string characters out of 6132818
+ 107102 words of memory out of 5000000
+ 6050 multiletter control sequences out of 15000+600000
+ 6278 words of font info for 23 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,5n,25p,1213b,225s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,5n,25p,1213b,227s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2019/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2019/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmmi10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-2.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/t
-exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on voorblad(1).pdf (5 pages, 173098 bytes).
+t/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2019/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmex10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:
+/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/20
+19/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on voorblad(1).pdf (6 pages, 189552 bytes).
 PDF statistics:
- 50 PDF objects out of 1000 (max. 8388607)
- 33 compressed objects within 1 object stream
+ 57 PDF objects out of 1000 (max. 8388607)
+ 38 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
