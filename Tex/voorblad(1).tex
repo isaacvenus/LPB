@@ -63,12 +63,17 @@ Mathieu Vanooteghem}
 Aan materiaal in de medische wereld hangt steeds een stevig prijskaartje, daarom vroegen wij ons af of het niet mogelijk zou zijn om hulpmiddelen te ontwikkelen die heel budget vriendelijk zijn. Wat centraal staat is dat we hierbij geen gebruik maken van hoogtechnologische apparatuur en dat we ons beperken tot het gebruik van de camera's on onze laptops of gsm's. Het gaat dus meer om software dan het concreet bouwen van een apparaat. Hierbij richten wij ons op het gebied van 'Human Pose Estimation' (HPE), ook wel lichaamspositiebepaling. Dit is een techniek die aan de hand van neurale netwerken en deep learning de positie van personen schat op een foto.
 
 \section{HPE, revolutionair?}
-\subsection*{Inleiding}
-Een (artificieel) neuraal netwerk of ANN is een netwerk geïnspireerd op een biologisch neuraal netwerk zoals die voorkomt in hersenen met de bedoeling om deze iets te doen leren. Het ANN is opgebouwd uit artificiële neuronen die een neuron in een brein moeten voorstellen. Al de neuronen zijn verbonden met andere neuronen en kunnen signalen uitsturen en ontvangen. In een ANN zijn de signalen getallen en kan elk neuron een bepaalde bewerking uitvoeren op een binnenkomend signaal voor deze verder te sturen. Elke connectie heeft ook een gewicht die bepaald hoe sterk het signaal is dat hij uitstuurt. Dit gewicht past zich aan als het neuraal netwerk leert. 
+	HPE is gemakkelijk, snel, goedkoop en steeds nauwkeuriger
+	heatmaps en kansen uitleg en over openpose specifiek
+	vermelden dat het werkt met neurale netwerken (cfr. infra)
+
+\section{Neurale netwerken}
+
+Een (artificieel) neuraal netwerk of ANN is een netwerk geïnspireerd op een biologisch neuraal netwerk zoals die voorkomt in hersenen met de bedoeling om deze iets te doen leren. Het ANN is opgebouwd uit artificiële neuronen die een neuron in een brein moeten voorstellen. Al de neuronen zijn verbonden met andere neuronen en kunnen signalen uitsturen en ontvangen. In een ANN zijn de signalen getallen en kan elk neuron een bepaalde bewerking uitvoeren op een binnenkomend signaal om deze verder te sturen. Elke connectie heeft ook een gewicht dat bepaalt hoe sterk het signaal is dat hij uitstuurt. Dit gewicht past zich aan als het neuraal netwerk leert. 
 
 \subsection{Opbouw van een neuraal netwerk}
 \subsubsection{Neuronen}
-Zoals er in de inleiding staat is een artificieel neuron geïnspireerd op een neuron uit een brein. Elk neuron heeft een of meerdere inputs en één output die kan verzonden worden naar meerdere andere neuronen. De input van een neuron kan ofwel komen van de data die in het neuraal netwerk wordt gestoken of van andere neuronen. De output van de “output neurons” is hetgeen dat uit het programma komt. Om de output van een neuron te berekenen neem je de gewogen som van de inputs, met als gewicht de waarden van de connecties. Er wordt ook nog een bias opgeteld bij de output.
+Zoals er hierboven staat is een artificieel neuron geïnspireerd op een neuron uit een brein. Elk neuron heeft een of meerdere inputs en één output die kan verzonden worden naar meerdere andere neuronen. De input van een neuron kan ofwel komen van de data die in het neuraal netwerk wordt gestoken of van andere neuronen. De output van de “output neurons” is hetgeen dat uit het programma komt. Om de output van een neuron te berekenen neem je de gewogen som van de inputs, met als gewicht de waarden van de connecties. Er wordt ook nog een bias opgeteld bij de output.
 
 \subsubsection{Connecties}
 Om te kunnen leren moet de data natuurlijk kunnen worden doorgegeven van het ene neuron naar de andere. Dit verloopt via een “connectie” die een bepaald gewicht heeft dat de sterkte en daarmee ook het belang van een bepaalde connectie weergeeft.
@@ -85,7 +90,7 @@ Een neuraal netwerk bestaat uit meerdere lagen van neuronen, meer bepaald de inp
 \end{figure}
 
 \subsection{Trainen van een neuraal netwerk}
-Bij het programmeren van een neuraal netwerk weet je natuurlijk niet wat de gewichten zijn van alle connecties. Je moet het model dus doen leren. Dit doe je door de gewichten (over meerdere leercycli) aan te passen zodat de output zo goed mogelijk past bij het gewenste resultaat. Er zal altijd een bepaalde fout op de output zitten dus het model gaat nooit perfect zijn. Het trainen van een model is gedaan als de fout op de output niet meer verkleind en dus een minimum heeft bereikt. Het aanpassen van de gewichten gebeurt met een zekere learning rate. Dit bepaalt de grootte van de correcties die gebeuren bij de gewichten. Bij een grootte learning rate kan je model snel gedaan zijn met leren maar meer kans op een grotere fout op de output. Een kleine learning rate zal het trainen vertragen maar je uiteindelijke resultaat gaat beter zijn.
+Bij het programmeren van een neuraal netwerk weet je natuurlijk niet wat de gewichten zijn van alle connecties. Je moet het model dus doen leren. Dit doe je door de gewichten (over meerdere leercycli) aan te passen zodat de output zo goed mogelijk past bij het gewenste resultaat. Er zal altijd een bepaalde fout op de output zitten dus het model gaat nooit perfect zijn. Het trainen van een model is gedaan als de fout op de output niet meer verkleint en dus een minimum heeft bereikt. Het aanpassen van de gewichten gebeurt met een zekere learning rate. Dit bepaalt de grootte van de correcties die gebeuren bij de gewichten. Bij een grote learning rate kan je model snel gedaan zijn met leren maar meer kans op een grotere fout op de output. Een kleine learning rate zal het trainen vertragen maar je uiteindelijke resultaat zal beter zijn.
 
 
 
@@ -99,12 +104,7 @@ Een tweede en uitgebreidere toepassing is het analyseren van de positie op de fi
 \section{Toepassing 1: opvolgen van revalidatie na schouderoperatie}
 	\subsection{Bepalen van de hoek tussen arm en lichaam}
 
-We willen meten hoe ver een persoon zijn arm kan roteren met als doel om HPE toe te passen bij het opvolgen van de revalidatie na een schouderoperatie. Hiervoor willen we dus de hoek meten die een persoon kan maken tussen de arm en borst. Op figuur \ref{fig:skelet} komt dat dus neer op de hoek bepalen tussen de lijnstukken [32] en [21] voor de rechterarm en tussen [65] en [51] voor de linkerarm. Als we Openpose gebruiken om de positie te schatten van een persoon op een foto krijgen we als output de coördinaten van de verschillende knooppunten. Vanuit deze coördinaten kunnen we dan met behulp van de cosinusregel (\ref{eq:cos}) de gewenste hoek bepalen.
-
-\begin{equation}
-	cos(x,y) = \frac{x_1y_1+x_2y_2}{\sqrt{x_1^2+x_2^2} \sqrt{y_1^2+y_2^2}}
-	\label{eq:cos}
-\end{equation}
+We willen meten hoe ver een persoon zijn arm kan roteren met als doel om HPE toe te passen bij het opvolgen van de revalidatie na een schouderoperatie. Hiervoor willen we dus de hoek meten die een persoon kan maken tussen de arm en borst. Op figuur \ref{fig:skelet} komt dat dus neer op de hoek bepalen tussen de lijnstukken [32] en [21] voor de rechterarm en tussen [65] en [51] voor de linkerarm. Als we Openpose gebruiken om de positie te schatten van een persoon op een foto krijgen we als output de coördinaten van de verschillende knooppunten. Vanuit deze coördinaten kunnen we dan met behulp van de cosinusregel de gewenste hoek bepalen (cfr. infra).
 
 We kunnen de revalidatie opvolgen door verschillende bewegingen van de schouder te bestuderen. Bij een foto vanuit vooraanzicht kunnen we kijken hoe ver de patiënt zijn arm zijwaarts omhoog kan brengen. Bij een foto genomen vanuit zijaanzicht kunnen we meten hoe ver hij de arm vooruit kan omhoog steken. Belangrijk is wel dat de foto's zo goed mogelijk vanuit een bepaald aanzicht te nemen aangezien HPE in 2D werkt. Als de foto scheef genomen wordt, heeft het meten van de hoeken niet veel zin.
 
@@ -119,10 +119,12 @@ Week na week kan dan bijvoorbeeld een foto van de patiënt in dezelfde positie g
 
 
 	\subsection{Voorlopige resultaten}
-\subsubsection*{Inleiding}
-Via openpose krijgen we de coördinaten van alle punten die openpose kan herkennen. Hiermee kunnen we dan verder onderzoek doen. Voor het moment zijn we in staat om hoeken tussen bepaalde lichaamsdelen te berkenen met als doel objectieve gegevens te bekomen tijdens bijvoorbeeld een revalidatie na een ongeval.
+
+Via Openpose krijgen we de coördinaten van alle punten die openpose kan herkennen. Hiermee kunnen we dan verder onderzoek doen. Op dit moment zijn we in staat om hoeken tussen bepaalde lichaamsdelen te berekenen met als doel objectieve gegevens te bekomen tijdens bijvoorbeeld een revalidatie na een ongeval.
+
 \subsubsection{Wiskundige achtergrond}
-Om de hoek tussen twee lichaamsdelen te berekenen gebruiken we de cosinusregel. Hier volgt een klein beetje duiding over hoe we die precies gebruiken. Een verduidelijkende figuur is \ref{cos}.\\
+Om de hoek tussen twee lichaamsdelen te berekenen gebruiken we de cosinusregel. Hier volgt een klein beetje duiding over hoe we die precies gebruiken (zie figuur \ref{cos}).\\
+
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=10cm]{cos.pdf}
@@ -130,6 +132,7 @@ Om de hoek tussen twee lichaamsdelen te berekenen gebruiken we de cosinusregel. 
 	\caption{Hoek tussen 2 lichaamsdelen}
 	\label{cos}
 \end{figure}
+
 We stellen \(a, b\) de coördinaten die het eerste lichaamsdeel afbakenen en \(c, d\) de coördinaten van het tweede lichaamsdeel. De hoek tussen de lichaamsdelen is dan de \(\theta\) van op de figuur. We kunnen gewoon de cosinusregel gebruiken om de hoek te bepalen als we \(c\) op \(b\) leggen. We krijgen dan
 \[B^2 = A^2 + D^2 -2\cdot A\cdot D\cos\theta\]
 en dus
