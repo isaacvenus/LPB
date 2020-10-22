@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.29)  22 OCT 2020 16:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.29)  22 OCT 2020 16:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -190,17 +190,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip46
 )
-(./voorblad(1).aux
-! Undefined control sequence.
-l.3 \bbl@beforestart
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-)
+(./voorblad(1).aux)
 \openout1 = `voorblad(1).aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
@@ -217,7 +207,8 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
- (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count101
 \scratchdimen=\dimen110
@@ -261,24 +252,30 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 14.
 LaTeX Info: Redefining \pageref on input line 14.
 LaTeX Info: Redefining \nameref on input line 14.
+
+(./voorblad(1).out) (./voorblad(1).out)
 \@outlinefile=\write3
 \openout3 = `voorblad(1).out'.
 
-<2013-kulak-cmyk-highres.jpg, id=4, 602.25pt x 125.46875pt>
+<2013-kulak-cmyk-highres.jpg, id=72, 602.25pt x 125.46875pt>
 File: 2013-kulak-cmyk-highres.jpg Graphic file (type jpg)
 <use 2013-kulak-cmyk-highres.jpg>
 Package pdftex.def Info: 2013-kulak-cmyk-highres.jpg  used on input line 23.
 (pdftex.def)             Requested size: 170.71652pt x 35.5656pt.
-
-[1
+ [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./2013-
 kulak-cmyk-highres.jpg>]
-No file voorblad(1).toc.
+(./voorblad(1).toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
+)
 \tf@toc=\write4
 \openout4 = `voorblad(1).toc'.
 
-[2
+ [2
 
 ]
 Overfull \hbox (0.3617pt too wide) in paragraph at lines 63--64
@@ -286,13 +283,10 @@ Overfull \hbox (0.3617pt too wide) in paragraph at lines 63--64
 vig prijs-kaartje, daarom
  []
 
-
-LaTeX Warning: Reference `netwerk' on page 3 undefined on input line 77.
-
 [3
 
 ]
-<netwerk.png, id=29, 1284.8pt x 1544.77126pt>
+<netwerk.png, id=111, 1284.8pt x 1544.77126pt>
 File: netwerk.png Graphic file (type png)
 <use netwerk.png>
 Package pdftex.def Info: netwerk.png  used on input line 81.
@@ -302,37 +296,27 @@ Overfull \hbox (14.79451pt too wide) in paragraph at lines 99--99
 []\OT1/cmr/bx/n/14.4 Toepassing 1: op-vol-gen van re-va-li-da-tie na schou-
  []
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 104.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 104.
 [5]
-<HPE_skelet.jpg, id=52, 361.35pt x 479.54156pt>
+<HPE_skelet.jpg, id=130, 361.35pt x 479.54156pt>
 File: HPE_skelet.jpg Graphic file (type jpg)
 <use HPE_skelet.jpg>
 Package pdftex.def Info: HPE_skelet.jpg  used on input line 117.
 (pdftex.def)             Requested size: 172.5pt x 228.91878pt.
-
-
-LaTeX Warning: Reference `cos' on page 6 undefined on input line 125.
-
-<cos.pdf, id=53, 369.26949pt x 244.62883pt>
+<cos.pdf, id=132, 369.26949pt x 244.62883pt>
 File: cos.pdf Graphic file (type pdf)
 <use cos.pdf>
 Package pdftex.def Info: cos.pdf  used on input line 128.
 (pdftex.def)             Requested size: 284.52756pt x 188.49915pt.
-[6 <./HPE_skelet.jpg>]
-
-LaTeX Warning: Reference `samen' on page 7 undefined on input line 143.
-
+ [6 <./HPE_skelet.jpg>]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 145.
+
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 145.
-<samen.jpg, id=62, 1333.98375pt x 693.59125pt>
+<samen.jpg, id=140, 1333.98375pt x 693.59125pt>
 File: samen.jpg Graphic file (type jpg)
 <use samen.jpg>
 Package pdftex.def Info: samen.jpg  used on input line 151.
@@ -345,28 +329,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 170.
  (./voorblad(1).aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 170.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 170.
-
-
-Package rerunfilecheck Warning: File `voorblad(1).out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `voorblad(1).out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  80238F32F79A07241989DF67D49AB4CE;1146.
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+Package rerunfilecheck Info: File `voorblad(1).out' has not changed.
+(rerunfilecheck)             Checksum: 80238F32F79A07241989DF67D49AB4CE;1146.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 170.
  ) 
 Here is how much of TeX's memory you used:
- 5718 strings out of 492616
- 84489 string characters out of 6129481
- 186658 words of memory out of 5000000
- 9569 multiletter control sequences out of 15000+600000
+ 5742 strings out of 492616
+ 84849 string characters out of 6129481
+ 186854 words of memory out of 5000000
+ 9587 multiletter control sequences out of 15000+600000
  6278 words of font info for 23 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  28i,6n,30p,1218b,350s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -380,10 +351,10 @@ local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
 cal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local
 /texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
 texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on voorblad(1).pdf (9 pages, 575860 bytes).
+Output written on voorblad(1).pdf (9 pages, 581719 bytes).
 PDF statistics:
- 139 PDF objects out of 1000 (max. 8388607)
- 107 compressed objects within 2 object streams
+ 211 PDF objects out of 1000 (max. 8388607)
+ 179 compressed objects within 2 object streams
  36 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 162 words of extra memory for PDF output out of 10000 (max. 10000000)
 
