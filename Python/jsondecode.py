@@ -47,11 +47,11 @@ def angle(a, b, c, d):
 
 def main():
     # Improrteer het json bestand
-    Decode = decode('/Users/isaac/Desktop/man_keypoints.json')
+    Decode = decode('/Users/isaac/Desktop/json/arm_omhoog_160_keypoints.json')
     # Haal er de gewenste info uit en geef de coordinaten een naam
     coor = add_coor(Decode.get_pose_keypoints())
     # Bereken de hoek en print het
-    print(np.degrees(angle(coor[0], coor[1], coor[1], coor[5])))
+    print(np.degrees(angle(coor[8], coor[1], coor[2], coor[3])))
 
 
 if __name__ == '__main__':
