@@ -1,6 +1,7 @@
 \documentclass{article}
 
 \usepackage{graphicx, titling}
+\usepackage{float}
 
 \title{Human Pose Estimation Toepassing
                                               }
@@ -53,19 +54,52 @@ Mathieu Vanooteghem}
 \end{center}
 
 \section*{Inleiding}
-Aan materiaal in de medische wereld hangt steeds een stevig prijskaartje, daarom vroegen wij ons af of het niet mogelijk zou zijn om hulpmiddelen te ontwikkelen die heel budget vriendelijk zijn. Wat centraal staat is dat we hierbij geen gebruik maken van hoogtechnologische apparatuur en dat we ons beperken tot het gebruik van de camera's on onze laptops of gsm's. Het gaan dus meer om software dan het concreet bouwen van een apparaat. Hierbij richten wij ons op het gebied van 'Human Pose Estimation' (HPE), ook wel lichaamspositie bepaling. Dit is een techniek dat aan de hand van neurale netwerken en deep learning de positie van personen schat op een foto.
+Aan materiaal in de medische wereld hangt steeds een stevig prijskaartje, daarom vroegen wij ons af of het niet mogelijk zou zijn om hulpmiddelen te ontwikkelen die heel budget vriendelijk zijn. Wat centraal staat is dat we hierbij geen gebruik maken van hoogtechnologische apparatuur en dat we ons beperken tot het gebruik van de camera's on onze laptops of gsm's. Het gaat dus meer om software dan het concreet bouwen van een apparaat. Hierbij richten wij ons op het gebied van 'Human Pose Estimation' (HPE), ook wel lichaamspositiebepaling. Dit is een techniek die aan de hand van neurale netwerken en deep learning de positie van personen schat op een foto.
 
 \section{HPE, revolutionair?}
 (uitleggen hoe het werkt enzo, uitleggen waarom het zo gemakkelijk en handig is?)
 
-\section{Brainstorm}
-Het doel is ergens in de paramedische wereld iets te vinden dat mogelijks gebruik van maken van HPE, waardoor een een goedkope oplossing zou ontwikkeld kunnen worden. Hierbij testen we dan mogelijkse valkuilen en analyseren of dit een goede en gemakkelijke oplossing zou zijn. We proberen dit dan allemaal op een methodische manier uit te werken, waarbij we van een specifiek geval steeds breder gaan kijken.
-\section{Voorlopige resultaten}
 
-\section{Voorlopige conclusies}
+
+\section{Toepassingen}
+Het doel is ergens in de paramedische wereld iets te vinden dat mogelijks gebruik kan maken van HPE, waardoor een goedkope oplossing kan worden ontwikkeld. Hierbij testen we dan mogelijke valkuilen en analyseren we of dit een goede en gemakkelijke oplossing zou zijn. We proberen dit dan allemaal op een methodische manier uit te werken, waarbij we een specifiek geval steeds breder gaan bekijken.
+
+We zien een eerste toepassing in het opvolgen van de revalidatie na een schouderoperatie. Via een simpele foto gemaakt met de gsm kun je dan een week-na-week analyse uitvoeren van hoe de revalidatie evolueert. Een goedkope en degelijke oplossing.
+
+Een tweede en uitgebreidere toepassing is het analyseren van de positie op de fiets. Veel amateurwielrenners hebben een slechte houding op de fiets en een professionele bikefitting kost al snel een paar honderd euro. Via HPE kunnen wij opnieuw met een simpele foto van de fietser in zijaanzicht tamelijk nauwkeurig de positie op de fiets gaan analyseren en eventuele correcties voorstellen. Opnieuw een goedkope oplossing die voor een breed publiek inzetbaar is. Voor professionele wielrenners zal HPE niet nauwkeurig genoeg zijn aangezien enkele millimeters daar soms het verschil maken tussen winnen en verliezen
+
+\section{Toepassing 1: opvolgen van revalidatie na schouderoperatie}
+	\subsection{Bepalen van de hoek tussen arm en lichaam}
+
+We willen meten hoe ver een persoon zijn arm kan roteren met als doel om HPE toe te passen bij het opvolgen van de revalidatie na een schouderoperatie. Hiervoor willen we dus de hoek meten die een persoon kan maken tussen de arm en borst. Op figuur \ref{fig:skelet} komt dat dus neer op de hoek bepalen tussen de lijnstukken [32] en [21] voor de rechterarm en tussen [65] en [51] voor de linkerarm. Als we Openpose gebruiken om de positie te schatten van een persoon op een foto krijgen we als output de coördinaten van de verschillende knooppunten. Vanuit deze coördinaten kunnen we dan met behulp van de cosinusregel (\ref{eq:cos}) de gewenste hoek bepalen.
+
+\begin{equation}
+	cos(x,y) = \frac{x_1x_2+y_1y_2}{\sqrt{x_1^2+x_2^2} \sqrt{y_1^2+y_2^2}}
+	\label{eq:cos}
+\end{equation}
+
+We kunnen de revalidatie opvolgen door verschillende bewegingen van de schouder te bestuderen. Bij een foto vanuit vooraanzicht kunnen we kijken hoe ver de patiënt zijn arm zijwaarts omhoog kan brengen. Bij een foto genomen vanuit zijaanzicht kunnen we meten hoe ver hij de arm vooruit kan omhoog steken. Belangrijk is wel dat de foto's zo goed mogelijk vanuit een bepaald aanzicht te nemen aangezien HPE in 2D werkt. Als de foto scheef genomen wordt heeft het meten van de hoeken niet veel zin.
+
+Week na week kan dan bijvoorbeeld een foto van de patiënt in dezelfde positie geanalyseerd worden om zo de voortgang van de revalidatie objectief te kunnen beoordelen. 
+
+\begin{figure}[H]
+	\centering
+	\caption{Voorstelling van de positie bepaald via Openpose}
+	\label{fig:skelet}
+	\includegraphics[width=.5\textwidth]{HPE_skelet}
+\end{figure}
+
+
+	\subsection{Voorlopige resultaten}
+
+	\subsection{Voorlopige conclusies}
+
+\section{Toepassing 2: fietspositie bepalen}
 
 \section{Vakintegratie}
-Ons project kan ook aan enkele vakken gelinkt worden die we in onze eerste 3 semesters van de opleiding ingenieurswetenschappen hebben gehad. Het meest voor de hand liggende vak is natuurlijk Beginselen van Programmeren.
+Het is natuurlijk belangrijk om dit project een plaats te geven in onze opleiding ingenieurs wetenschappen. We bekijken welke vakken uit de eerste 3 semesters van onze bachelor het meest gebruikt worden tijdens dit project. De belangrijkste link is met het van Begingselen van programmeren. In dit vak leerden we werken met Python en verworven we inzicht in het programmeren. Wat heel handig is, want tijdens ons project maken we veelvuldig gebruik van Python. Elk zelf gemaakt programma is geschreven in Python en ook Openpose maak gebruik van deze computertaal. Verder maakt wiskunde ook een groot deel uit van ons project, want het berekenen van hoeken of afstanden kan niet zonder de wiskunde. We gebruiken hierbij kennis uit verschillende wiskundige vakken zoals, Analyse \& calclus en Lineair algebra. Als laatste kunnen we Statistiek ook nog linken aan dit project aangezien Openpose enkel een schatting geeft van de lichaamspositie. Het werkt met \textit{heatmaps} en kiest per knooppunt dan het coördinaat met de hoogste kans. We gebruiken zelf geen statistische technieken, maar de kennis die we verworven hebben in dit vak helpt ons wel in het begrijpen van Openpose. 
+
+Met vakken die te maken hebben met energie en materie, zoals Algemene natuurkunde deel 1,2,3 is er geen link. Dit zou wel mogelijk zijn als je Openpose met videomateriaal gebruikt zou je de snelheden van knooppunten kunnen berekenen. Bijvoorbeeld bij de worp van een bal de snelheid van de hand berekenen. Maar dit is niet wat wij doen in ons project.
 \section{Planning}
 (gantt chart enzo\texttt{})
 
