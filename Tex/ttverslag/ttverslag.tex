@@ -11,6 +11,7 @@
 \usepackage[utf8]{inputenc} % Correct vreemde symbolen inlezen
 \usepackage[dutch]{babel}   % Nederlandstalige regels voor woordafbreking
 \usepackage[T1]{fontenc}    % Correct vreemde symbolen weergeven
+\usepackage{float}
 
 % Instellingen voor titelpagina, kop- en voettekst
 % In een standaard article-document zijn er minder mogelijkheden
@@ -96,7 +97,7 @@ Bij een foto vanuit vooraanzicht kunnen we berekenen hoe ver de patiënt zijn ar
 
 
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\textwidth]{HPE_skelet}
 	\caption{Voorstelling van de positie bepaald via Openpose (afbeelding van \href{https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/output.md}{openpose})}
@@ -111,7 +112,7 @@ Via Openpose krijgen we de coördinaten van alle punten die openpose kan herkenn
 \paragraph{Wiskundige achtergrond}
 Om de hoek tussen twee lichaamsdelen te berekenen gebruiken we de cosinusregel. Hier volgt een klein beetje duiding over hoe we die precies gebruiken (zie figuur \ref{cos}).\\
 
-\begin{figure}
+\begin{figure}[H]
 	\begin{center}
 		\includegraphics[width=10cm]{cos.pdf}
 	\end{center}
@@ -144,14 +145,34 @@ Een voorbeeld bij het bepalen van een hoek tussen is afbeelding \ref{samen}. Als
 \end{figure}
 \subsection{Voorlopige conclusies}
 Door deze  toepassing weten we dat het relatief eenvoudig is om met openpose zinvolle berekeningen te kunnen doen. Door de coördinaten die gegeven worden als output kunnen we gemakkelijk programma's schrijven die hiermee werken.
+
+
 \section{Toepassing 2: fietspositie bepalen}
 Voor de tweede toepassing willen we een goedkoper alternatief bieden voor een bikefitting. Hierbij worden er foto's getrokken van de persoon op de fiets en kunnen we dan op basis van de positie bepaald met openpose eventuele correcties uitvoeren op de fiets.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{bikefit}
+	\caption{Verschillende hoeken voor optimale positie op de fiets}
+	\label{fig:bikefit}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{bikefit_romp}
+	\caption{Optimale hoek die het bovenlichaam maakt met de horizontale}
+	\label{fig:bikefit_romp}
+\end{figure}
+
 \subsection{Voorlopige resultaten}
 Komt op finaal verslag.
+
 \subsection{Voorlopige conclusies}
 Komt op finaal verslag.
+
 \chapter{Vakintegratie}
 Het is natuurlijk belangrijk om dit project een plaats te geven binnen onze opleiding ingenieurswetenschappen. We bekijken welke vakken uit de eerste 3 semesters van onze bachelor het meest gebruikt worden tijdens dit project. De belangrijkste link is met het vak begingselen van programmeren. In dit vak leerden we werken met Python en verworven we inzicht in het programmeren. Wat heel handig is, want tijdens ons project maken we veelvuldig gebruik van Python. Elk zelf gemaakt programma is geschreven in Python want Openpose heeft een uitstekende Python API. Verder maakt wiskunde ook een groot deel uit van ons project, want het berekenen van hoeken of afstanden kan niet zonder de wiskunde. We gebruiken hierbij kennis uit verschillende wiskundige vakken zoals, Analyse \& calclus en Lineaire algebra. Als laatste kunnen we Statistiek ook nog linken aan dit project aangezien Openpose enkel een schatting geeft van de lichaamspositie. Het werkt met \textit{heatmaps} en kiest per knooppunt dan het coördinaat met de hoogste kans. We gebruiken zelf geen statistische technieken, het helpt ons wel bij het begrijpen van Openpose.
+
 \chapter{Planning}
 (gantt chart enzo\texttt{})
 
