@@ -49,7 +49,11 @@ vermelden dat het werkt met neurale netwerken (cfr. infra)
 
 \chapter{Theoretische achtergrond}
 \section{Openpose}
-Openpose is een open-source 
+Openpose is een open-source programma dat \emph{human pose estimations} kan doen. Openpose is grotendeels geprogrammeerd in C++ maar heeft een uitstekende Python API. Dit programma onderscheid zich van ander HPE programma's in de manier waarop het beelden met meerdere personen kan verwerken. De meeste voorgaande programma's waren maar in staat om met één persoon te werken of localiseerden eerst alle personen op de foto om nadien individueel hun positie te bepalen. Bij Openpose is het anders, het programma kan synchroon de positie van alle personen bepalen in de foto \cite{openpose}.
+\subsection{Werking}
+Openpose berekent eerst voor alle lichaamsdelen een heatmap. Dat zijn de locaties met het meeste kans dat het lichaamsdeel zich daar bevindt. Op basis daarvan kan hij dan de coördinaten bepalen \cite{heatmaps}.
+\subsection{Training datasets}
+Dit programma is getrained met twee datasets \cite{openpose}: de COCO dataset, die bestaat uit meer dan 100.000 beelden en meer dan 1.000.000 \emph{keypoints}, en de MPII dataset.
 \section{Neurale netwerken}
 
 Een (artificieel) neuraal netwerk of ANN is een netwerk geïnspireerd op een biologisch neuraal netwerk zoals die voorkomt in hersenen met de bedoeling om deze iets te doen leren. Het ANN is opgebouwd uit artificiële neuronen die een neuron in een brein moeten voorstellen. Al de neuronen zijn verbonden met andere neuronen en kunnen signalen uitsturen en ontvangen. In een ANN zijn de signalen getallen en kan elk neuron een bepaalde bewerking uitvoeren op een binnenkomend signaal om deze verder te sturen. Elke connectie heeft ook een gewicht dat bepaalt hoe sterk het signaal is dat hij uitstuurt. Dit gewicht past zich aan als het neuraal netwerk leert. 
@@ -177,8 +181,8 @@ Het is natuurlijk belangrijk om dit project een plaats te geven binnen onze ople
 (gantt chart enzo\texttt{})
 
 \chapter*{Referenties}
-\bibliographystyle{plainnat}
-\bibliography{biblio}
-\printindex
+\bibliographystyle{unsrt}
+\bibliography{bibliografie}
+%\printindex
 
 \end{document}
