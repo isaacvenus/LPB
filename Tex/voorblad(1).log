@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.9.30)  22 OCT 2020 17:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.9.28)  27 OCT 2020 18:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -61,16 +61,16 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@floatcapt=\box28
 )
 (c:/texlive/2019/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2019/09/27 3.34 The Babel package
+Package: babel 2019/07/19 3.33 The Babel package
 
 (c:/texlive/2019/texmf-dist/tex/generic/babel/switch.def
-File: switch.def 2019/09/27 3.34 Babel switching mechanism
+File: switch.def 2019/07/19 3.33 Babel switching mechanism
 )
 (c:/texlive/2019/texmf-dist/tex/generic/babel-dutch/dutch.ldf
 Language: dutch 2005/03/30 v3.8i Dutch support from the babel system
 
 (c:/texlive/2019/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2019/09/27 3.34 Babel common definitions
+File: babel.def 2019/07/19 3.33 Babel common definitions
 \babel@savecnt=\count89
 \U@D=\dimen105
 
@@ -277,13 +277,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 [2
 
-]
-Overfull \hbox (0.3617pt too wide) in paragraph at lines 63--64
-\OT1/cmr/m/n/10 Aan ma-te-ri-aal in de me-di-sche we-reld hangt steeds een ste-
-vig prijs-kaartje, daarom
- []
-
-[3
+] [3
 
 ]
 <netwerk.png, id=115, 1284.8pt x 1544.77126pt>
@@ -292,7 +286,7 @@ File: netwerk.png Graphic file (type png)
 Package pdftex.def Info: netwerk.png  used on input line 86.
 (pdftex.def)             Requested size: 227.62204pt x 273.66257pt.
  [4 <./netwerk.png>]
-Overfull \hbox (14.79451pt too wide) in paragraph at lines 104--104
+Overfull \hbox (14.79451pt too wide) in paragraph at lines 107--107
 []\OT1/cmr/bx/n/14.4 Toepassing 1: op-vol-gen van re-va-li-da-tie na schou-
  []
 
@@ -300,53 +294,51 @@ Overfull \hbox (14.79451pt too wide) in paragraph at lines 104--104
 <HPE_skelet.jpg, id=129, 361.35pt x 479.54156pt>
 File: HPE_skelet.jpg Graphic file (type jpg)
 <use HPE_skelet.jpg>
-Package pdftex.def Info: HPE_skelet.jpg  used on input line 117.
+Package pdftex.def Info: HPE_skelet.jpg  used on input line 121.
 (pdftex.def)             Requested size: 172.5pt x 228.91878pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
+Underfull \hbox (badness 10000) in paragraph at lines 130--131
 
  []
 
-[6 <./HPE_skelet.jpg>]
-<cos.pdf, id=135, 369.26949pt x 244.62883pt>
+<cos.pdf, id=131, 369.26949pt x 244.62883pt>
 File: cos.pdf Graphic file (type pdf)
 <use cos.pdf>
-Package pdftex.def Info: cos.pdf  used on input line 130.
+Package pdftex.def Info: cos.pdf  used on input line 134.
 (pdftex.def)             Requested size: 284.52756pt x 188.49915pt.
- [7 <./cos.pdf>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 148.
+[6 <./HPE_skelet.jpg>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 152.
 
-
-(c:/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
+ (c:/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 148.
-<samen.jpg, id=159, 1333.98375pt x 693.59125pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 152.
+<samen.jpg, id=139, 1333.98375pt x 693.59125pt>
 File: samen.jpg Graphic file (type jpg)
 <use samen.jpg>
-Package pdftex.def Info: samen.jpg  used on input line 154.
+Package pdftex.def Info: samen.jpg  used on input line 158.
 (pdftex.def)             Requested size: 341.43306pt x 177.52489pt.
- [8 <./samen.jpg>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 175.
 
-[9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 175.
+[7 <./cos.pdf>] [8 <./samen.jpg>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 177.
+ [9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 177.
  (./voorblad(1).aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 175.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 175.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 177.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 177.
 Package rerunfilecheck Info: File `voorblad(1).out' has not changed.
 (rerunfilecheck)             Checksum: 9F519DBF7AFCB6894AA8DAB118A47878;1199.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 175.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 177.
  ) 
 Here is how much of TeX's memory you used:
- 5768 strings out of 492609
- 84813 string characters out of 6132818
- 186926 words of memory out of 5000000
- 9616 multiletter control sequences out of 15000+600000
+ 5760 strings out of 492609
+ 84684 string characters out of 6132818
+ 186739 words of memory out of 5000000
+ 9608 multiletter control sequences out of 15000+600000
  6278 words of font info for 23 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,5n,30p,1218b,366s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,5n,30p,1168b,346s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/tex
 live/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2019
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2019/texmf-di
@@ -356,7 +348,7 @@ ic/amsfonts/cm/cmr10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmr12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.
 pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/t
 exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on voorblad(1).pdf (9 pages, 581228 bytes).
+Output written on voorblad(1).pdf (9 pages, 580371 bytes).
 PDF statistics:
  212 PDF objects out of 1000 (max. 8388607)
  180 compressed objects within 2 object streams
