@@ -12,6 +12,7 @@
 \usepackage[dutch]{babel}   % Nederlandstalige regels voor woordafbreking
 \usepackage[T1]{fontenc}    % Correct vreemde symbolen weergeven
 \usepackage{float}
+\usepackage{gensymb}
 
 % Instellingen voor titelpagina, kop- en voettekst
 % In een standaard article-document zijn er minder mogelijkheden
@@ -154,6 +155,11 @@ Door deze  toepassing weten we dat het relatief eenvoudig is om met openpose zin
 \section{Toepassing 2: fietspositie bepalen}
 Voor de tweede toepassing willen we een goedkoper alternatief bieden voor een bikefitting. Hierbij worden er foto's getrokken van de persoon op de fiets en kunnen we dan op basis van de positie bepaald met openpose eventuele correcties uitvoeren op de fiets.
 
+Een bikefit is eigenlijk het analyseren en eventueel aanpassen van de positie op de fiets. Het belangrijkste doel daarvan is het voorkomen van blessures. Bij wielrenners die aan competitie doen heeft een bikefit ook als doel om een zo aerodynamisch mogelijke positie op de fiets aan te nemen. Ook kan een betere positie ervoor zorgen dat men een groter wattage kan leveren op de pedalen. Alleen maar voordelen dus.
+
+Op Figuur \ref{fig:bikefit} staan enkele hoeken die voor de standaard persoon als optimaal gezien worden voor de positie op een koersfiets. Met behulp van Openpose zouden we deze hoeken dus kunnen berekenen aan de hand van een foto of video van de wielrenner in kwestie. Als deze hoeken te veel afwijken van wat voorop gesteld wordt, dan kunnen we een verbetering voorstellen. Dit kan een verhoging van het zadel zijn, een verandering van de lengte van de stuurpen, een verandering van de stuurhoogte... Met behulp van de coördinaten van de keypoints zouden we dan bijvoorbeeld tamelijk exact kunnen berekenen met hoeveel centimeter het zadel omhoog moet.
+Op Figuur \ref{fig:bikefit_romp} staat de optimale hoek aangeduid die de romp maakt met de horizontale. Deze hoek is voornamelijk afhankelijk van de zadelhoogte, de lengte van de stuurpen en de stuurhoogte. Ook hier kunnen we verschillende veranderingen voorstellen indien de hoek in de praktijk te veel afwijkt van 45 \degree.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{bikefit}
@@ -180,7 +186,7 @@ Het is natuurlijk belangrijk om dit project een plaats te geven binnen onze ople
 \chapter{Planning}
 (gantt chart enzo\texttt{})
 
-\chapter*{Referenties}
+
 \bibliographystyle{unsrt}
 \bibliography{bibliografie}
 %\printindex

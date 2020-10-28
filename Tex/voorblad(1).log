@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.9.28)  27 OCT 2020 18:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.9.30)  28 OCT 2020 16:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -61,16 +61,16 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@floatcapt=\box28
 )
 (c:/texlive/2019/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2019/07/19 3.33 The Babel package
+Package: babel 2019/09/27 3.34 The Babel package
 
 (c:/texlive/2019/texmf-dist/tex/generic/babel/switch.def
-File: switch.def 2019/07/19 3.33 Babel switching mechanism
+File: switch.def 2019/09/27 3.34 Babel switching mechanism
 )
 (c:/texlive/2019/texmf-dist/tex/generic/babel-dutch/dutch.ldf
 Language: dutch 2005/03/30 v3.8i Dutch support from the babel system
 
 (c:/texlive/2019/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2019/07/19 3.33 Babel common definitions
+File: babel.def 2019/09/27 3.34 Babel common definitions
 \babel@savecnt=\count89
 \U@D=\dimen105
 
@@ -332,10 +332,10 @@ Package rerunfilecheck Info: File `voorblad(1).out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 177.
  ) 
 Here is how much of TeX's memory you used:
- 5760 strings out of 492609
- 84684 string characters out of 6132818
- 186739 words of memory out of 5000000
- 9608 multiletter control sequences out of 15000+600000
+ 5768 strings out of 492609
+ 84813 string characters out of 6132818
+ 187926 words of memory out of 5000000
+ 9616 multiletter control sequences out of 15000+600000
  6278 words of font info for 23 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  28i,5n,30p,1168b,346s stack positions out of 5000i,500n,10000p,200000b,80000s
