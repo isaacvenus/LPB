@@ -53,9 +53,10 @@
 			\ganttfoobar[name = 3]{Openposetesten}{2020-10-08}{2020-10-15}\\
 			\ganttlink{1}{3}
 			\ganttfoobar[name = 4]{Literatuurstudie}{2020-10-08}{2020-10-22}\\
+			\ganttgroup{Onderzoek}{2020-10-15}{2020-11-8}\\
 			\ganttfoobar[name = 5]{0nderzoek basistoepassing}{2020-10-15}{2020-10-27}\\
 			\ganttfoobar[name = 6]{Schrijven tussentijds verslag}{2020-10-15}{2020-10-30}\\
-			\ganttfoobar[name = 7]{Onderzoek uitgebreide toepassing}{2020-10-29}{2020-11-08}
+			\ganttfoobar[name = 7]{Uitgebreide toepassing}{2020-10-29}{2020-11-08}
 			
 		\end{ganttchart}	
 	
@@ -64,10 +65,12 @@
 		\centering
 		\begin{ganttchart}[hgrid, vgrid, x unit=5mm, time slot format=isodate]{2020-11-09}{2020-12-20}
 			\gantttitlecalendar{week=7,month=shortname,day,weekday=letter} \\
-			\ganttfoobar[name=18]{Onderzoek uitgebreide toepassing}{2020-11-09}{2020-12-10}\\
+			\ganttgroup{Onderzoek}{2020-11-9}{2020-12-10}\\
+			\ganttfoobar[name=18]{Uitgebreide toepassing}{2020-11-09}{2020-12-10}\\
+			\ganttgroup{Rapporteren}{2020-11-26}{2020-12-17}\\
 			\ganttfoobar[name=19]{Schrijven eindverslag}{2020-11-26}{2020-12-15}\\
-			\ganttfoobar[name=20]{Eindpresentatie maken en oefenen}{2020-12-03}{2020-12-17}\\
-			\ganttvrule{eindpresentatie}{2020-12-17}
+			\ganttfoobar[name=20]{Eindpresentatie voorbereiden}{2020-12-03}{2020-12-17}
+			\ganttvrule[vrule/.append style={red, line width = 2pt}]{eindpresentatie}{2020-12-17}
 			
 		\end{ganttchart}
 		
