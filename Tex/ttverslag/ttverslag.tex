@@ -13,6 +13,8 @@
 \usepackage[T1]{fontenc}    % Correct vreemde symbolen weergeven
 \usepackage{float}
 \usepackage{gensymb}
+\usepackage{lscape}
+\usepackage{rotating}
 
 % Instellingen voor titelpagina, kop- en voettekst
 % In een standaard article-document zijn er minder mogelijkheden
@@ -149,7 +151,7 @@ Een voorbeeld bij het bepalen van een hoek tussen is afbeelding \ref{samen}. Als
 	\label{samen}
 \end{figure}
 \subsection{Voorlopige conclusies}
-Door deze  toepassing weten we dat het relatief eenvoudig is om met openpose zinvolle berekeningen te kunnen doen. Door de coördinaten die gegeven worden als output kunnen we gemakkelijk programma's schrijven die hiermee werken.
+Door deze  toepassing weten we dat het relatief eenvoudig is om met openpose zinvolle berekeningen te kunnen doen. Door de coördinaten die gegeven worden als output kunnen we gemakkelijk programma's schrijven die hiermee werken. Doordat Openpose werkt in 2D hebben we gemerkt dat de foto recht moet genomen worden. Als de hoek die we willen bereken schuin afgebeeld staat op de inputfoto komt de berekening helemaal niet overeen met de werkelijke waarde van de hoek.
 
 
 \section{Toepassing 2: fietspositie bepalen}
@@ -174,17 +176,22 @@ Op Figuur \ref{fig:bikefit_romp} staat de optimale hoek aangeduid die de romp ma
 	\label{fig:bikefit_romp}
 \end{figure}
 
-\subsection{Voorlopige resultaten}
-Komt op finaal verslag.
-
-\subsection{Voorlopige conclusies}
-Komt op finaal verslag.
 
 \chapter{Vakintegratie}
 Het is natuurlijk belangrijk om dit project een plaats te geven binnen onze opleiding ingenieurswetenschappen. We bekijken welke vakken uit de eerste 3 semesters van onze bachelor het meest gebruikt worden tijdens dit project. De belangrijkste link is met het vak begingselen van programmeren. In dit vak leerden we werken met Python en verworven we inzicht in het programmeren. Wat heel handig is, want tijdens ons project maken we veelvuldig gebruik van Python. Elk zelf gemaakt programma is geschreven in Python want Openpose heeft een uitstekende Python API. Verder maakt wiskunde ook een groot deel uit van ons project, want het berekenen van hoeken of afstanden kan niet zonder de wiskunde. We gebruiken hierbij kennis uit verschillende wiskundige vakken zoals, Analyse \& calclus en Lineaire algebra. Als laatste kunnen we Statistiek ook nog linken aan dit project aangezien Openpose enkel een schatting geeft van de lichaamspositie. Het werkt met \textit{heatmaps} en kiest per knooppunt dan het coördinaat met de hoogste kans. We gebruiken zelf geen statistische technieken, het helpt ons wel bij het begrijpen van Openpose.
 
 \chapter{Planning}
-(gantt chart enzo\texttt{})
+
+\begin{landscape}
+	\begin{figure}
+		\includegraphics[width= 2\textwidth]{ganttchart_1}
+	\end{figure}
+	\begin{figure}
+		\includegraphics[width= 2\textwidth]{ganttchart_2}
+	\end{figure}
+\end{landscape}
+
+
 
 \bibliographystyle{unsrt}
 \bibliography{bibliografie}
