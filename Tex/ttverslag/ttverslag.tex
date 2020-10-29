@@ -51,6 +51,14 @@ Aan materiaal in de medische wereld hangt steeds een stevig prijskaartje, dus vr
 \chapter{Theoretische achtergrond}
 \section{HPE, revolutionair?}
 \emph{Human pose estimation} is de laatste tijd veel geëvolueerd naar een heel gebruiksvriendelijke vorm. Vroeger waren hiervoor hoogtechnologische opstellingen met mensen in speciale pakken en veel rekenkracht nodig. Nu is een foto en een laptop voldoende om de posities van zelfs meerdere personen in hetzelfde beeld tegelijkertijd te bepalen. Dit allemaal door de gigantische vooruitgang op vlak van artificiele intelligentie en neurale netwerken.
+
+	\begin{figure}[H]
+		\includegraphics[width=.4\textwidth]{3D_motion_capture}
+		\includegraphics[width=.55\textwidth]{HPE_voorbeeld}
+		\caption{Bij grote productiehuizen wordt de positie bepaald door middel van een 3D motion capture pak (links), maar tegenwoordig is HPE een veel goedkopere en gemakkelijkere oplossing (rechts).
+		(afbeeldingen van https://www.pinterest.com/pin/718324209297102981/ en https://beyondminds.ai/an-overview-of-human-pose-estimation-with-deep-learning/}
+	\end{figure}
+
 \section{Openpose}
 Openpose is een open-source programma dat \emph{human pose estimations} kan doen. Openpose is grotendeels geprogrammeerd in C++ maar heeft een uitstekende Python API. Dit programma onderscheidt zich van andere HPE programma's in de manier waarop het beelden met meerdere personen kan verwerken. De meeste voorgaande programma's waren maar in staat om met één persoon te werken of lokaliseerden eerst alle personen op de foto om nadien individueel hun positie te bepalen. Bij Openpose is het anders, het programma kan synchroon de positie van alle personen bepalen in de foto \cite{openpose}.
 \subsection{Werking}
