@@ -173,14 +173,14 @@ Op Figuur \ref{fig:bikefit} staan enkele hoeken die voor de standaard persoon al
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{bikefit_hoeken}
+	\includegraphics[width=\textwidth]{bikefit_hoeken_foto}
 	\caption{Belangrijkste hoeken voor een optimale positie op de fiets (hoeken zijn gebaseerd op presentatie over bikefitting door Wolf Performance, bijgewoond door onze begeleider Jens Goemaere)}
 	\label{fig:bikefit}
 \end{figure}
 
 \subsection{Algoritme voor wijzigen van de zadelhoogte}
 
-We zullen beginnen met een algoritme te schrijven voor het veranderen van één parameter, namelijk de zadelhoogte. Voornamelijk de knie- en enkelhoek zullen veranderen als gevolg van een wijziging in zadelhoogte. Dit zal ook een klein effect hebben op de schouderhoek maar dit laten we hier voor het gemak achterwege. De mate waarin je de zadelhoogte kan wijzigen hangt af van de lengte van de zadelpen. Op de meeste zadelpennen staat de minimale diepte waarmee de pen in het frame moet zitten. Indien dit niet zo is, is de vuistregel dat de zadelpen minstens 9 \si{mm} diep in het frame moet zitten. Zet je zadel dus zeker niet hoger dan dat. Als je dit niet doet, bestaat de kans dat de zadelpen breekt.
+We zullen beginnen met een algoritme te schrijven voor het veranderen van één parameter, namelijk de zadelhoogte. Voornamelijk de knie- en enkelhoek zullen veranderen als gevolg van een wijziging in zadelhoogte. Dit zal ook een klein effect hebben op de schouderhoek maar dit laten we hier voor het gemak achterwege. De mate waarin je de zadelhoogte kan wijzigen hangt af van de lengte van de zadelpen. Op de meeste zadelpennen staat de minimale diepte waarmee de pen in het frame moet zitten. Indien dit niet zo is, is de vuistregel dat de zadelpen minstens 90 \si{mm} diep in het frame moet zitten. Zet je zadel dus zeker niet hoger dan dat. Als je dit niet doet, bestaat de kans dat de zadelpen breekt.
 In een eerste stap berekenen we enkel de kniehoek. We kijken initieel hoe groot die is. Indien de hoek tussen 140 \degree en 145 \degree ligt (zie Figuur \ref{fig:bikefit}), wordt er geen voorstel gedaan voor een wijziging van de zadelhoogte. Indien de hoek buiten dit interval ligt, berekent het algoritme met hoeveel pixels de y-coördinaat van het knooppunt van de heup moet wijzigen om de hoek in dit interval te krijgen. Vooraf wordt door het programma de lengte van bijvoorbeeld het bovenbeen gevraagd in \si{cm}. Via openpose kunnen we dan het aantal pixels berekenen tussen het knooppunt van de knie en de heup. Op die manier kunnen we de eenheid pixels overzetten naar \si{cm}. De output van het eerste is dan het aantal \si{cm} dat het algoritme voorstelt om het zadel te wijzigen. Een positief getal betekent verhogen, een negatief verlagen.
 
 We breiden nu het algoritme uit zodat het ook de invloed van de wijziging van de zadelhoogte op de enkelhoek in rekening brengt. Deze is immers ook afhankelijk van de zadelhoogte. De optimale enkelhoek ligt tussen 125 \degree en 135 \degree. De moeilijkheid is nu om de zadelhoogte zodanig te kiezen zodat zowel de knie- als enkelhoek in het optimale interval liggen. De output is nog steeds een positief of negatief getal dat een voorstel doet voor het wijzigen van de zadelhoogte.
