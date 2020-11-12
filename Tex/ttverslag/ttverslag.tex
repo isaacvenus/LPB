@@ -185,6 +185,46 @@ In een eerste stap berekenen we enkel de kniehoek. We kijken initieel hoe groot 
 
 We breiden nu het algoritme uit zodat het ook de invloed van de wijziging van de zadelhoogte op de enkelhoek in rekening brengt. Deze is immers ook afhankelijk van de zadelhoogte. De optimale enkelhoek ligt tussen 125 \degree en 135 \degree. De moeilijkheid is nu om de zadelhoogte zodanig te kiezen zodat zowel de knie- als enkelhoek in het optimale interval liggen. De output is nog steeds een positief of negatief getal dat een voorstel doet voor het wijzigen van de zadelhoogte.
 
+\paragraph{Wiskundige redenering en implementatie}
+Het programma veronderstelt een aantal constanten; natuurlijk de lengten van het boven- en onderbeen, punt B en de x-coördinaat van A die te zien zijn op figuur \ref{fiets}. Met deze veronderstellingen kunnen we de hoek van de knie $\theta$ kiezen en de y-coördinaat van A berekenen om dan de verandering van de hoogte van het zadel te bepalen.
+
+We kunnen de lengte van c bepalen met de gewenste hoek $\theta$.
+\[c^2 = a^2 + b^2 -2\cdot a \cdot b \cdot cos(\theta)\]
+
+Voor deze lengte geldt ook dat:
+\[c = \sqrt{(A_x - B_x)^2 + (A_y - B_y)^2}\]
+
+Waaruit volgt dat
+\[A_y = \sqrt{c^2 - (A_x - B_x)^2} + B_y\]
+
+Dit kunnen we dan vergelijken met de hoogte van de heup en dan een correctie voorstellen van \(heup_y - A_y\).
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=8cm]{fiets.pdf}
+	\end{center}
+	\caption{Verduidelijkende figuur bij het bepalen van de zadelhoogte. Afbeelding van redbull.com}
+	\label{fiets}
+\end{figure}
+\paragraph{Wiskundige redenering en implementatie}
+Het programma veronderstelt een aantal constanten; natuurlijk de lengten van het boven- en onderbeen, punt B en de x-coördinaat van A die te zien zijn op figuur \ref{fiets}. Met deze veronderstellingen kunnen we de hoek van de knie $\theta$ kiezen en de y-coördinaat van A berekenen om dan de verandering van de hoogte van het zadel te bepalen.
+
+We kunnen de lengte van c bepalen met de gewenste hoek $\theta$.
+\[c^2 = a^2 + b^2 -2\cdot a \cdot b \cdot cos(\theta)\]
+
+Voor deze lengte geldt ook dat:
+\[c = \sqrt{(A_x - B_x)^2 + (A_y - B_y)^2}\]
+
+Waaruit volgt dat
+\[A_y = \sqrt{c^2 - (A_x - B_x)^2} + B_y\]
+
+Dit kunnen we dan vergelijken met de hoogte van de heup en dan een correctie voorstellen van \(heup_y - A_y\).
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=8cm]{fiets.pdf}
+	\end{center}
+	\caption{Verduidelijkende figuur bij het bepalen van de zadelhoogte. Afbeelding van redbull.com}
+	\label{fiets}
+\end{figure}
 \subsection{Algoritme voor wijzigen van de stuurhoogte}
 
 Als tweede parameter kijken we naar de stuurhoogte. Het aanpassen van de stuurhoogte heeft enkel invloed op de schouderhoek. Deze ligt in het optimale geval tussen 90 \degree en 95 \degree (zie Figuur \ref{fig:bikefit}). Het probleem is dat de voorvork meestal erg beperkt is in lengte. Bij de meeste amateur wielrenners wordt die afgezaagd net boven de stuurpen. Dit betekent dat er geen afstandsbus meer vanboven zit en het stuur dus niet meer verhoogd kan worden. Meestal zitten er wel nog afstandsbussen onder de stuurpen, dus het stuur kan dan wel nog verlaagd worden door één of meerdere afstandsbussen er vanonder uit te halen en boven de stuurpen te monteren. Omdat dit heel erg verschilt naargelang de fiets vragen we voor het algoritme als inputparameters hoeveel \si{cm} het stuur nog naar boven en naar beneden kan.
