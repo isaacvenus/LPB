@@ -21,8 +21,12 @@ def angle(a, b, c, d):
     cos_theta = (A**2 + D**2 - B**2)/(2 * A * D)
 
     return np.arccos(cos_theta)
+def centimeter(lengtedijbeen,a,b):
+    AB = np.sqrt((b[0] - a[0])**2 + (b[1] - a[1])**2)
+    return lengtedijbeen/AB
 
 def voorstel(keyp):
+    lengtedijbeen = int(input("Wat is de lengte van je dijbeen in centimeter? "))
     # check naar welke richting de fietser kijkt
     if keyp[0][1][0] > keyp[0][8][0]:
         heup, knie, enkel = 9, 10, 11
@@ -50,7 +54,7 @@ def voorstel(keyp):
     A_y = keyp[0][enkel][1] - (np.sqrt(c**2-(keyp[0][enkel][0] - keyp[0][heup][0])**2)) 
     print("-------------------------------")
     print("Mag ik voorstellen om het zadel te verhogen/verlagen met:")
-    print(keyp[0][8][1] - A_y)
+    print((keyp[0][8][1] - A_y)*centimeter(lengtedijbeen,keyp[0][heup],keyp[0][knie]), " centimeter")
 
 
 try:
