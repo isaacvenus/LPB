@@ -212,6 +212,25 @@ Dit kunnen we dan vergelijken met de hoogte van de heup en dan een correctie voo
 
 Nu kijken we naar de invloed van de lengte van de stuurpen. Dit heeft enkel invloed op de schouderhoek. Het probleem is dat als we de lengte van de stuurpen willen aanpassen, we een nieuwe stuurpen moeten kopen. Er zijn ook bepaalde grenzen aan de lengte van een stuurpen. De minimale lengte is 40 \si{mm}, korter is bijna onmogelijk. Het maximum ligt rond de 140 \si{mm}, groter kan nog maar dat is heel uitzonderlijk. De output van het algoritme is het aantal \si{cm} dat het stuur naar voor of naar achter moet.
 
+\paragraph{Wiskundige redenering en implementatie}
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=8cm]{yeye.pdf}
+	\end{center}
+	\caption{Verduidelijkende figuur bij het bepalen van de stuurpenlengte.}
+	\label{stuurpenlengte}
+\end{figure}
+We willen graag de verandering in de x-coördinaat van de pols (\(B_x\)) berekenen om de gewenste hoek $\theta$ tussen de rug en de arm te bekomen. Hiervoor gebruiken we weer de cosinusregel om de lengte tussen de heup en de pols te bepalen als deze in de goede positie staat.
+\[c^2 = a^2 + b^2 -2\cdot a\cdot b\cdot \cos(\theta)\]
+
+Met \(a\) de lengte van de rug, \(b\) de lengte van de arm (schouder tot pols) en \(c\) de lengte tussen de heup en de pols\ref{stuurpenlengte}. We weten ook dat
+\[c^2 = (B_x - A_x)^2 + (B_y - A_y)^2\]
+
+Waaruit volgt dat
+\[B_x = \pm \sqrt{c^2 -(B_y - A_y)^2 } + A_x\]
+
+We weten nu welke x-coördinaat de pols zou moeten hebben om de hoek $\theta$ te bekomen tussen de rug en de arm. Hiermee kunnen we een wijziging in de positie van het stuur voorstellen. Of je een + of - moet nemen hangt af van de richting waarin de persoon op de fiets kijkt.
 \chapter{Vakintegratie}
 Het is natuurlijk belangrijk om dit project een plaats te geven binnen onze opleiding ingenieurswetenschappen. We bekijken welke vakken uit de eerste 3 semesters van onze bachelor het meest gebruikt worden tijdens dit project. De belangrijkste link is met het vak begingselen van programmeren. In dit vak leerden we werken met Python en verworven we inzicht in het programmeren. Wat heel handig is, want tijdens ons project maken we veelvuldig gebruik van Python. Elk zelfgemaakt programma is geschreven in Python want Openpose heeft een uitstekende Python API. Verder maakt wiskunde ook een groot deel uit van ons project, want het berekenen van hoeken of afstanden kan niet zonder de wiskunde. We gebruiken hierbij kennis uit verschillende wiskundige vakken zoals, Analyse \& calclus en Lineaire algebra. Als laatste kunnen we Statistiek ook nog linken aan dit project aangezien Openpose enkel een schatting geeft van de lichaamspositie. Het werkt met \textit{heatmaps} en kiest per knooppunt dan het coördinaat met de hoogste kans. We gebruiken zelf geen statistische technieken, maar het helpt ons wel bij het begrijpen van Openpose.
 
