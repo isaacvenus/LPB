@@ -212,6 +212,7 @@ Dit kunnen we dan vergelijken met de hoogte van de heup en dan een correctie voo
 
 Nu kijken we naar de invloed van de lengte van de stuurpen. Dit heeft enkel invloed op de schouderhoek. Het probleem is dat als we de lengte van de stuurpen willen aanpassen, we een nieuwe stuurpen moeten kopen. Er zijn ook bepaalde grenzen aan de lengte van een stuurpen. De minimale lengte is 40 \si{mm}, korter is bijna onmogelijk. Het maximum ligt rond de 140 \si{mm}, groter kan nog maar dat is heel uitzonderlijk. De output van het algoritme is het aantal \si{cm} dat het stuur naar voor of naar achter moet.
 
+<<<<<<< Updated upstream
 \paragraph{Wiskundige redenering en implementatie}
 
 \begin{figure}
@@ -231,6 +232,23 @@ Waaruit volgt dat
 \[B_x = \pm \sqrt{c^2 -(B_y - A_y)^2 } + A_x\]
 
 We weten nu welke x-coördinaat de pols zou moeten hebben om de hoek $\theta$ te bekomen tussen de rug en de arm. Hiermee kunnen we een wijziging in de positie van het stuur voorstellen. Of je een + of - moet nemen hangt af van de richting waarin de persoon op de fiets kijkt.
+=======
+\subsection{Conclusies}
+
+\paragraph{invloed van de resolutie}
+Om de invloed van de resolutie van de genomen foto na te gaan, zijn we gestart met een foto van 1500 op 1500 pixels als referentie. We hebben deze foto dan herschaald naar foto's van lagere en hogere resoluties. Bij foto's die een hogere resolutie hadden dan 500x500 bleven de hoeken tamelijk stabiel met een maximale spreiding van 2\degree. Bij foto's met een nog kleinere resolutie werd dit al snel 7\degree. Dit is een veel te grote fout voor een bikefitting. Als we dan keken naar de afwijking van de voorgestelde verhoging/verlaging van het zadel kwamen we op een veel grotere spreiding. Bij foto's van een resolutie hoger dan 1000x1000 bedroeg de afwijking 2 tot 3 \si{mm}, maar bij lagere resoluties liep dit op tot 5 à 6 \si{mm}. Dit is een veel te grote foutenmarge voor een bikefitting waar juist die enkele millimeters bepalend kunnen zijn.
+
+\paragraph{Openpose maakt slechts een schatting van de positie}
+Openpose kiest niet altijd de keypoints juist op de gewrichten omdat het slechts een schatting maakt van de pose. Hierdoor kom je vaak een andere waarde uit voor een hoek dan de werkelijke waarde. Dit vormt een probleem aangezien we de optimale zadelhoogte baseren op werkelijke hoeken. We hebben online een foto van een professionele bikefitting gevonden en ons programma daarop laten lopen. Op Figuur %\ref{prof_bikefit} 
+is duidelijk te zien dat een afwijking van de keypoints een grote invloed heeft op de aanpassingen die ons algoritme voorstelt.
+
+\paragraph{Omzetten van pixels naar centimeter}
+
+\paragraph{Probleem bij bepalen van de schouderhoek}
+
+\paragraph{Besluit}
+
+
 \chapter{Vakintegratie}
 Het is natuurlijk belangrijk om dit project een plaats te geven binnen onze opleiding ingenieurswetenschappen. We bekijken welke vakken uit de eerste 3 semesters van onze bachelor het meest gebruikt worden tijdens dit project. De belangrijkste link is met het vak begingselen van programmeren. In dit vak leerden we werken met Python en verworven we inzicht in het programmeren. Wat heel handig is, want tijdens ons project maken we veelvuldig gebruik van Python. Elk zelfgemaakt programma is geschreven in Python want Openpose heeft een uitstekende Python API. Verder maakt wiskunde ook een groot deel uit van ons project, want het berekenen van hoeken of afstanden kan niet zonder de wiskunde. We gebruiken hierbij kennis uit verschillende wiskundige vakken zoals, Analyse \& calclus en Lineaire algebra. Als laatste kunnen we Statistiek ook nog linken aan dit project aangezien Openpose enkel een schatting geeft van de lichaamspositie. Het werkt met \textit{heatmaps} en kiest per knooppunt dan het coördinaat met de hoogste kans. We gebruiken zelf geen statistische technieken, maar het helpt ons wel bij het begrijpen van Openpose.
 
