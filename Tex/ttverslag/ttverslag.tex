@@ -239,8 +239,14 @@ We weten nu welke x-coördinaat de pols zou moeten hebben om de hoek $\theta$ te
 Om de invloed van de resolutie van de genomen foto na te gaan, zijn we gestart met een foto van 1500 op 1500 pixels als referentie. We hebben deze foto dan herschaald naar foto's van lagere en hogere resoluties. Bij foto's die een hogere resolutie hadden dan 500x500 bleven de hoeken tamelijk stabiel met een maximale spreiding van 2\degree. Bij foto's met een nog kleinere resolutie werd dit al snel 7\degree. Dit is een veel te grote fout voor een bikefitting. Als we dan keken naar de afwijking van de voorgestelde verhoging/verlaging van het zadel kwamen we op een veel grotere spreiding. Bij foto's van een resolutie hoger dan 1000x1000 bedroeg de afwijking 2 tot 3 \si{mm}, maar bij lagere resoluties liep dit op tot 5 à 6 \si{mm}. Dit is een veel te grote foutenmarge voor een bikefitting waar juist die enkele millimeters bepalend kunnen zijn.
 
 \paragraph{Openpose maakt slechts een schatting van de positie}
-Openpose kiest niet altijd de keypoints juist op de gewrichten omdat het slechts een schatting maakt van de pose. Hierdoor kom je vaak een andere waarde uit voor een hoek dan de werkelijke waarde. Dit vormt een probleem aangezien we de optimale zadelhoogte baseren op werkelijke hoeken. We hebben online een foto van een professionele bikefitting gevonden en ons programma daarop laten lopen. Op Figuur %\ref{prof_bikefit} 
-is duidelijk te zien dat een afwijking van de keypoints een grote invloed heeft op de aanpassingen die ons algoritme voorstelt.
+Openpose kiest niet altijd de keypoints juist op de gewrichten omdat het slechts een schatting maakt van de pose. Hierdoor kom je vaak een andere waarde uit voor een hoek dan de werkelijke waarde. Dit vormt een probleem aangezien we de optimale zadelhoogte baseren op werkelijke hoeken. We hebben online een foto van een professionele bikefitting gevonden en ons programma daarop laten lopen. Op Figuur \ref{proffessionele_bikefit} is duidelijk te zien dat een afwijking van de keypoints een grote invloed heeft op de aanpassingen die ons algoritme voorstelt. Zo ligt het juiste knooppunt van de heup verder naar achter en van de schouder meer naar boven. Ook dat van de arm ligt meer schuin naar boven. Al deze afwijkingen van de keypoints geschat door Openpose zorgen voor fouten op ons algoritme en de aanpassingen die voorgesteld worden.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width= \textwidth]{prof_bikefit}
+	\label{proffessionele_bikefit}
+	\caption{foto van professionele bikefitting waarop we Openpose laten lopen hebben om het verschil te analyseren. (screenshot van https://www.youtube.com/watch?v=CTYmJi6zH6oabchannel=STTSystems)}
+\end{figure}
 
 \paragraph{Omzetten van pixels naar centimeter}
 
