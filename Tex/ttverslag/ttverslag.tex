@@ -18,7 +18,9 @@
 \usepackage{pdfpages}
 \usepackage[square,numbers]{natbib}
 \usepackage{siunitx}
+\usepackage{hyperref}
 \bibliographystyle{abbrvnat}
+
 
 % Instellingen voor titelpagina, kop- en voettekst
 % In een standaard article-document zijn er minder mogelijkheden
@@ -54,13 +56,13 @@ In dit verslag richten wij ons op \emph{human pose estimation} (HPE), of lichaam
 \section{HPE, revolutionair?}
 \emph{Human pose estimation} is de laatste tijd geëvolueerd naar een heel gebruiksvriendelijke vorm. Vroeger waren hiervoor hoogtechnologische opstellingen met mensen in speciale pakken en veel rekenkracht nodig. Nu zijn een foto en een laptop voldoende om de posities van zelfs meerdere personen in hetzelfde beeld tegelijkertijd te bepalen. Dit allemaal door de gigantische vooruitgang op vlak van artificiële intelligentie en neurale netwerken.
 
-Wat er wel bij vermeld moet worden is dat een 3D motion capture pak nog altijd zorgt voor een preciezere lichaamspositie bepaling dan de schatting die Openpose maakt. Dus voor films zoals Lord of the Rings gebruiken ze wel een dergelijk pak om de bewegingen van Gollum op te nemen (zie Figuur \ref{3D_pak}).
+Een 3D \emph{motion capture} pak zorgt wel nog altijd voor een preciezere lichaamspositiebepaling dan de schatting die Openpose maakt. Daarom wordt dit nog altijd gebruikt bij grote producties zoals deze van films en games (zie Figuur \ref{3D_pak}).
 
 	\begin{figure}[H]
 		\includegraphics[width=.4\textwidth]{3D_motion_capture}
 		\includegraphics[width=.55\textwidth]{HPE_voorbeeld}
 		\caption{Bij grote productiehuizen wordt de positie bepaald door middel van een 3D motion capture pak (links), maar tegenwoordig is HPE een veel goedkopere en gemakkelijkere oplossing (rechts).
-		(afbeeldingen van https://www.pinterest.com/pin/718324209297102981/ en https://beyondminds.ai/an-overview-of-human-pose-estimation-with-deep-learning/}
+		(afbeeldingen van \href{https://www.pinterest.com/pin/718324209297102981/}{Pinterest} en \href{https://beyondminds.ai/an-overview-of-human-pose-estimation-with-deep-learning/}{beyondminds.ai}}
 		\label{3D_pak}
 	\end{figure}
 
@@ -98,18 +100,14 @@ Bij het programmeren van een neuraal netwerk weet je natuurlijk niet wat de gewi
 \chapter{Toepassingen}
 Zoals eerder al gezegd zullen we ons focussen op toepassingen in de medische wereld waarop HPE kan toegepast worden. Wij kunnen dan een goedkope oplossing ontwikkelen voor die toepassingen. Hierbij testen we mogelijke problemen en analyseren we of dit  een goede optie is. We proberen dit dan allemaal op een methodische manier uit te werken, waarbij we een specifiek geval steeds breder gaan bekijken.
 
+Een eerste toepassing is het opvolgen van de revalidatie na een schouderoperatie. Met een foto gemaakt met een gsm kunnen we een analyse uitvoeren van de beweging van de schouder na de operatie en dan het doorheen de revalidatie opvolgen.
 
-Een eerste toepassing is het opvolgen van de revalidatie na een schouderoperatie. Met een foto gemaakt met een gsm kunnen we een analyse uitvoeren van de beweging van de schouder na de operatie en dan doorheen de revalidatie evalueren.
-
-Een tweede en uitgebreidere toepassing is het analyseren van de positie op de fiets. Veel amateurwielrenners hebben een slechte houding op de fiets en een professionele bikefitting kost al snel een paar honderd euro. Via lichaamspositiebepaling kunnen wij met een simpele foto de positie bepalen op de fiets en dan correcties voorstellen. Dit is een goedkope oplossing die voor een zeer breed publiek inzetbaar is. Voor professionele wielrenners zal dit wel waarschijnlijk niet voldoende zijn, maar voor een amateur kan dit een goedkoop alternatief zijn.
-
-
+Een tweede en uitgebreidere toepassing is het analyseren van de positie op de fiets. Veel amateurwielrenners hebben een slechte houding op de fiets en een professionele \emph{bikefitting} kost al snel een paar honderd euro. Via lichaamspositiebepaling kunnen wij met een simpele foto de positie bepalen op de fiets en dan correcties voorstellen. Dit is een goedkope oplossing die voor een zeer breed publiek inzetbaar is. Voor professionele wielrenners zal dit wel waarschijnlijk niet voldoende zijn, maar voor een amateur kan dit een goedkoop alternatief zijn.
 
 \section{Toepassing 1: opvolgen van revalidatie na schouderoperatie}
 \subsection{Bepalen van de hoek tussen arm en lichaam}
 
 We willen meten hoe ver een persoon zijn arm kan roteren voor de opvolging van de revalidatie na een schouderoperatie. Hiervoor kunnen we de hoek tussen het opperarmbeen en een ander lichaamsdeel bepalen. Op figuur \ref{fig:skelet} komt dat dus neer op de hoek bepalen tussen de lijnstukken [32] en [21] of tussen de lijnstukken [15] en [65]. Als we Openpose gebruiken om de positie te schatten van een persoon op een foto krijgen we als output de coördinaten van de verschillende knooppunten. Met deze coördinaten hebben we voldoende informatie om de hoek te berekenen en zo objectieve informatie te krijgen over het verloop van de revalidatie.
-
 
 Bij een foto vanuit vooraanzicht kunnen we berekenen hoe ver de patiënt zijn arm zijwaarts omhoog kan brengen. Bij een foto genomen vanuit zijaanzicht kunnen we berekenen hoe ver hij de arm vooruit kan omhoog steken. Het is wel belangrijk dat de foto altijd vanuit dezelfde positie wordt getrokken omdat er anders variatie kan zijn op de hoek.
 
@@ -162,7 +160,7 @@ Een voorbeeld bij het bepalen van een hoek tussen de bovenarm en de romp is afbe
 	\label{samen}
 \end{figure}
 \subsection{Voorlopige conclusies}
-Door deze  toepassing weten we dat het relatief eenvoudig is om met Openpose zinvolle berekeningen te doen. Door de coördinaten die gegeven worden als output kunnen we gemakkelijk programma's schrijven die hiermee werken. Doordat Openpose werkt in 2D hebben we gemerkt dat de foto recht moet genomen worden. Als de hoek die we willen berekenen schuin afgebeeld staat op de inputfoto komt de berekening niet overeen met de werkelijke waarde van de hoek.
+Door deze  toepassing weten we dat het relatief eenvoudig is om met Openpose zinvolle berekeningen te doen. Door de coördinaten die gegeven worden als output kunnen we gemakkelijk programma's schrijven die hiermee werken. Doordat Openpose werkt in 2D moeten de foto's recht worden genomen. Als de hoek die we willen berekenen schuin afgebeeld staat op de inputfoto komt de berekening niet overeen met de werkelijke waarde van de hoek.
 
 
 \section{Toepassing 2: fietspositie bepalen}
