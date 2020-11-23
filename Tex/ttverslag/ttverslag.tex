@@ -166,11 +166,11 @@ Door deze  toepassing weten we dat het relatief eenvoudig is om met Openpose zin
 \section{Toepassing 2: fietspositie bepalen}
 Voor de tweede toepassing willen we een goedkoper alternatief bieden voor een bikefitting. Hierbij worden er foto's getrokken van de persoon op de fiets en kunnen we dan op basis van de positie bepaald met Openpose eventuele correcties uitvoeren op de fiets.
 
-Een bikefit is eigenlijk het analyseren en eventueel aanpassen van de positie op de fiets. Het belangrijkste doel daarvan is het voorkomen van blessures. Bij wielrenners die aan competitie doen heeft een bikefit ook als doel om een zo aerodynamisch mogelijke positie op de fiets aan te nemen. Ook kan een betere positie ervoor zorgen dat men een groter wattage kan leveren op de pedalen. Alleen maar voordelen dus.
+Een \emph{bikefit} is eigenlijk het analyseren en eventueel aanpassen van de positie op de fiets. Het belangrijkste doel daarvan is het voorkomen van blessures. Bij wielrenners die aan competitie doen heeft een \emph{bikefit} ook als doel om een zo aerodynamisch mogelijke positie op de fiets aan te nemen. Ook kan een betere positie ervoor zorgen dat men een groter vermogen kan leveren op de pedalen. Alleen maar voordelen dus.
 
 \subsection{Principe}
 
-Op Figuur \ref{fig:bikefit} staan enkele hoeken die voor de standaard persoon als optimaal gezien worden voor de positie op een koersfiets. Deze hoeken kunnen in een bepaald interval liggen afhankelijk van hoe flexibel de persoon is. Met behulp van Openpose berekenen we deze hoeken met als input een foto of video van de wielrenner. Het is belangrijk dat de foto genomen wordt vanuit een zo loodrecht mogelijk zijaanzicht en dat de wielrenner het stuur vasthoudt bij de \emph{shifters}. We hebben ondervonden dat de optimale positie voor de camera om een foto te nemen ongeveer 70 \si{cm} boven de grond is en 2\si{m} van de persoon verwijderd. Als de berekende hoeken te veel afwijken van wat voorop gesteld wordt, dan kunnen we een verbetering voorstellen. Dit kan een verhoging van het zadel zijn, een verandering van de lengte van de stuurpen... 
+Op Figuur \ref{fig:bikefit} staan enkele hoeken die voor een persoon als optimaal gezien worden voor de positie op een koersfiets. Deze hoeken kunnen wel wat variëren afhankelijk van hoe flexibel de persoon is. Met behulp van Openpose berekenen we deze hoeken met als input een foto of video van de wielrenner. Het is belangrijk dat de foto genomen wordt vanuit een zo loodrecht mogelijk zijaanzicht en dat de wielrenner het stuur vasthoudt bij de \emph{shifters}. Ideaal staat wordt de foto getrokken op ongeveer de helft van de hoogte van de fietser als die zit. Als de berekende hoeken te veel afwijken van wat voorop gesteld wordt, dan kunnen we een verbetering voorstellen. Dit kan een verhoging van het zadel zijn of een verandering van de lengte van de stuurpen.
 
 
 \begin{figure}[H]
@@ -182,7 +182,7 @@ Op Figuur \ref{fig:bikefit} staan enkele hoeken die voor de standaard persoon al
 
 \subsection{Algoritme voor wijzigen van de zadelhoogte}
 
-We zullen beginnen met een algoritme te schrijven voor het veranderen van één parameter, namelijk de zadelhoogte. Voornamelijk de kniehoek zal veranderen als gevolg van een wijziging in zadelhoogte. Dit zal ook een klein effect hebben op de schouderhoek maar dit laten we hier voor het gemak achterwege. De mate waarin je de zadelhoogte kan wijzigen hangt af van de lengte van de zadelpen. Op de meeste zadelpennen staat de minimale diepte waarmee de pen in het frame moet zitten. Indien dit niet zo is, is de vuistregel dat de zadelpen minstens 90 \si{mm} diep in het frame moet zitten. Zet je zadel dus zeker niet hoger dan dat. Als je dit niet doet, bestaat de kans dat de zadelpen breekt.
+We zullen beginnen met een algoritme te schrijven voor het veranderen van één parameter, namelijk de zadelhoogte. Voornamelijk de kniehoek zal variëren als gevolg van een wijziging in zadelhoogte. Er zal ook een klein effect hebben op de schouderhoek maar dit laten we hier voor het gemak achterwege. De mate waarin je de zadelhoogte kan wijzigen hangt af van de lengte van de zadelpen. Op de meeste zadelpennen staat de minimale diepte waarmee de pen in het frame moet zitten. Indien dit niet zo is, is de vuistregel dat de zadelpen minstens 90 \si{mm} diep in het frame moet zitten. Zet je zadel dus zeker niet hoger dan dat. Als je dit niet doet, bestaat de kans dat de zadelpen breekt.
 Eerst berekenen we de kniehoek. We kijken initieel hoe groot die is. Indien de hoek tussen 140 \degree en 145 \degree ligt (zie Figuur \ref{fig:bikefit}), wordt er geen voorstel gedaan voor een wijziging van de zadelhoogte. Indien de hoek buiten dit interval ligt, berekent het algoritme met hoeveel pixels de y-coördinaat van het knooppunt van de heup moet wijzigen om de hoek in dit interval te krijgen. Vooraf wordt door het programma de lengte van bijvoorbeeld het bovenbeen gevraagd in \si{cm}. Via openpose kunnen we dan het aantal pixels berekenen tussen het knooppunt van de knie en de heup. Op die manier kunnen we de eenheid pixels overzetten naar \si{cm}. De output is dan het aantal \si{cm} dat het algoritme voorstelt om het zadel te wijzigen. Een positief getal betekent verhogen, een negatief verlagen.
 
 \paragraph{Wiskundige redenering en implementatie}
@@ -210,7 +210,7 @@ Dit kunnen we dan vergelijken met de hoogte van de heup en dan een correctie voo
 
 Nu kijken we naar de invloed van de lengte van de stuurpen. Dit heeft enkel invloed op de schouderhoek. Het probleem is dat als we de lengte van de stuurpen willen aanpassen, we een nieuwe stuurpen moeten kopen. Er zijn ook bepaalde grenzen aan de lengte van een stuurpen. De minimale lengte is 40 \si{mm}, korter is bijna onmogelijk. Het maximum ligt rond de 140 \si{mm}, groter kan nog maar dat is heel uitzonderlijk. De output van het algoritme is het aantal \si{cm} dat het stuur naar voor of naar achter moet.
 
-<<<<<<< Updated upstream
+
 \paragraph{Wiskundige redenering en implementatie}
 
 \begin{figure}
@@ -230,7 +230,7 @@ Waaruit volgt dat
 \[B_x = \pm \sqrt{c^2 -(B_y - A_y)^2 } + A_x\]
 
 We weten nu welke x-coördinaat de pols zou moeten hebben om de hoek $\theta$ te bekomen tussen de rug en de arm. Hiermee kunnen we een wijziging in de positie van het stuur voorstellen. Of je een + of - moet nemen hangt af van de richting waarin de persoon op de fiets kijkt.
-=======
+
 \subsection{Conclusies}
 
 \paragraph{invloed van de resolutie}
