@@ -247,12 +247,18 @@ Openpose kiest niet altijd de keypoints juist op de gewrichten omdat het slechts
 \end{figure}
 
 \paragraph{Omzetten van pixels naar centimeter}
+De output van Openpose zijn de coördinaten van de keypoints. De eenheid van deze coördinaten is echter pixels en is dus relatief ten opzichte van de resolutie van de foto. Om over te gaan naar een absolute eenheid vroegen we als input de lengte van het dijbeen die we dan ook kunnen berekenen in openpose en zo bepalen hoeveel pixels er in een \si{cm} gaan. Het grote probleem is nu dat je nooit op dezelfde manier de lengte van je dijbeen zal meten zoals openpose die berekent. Als je dus van bij de start al te maken hebt met fouten zal je dus nooit de juiste waarde kunnen uitkomen.
 
 \paragraph{Probleem bij bepalen van de schouderhoek}
+De ideale schouderhoek is 90\degree. Openpose ziet de rug echter als een recht stuk terwijl er in het echt wel enige buiging in zit. Daardoor kan de hoek in het echt rond de 90\degree liggen terwijl Openpose een compleet andere waarde zal geven.
 
 \paragraph{Besluit}
+Bikefitting is een heel precieze wetenschap. Het gaat om die laatste millimeters waarmee de parameters aangepast worden. We hebben echter gemerkt dat openpose hier niet de goeie toepassing voor is om de redenen die hierboven opgelijst staan. We concluderen dus dat een bikefitting programma gebaseerd op openpose veel te omslachtig is en dat je waarschijnlijk een beter en sneller resultaat zal hebben indien je de zadelhoogte op het gevoel aanpast in de wetenschap dat je knie nog lichtjes gebogen moet zijn als je voet beneden staat.
 
 
+\section{Toepassing 3: }
+ldskdsjlqj qdsdjfsllsdqf d qfsdfslk jdfskj 
+ 
 \chapter{Vakintegratie}
 Het is natuurlijk belangrijk om dit project een plaats te geven binnen onze opleiding ingenieurswetenschappen. We bekijken welke vakken uit de eerste 3 semesters van onze bachelor het meest gebruikt worden tijdens dit project. De belangrijkste link is met het vak begingselen van programmeren. In dit vak leerden we werken met Python en verworven we inzicht in het programmeren. Wat heel handig is, want tijdens ons project maken we veelvuldig gebruik van Python. Elk zelfgemaakt programma is geschreven in Python want Openpose heeft een uitstekende Python API. Verder maakt wiskunde ook een groot deel uit van ons project, want het berekenen van hoeken of afstanden kan niet zonder de wiskunde. We gebruiken hierbij kennis uit verschillende wiskundige vakken zoals, Analyse \& calclus en Lineaire algebra. Als laatste kunnen we Statistiek ook nog linken aan dit project aangezien Openpose enkel een schatting geeft van de lichaamspositie. Het werkt met \textit{heatmaps} en kiest per knooppunt dan het coördinaat met de hoogste kans. We gebruiken zelf geen statistische technieken, maar het helpt ons wel bij het begrijpen van Openpose.
 
