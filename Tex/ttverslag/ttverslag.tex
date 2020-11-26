@@ -69,15 +69,15 @@ Een 3D \emph{motion capture} pak zorgt wel nog altijd voor een preciezere lichaa
 
 \section{Openpose}
 
-Over het algemeen zijn een 2 manieren om menselijke poses te schatten. Ten eerst heb je de top-down aanpak. Hierbij maak je eerst gebruik van een personen detector en schat je dan voor elke persoon apart hun pose.  Deze methode heeft enkele minpunten namelijk dat de runtime evenredig is met het aantal personen en als een persoon in de eerste stap niet herkend is, is er geen mogelijk om de fout toch nog goed te maken. Een bottom-up aanpak daarentegen heeft deze problemen niet. Deze methode bepaalt alle belangrijke knooppunten en probeert dan de punten op de juiste manier aan elkaar te linken zodat het de poses van verschillende mensen vormt. Openpose is een voorbeeld van zo’n bottom-up aanpak en is een van de meest efficiënte neurale netwerken voor positiebepaling. Openpose was de eerste open-source library voor realtime lichaams-, voet-, hand- en gezichts- detectie. Het maakt gebruik van een “two-branch multistage CNN”, heel kort betekent dit het volgende: CNN staat voor convolutioneel neuraal netwerk, “two-branch” wijst op het feit dat het CNN twee takken heeft en multistage wil zeggen dat het netwerk meerdere keren op elkaar is gestapeld.
+Over het algemeen zijn er 2 manieren om menselijke poses te schatten. Ten eerst heb je de top-down aanpak. Hierbij maak je eerst gebruik van een personen detector en schat je dan voor elke persoon apart hun pose.  Deze methode heeft enkele minpunten namelijk dat de runtime evenredig is met het aantal personen en als een persoon in de eerste stap niet herkend is, is er geen mogelijk om de fout toch nog goed te maken. Een bottom-up aanpak daarentegen heeft deze problemen niet. Deze methode bepaalt alle belangrijke knooppunten en probeert dan de punten op de juiste manier aan elkaar te linken zodat het de poses van verschillende mensen vormt. Openpose is een voorbeeld van zo’n bottom-up aanpak en is een van de meest efficiënte neurale netwerken voor positiebepaling. Openpose was de eerste open-source library voor realtime lichaams-, voet-, hand- en gezichts- detectie. Het maakt gebruik van een “two-branch multistage CNN”, heel kort betekent dit het volgende: CNN staat voor convolutioneel neuraal netwerk, “two-branch” wijst op het feit dat het CNN twee takken heeft en multistage wil zeggen dat het netwerk meerdere keren op elkaar is gestapeld.
 
 \subsection{werking}
 
-Het systeem neemt als input een kleurfoto met grootte $w \times h$ en geeft als output voor elke persoon op de foto de 2D locaties van zijn lichaamsdelen. Eerst wordt een eerste voorspelling gedaan van de set van 2D vectorvelden ($\textbf{L}$), de \textit{part affinity fields} (PAF's), die de graad ven associatie tussen de lichaamsdelen vastleggen en van de 2D betrouwbaarheidskaarten ($\textbf{S}$) van de lichaamsdelen. Dit zijn respectievelijk de eerste en de tweede tak van het CNN. Deze eerste voorspelling wordt dan door het netwerk verbeterd. Vervolgens wordt deze verbeterde voorspelling samen met de initiële voorspelling nog eens gevoerd aan het netwerk. Na zes keer is het resultaat goed genoeg en wordt het samengevoegd om de uitendelijk output te geven. Omdat het netwerk meerdere keren doorlopen wordt noemt men dit een \textit{multistage} CNN. De volledige uitleg van het netwerk en hoe men van de heatmaps en PAF's tot het uiteindelijk resultaat komt vind je in het origineel artikel.
+Het systeem neemt als input een kleurfoto met grootte $w \times h$ en geeft als output voor elke persoon op de foto de 2D locaties van zijn lichaamsdelen. Eerst wordt een eerste voorspelling gedaan van de set van 2D vectorvelden ($\textbf{L}$), de \textit{part affinity fields} (PAF's), die de graad van associatie tussen de lichaamsdelen vastleggen en van de 2D betrouwbaarheidskaarten ($\textbf{S}$) van de lichaamsdelen. Dit zijn respectievelijk de eerste en de tweede tak van het CNN. Deze eerste voorspelling wordt dan door het netwerk verbeterd. Vervolgens wordt deze verbeterde voorspelling samen met de initiële voorspelling nog eens gevoerd aan het netwerk. Na zes keer is het resultaat goed genoeg en wordt het samengevoegd om de uitendelijk output te geven. Omdat het netwerk meerdere keren doorlopen wordt noemt men dit een \textit{multistage} CNN. De volledige uitleg van het netwerk en hoe men van de heatmaps en PAF's tot het uiteindelijk resultaat komt vind je in het origineel artikel.
 
 De set \textbf{L} bestaat uit $C$ vectorvelden, één per connectie tussen twee knooppunten, $\textbf{L} = (\textbf{L}_1,\textbf{L}_2,...,\textbf{L}_C)$. Elke $\textbf{L}_c \in \mathbb{R}^{w \times h \times 2}$ , met $c \in \{1...C\}.$ De PAF’s  zijn velden die de graad van associatie representeren tussen de verschillende lichaamsdelen. Er wordt gestart met een set van connecties tussen twee punten, dit zijn de lijnen op figuur… Voor elke connectie wordt dan zo’n veld opgesteld. Het is eigenlijk een tensor met in elke cel een 2d-vector die de richting van de connectie aangeeft, bijvoorbeeld van de rechterschouder naar de rechter elleboog.
 De set $\textbf{S} = (\textbf{S}_1,\textbf{S}_2,...,\textbf{S}_j)$ bestaat dus uit $\textbf{J}$ betrouwbaarheidskaarten, één per lichaamsdeel en $\textbf{S}_j \in \mathbb{R} ^{w \times h}$ , $j \in \{1...J\}$.
-Deze worden heel duidelijk voorgesteld met heatmaps. Hierop zie je voor elke positie de kans dat het lichaamsdeel zich daar bevindt. Indien er meerdere mensen op de foto staan  dan zal je meerdere punten zien met een hoge kans, zie figuur… 
+Deze worden heel duidelijk voorgesteld met heatmaps. Hierop zie je voor elke positie de kans dat het lichaamsdeel zich daar bevindt. Indien er meerdere mensen op de foto staan  dan zal je meerdere punten zien met een hoge kans, zie figuur…
 
 Zoals eerder gezegd worden uiteindelijk de betrouwbaarheidskaarten en PAF's samengevoegd om als output de 2D knooppunten van alle mensen op de foto te geven.
 
@@ -269,7 +269,25 @@ Bikefitting is een heel precieze wetenschap. Het gaat om die laatste millimeters
 
 
 \section{Toepassing 3: }
-ldskdsjlqj qdsdjfsllsdqf d qfsdfslk jdfskj 
+
+Als derde toepassing maken we een programma dat helpt om op de correcte manier een squat uit te voeren. Dit is meer geschikt voor Openpose omdat het niet aankomt op millimeters. Als input wordt een filmpje van een aantal squats gevraagd. Er wordt dan per squat een score gegeven op basis van een aantal richtlijnen voor het uitvoeren van een goeie squat.\cite{squats} 
+
+\subsection{Richtlijnen voor een goeie squat}
+
+Met Openpose kunnen we twee parameters goed bepalen.
+Ten eerste controleren we de positie van de knie. Deze moet zich op het laagste punt van de squat recht boven de tenen bevinden zoals op Figuur \ref{squat_knie}. Daarnaast moeten ook de heup en de knie zich op dezelfde hoogte bevinden op het laagste punt van de squat zoals op Figuur \ref{squat_heup}. Bij deze twee voorschriften komt het niet aan op millimeters en dus ideaal voor Openpose. Andere richtlijnen zoals een rechte rug kunnen we moeilijk of niet testen met Openpose aangezien de rug daar altijd een rechte is.
+
+\begin{figure}[H]
+	\includegraphics[width= \textwidth]{squat_knie}
+	\caption{Op het laagste punt van de squat moet de knie zich recht boven de tenen bevinden. (afbeelding van \cite{squats})}
+	\label{squat_knie}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width= \textwidth]{squat_heup}
+	\label{squat_heup}
+	\caption{Op het laagste punt van de squat moeten de heup en knie zich op dezelfde hoogte bevinden. (afbeelding van \cite{squats})}
+\end{figure}
  
 \chapter{Vakintegratie}
 Het is natuurlijk belangrijk om dit project een plaats te geven binnen onze opleiding ingenieurswetenschappen. We bekijken welke vakken uit de eerste 3 semesters van onze bachelor het meest gebruikt worden tijdens dit project. De belangrijkste link is met het vak begingselen van programmeren. In dit vak leerden we werken met Python en verworven we inzicht in het programmeren. Wat heel handig is, want tijdens ons project maken we veelvuldig gebruik van Python. Elk zelfgemaakt programma is geschreven in Python want Openpose heeft een uitstekende Python API. Verder maakt wiskunde ook een groot deel uit van ons project, want het berekenen van hoeken of afstanden kan niet zonder de wiskunde. We gebruiken hierbij kennis uit verschillende wiskundige vakken zoals, Analyse \& calclus en Lineaire algebra. Als laatste kunnen we Statistiek ook nog linken aan dit project aangezien Openpose enkel een schatting geeft van de lichaamspositie. Het werkt met \textit{heatmaps} en kiest per knooppunt dan het coördinaat met de hoogste kans. We gebruiken zelf geen statistische technieken, maar het helpt ons wel bij het begrijpen van Openpose.

@@ -5,11 +5,8 @@
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Bulat and Tzimiropoulos(2016)]{heatmaps}
-Adrian Bulat and Georgios Tzimiropoulos.
-\newblock Human pose estimation via convolutional part heatmap regression.
-\newblock \emph{CoRR}, abs/1609.01743, 2016.
-\newblock URL \url{http://arxiv.org/abs/1609.01743}.
+\bibitem[squ()]{squats}
+URL \url{https://stronglifts.com/squat/#Squat_Technique}.
 
 \bibitem[{Cao} et~al.(2019){Cao}, {Hidalgo Martinez}, {Simon}, {Wei}, and
   {Sheikh}]{openpose}
