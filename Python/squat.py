@@ -1,7 +1,6 @@
 # Dit programma berkent de lichaamsposities van alle foto's in een map
 # Wanneer de hoek van de knie het kleinst is zal het programma checken
-# of je knie voor je voeten uitsteekt en je heup op dezelfde hoogte is
-# als je knie en je daarop een score geven
+# of je knie voor je voeten uitsteekt of niet en je een score geven
 
 import sys
 import cv2
@@ -10,6 +9,8 @@ from sys import platform
 import argparse
 import time
 import numpy as np
+import ntpath
+import json
 
 def angle(a, b, c, d):
 	A = np.sqrt((d[0] - c[0])**2 + (d[1] - c[1])**2)
@@ -37,7 +38,9 @@ def check(poses, angles, min_index):
 	else:
 		print("Jij bent de squatkoning/squatkoningin. Dit is je score:", yeye)
 	"""
-	print(yeye, yeyee)
+	print("Staat de knie boven de voet? Score:", yeye)
+	print("Is de heup op de hoogte van de knie? Score:", yeyee)
+
 try:
 	# Import Openpose (Windows/Ubuntu/OSX)
 	dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -101,26 +104,48 @@ try:
 
 	index = 0
 	for imagePath in imagePaths:
-		datum = op.Datum()
-		imageToProcess = cv2.imread(imagePath)
-		datum.cvInputData = imageToProcess
-		opWrapper.emplaceAndPop([datum])
-		keyp = datum.poseKeypoints
-		poses.append(keyp)
-		if keyp[0][1][0] > keyp[0][8][0]:
-			heup, knie, enkel = 9, 10, 11
-			schouder, pols = 2, 4
-			teen = 23
-		else:
-			heup, knie, enkel = 12, 13, 14
-			schouder, pols = 5, 7
-			teen = 20
-		theta = angle(keyp[0][heup], keyp[0][knie], keyp[0][knie], keyp[0][enkel])
-		angles.append(theta)
-		if index > 0:
-			if angles[index] > angles[index - 1]:
-				break
-		index += 1
+		imagename = ntpath.basename(imagePath)
+		if os.path.isfile("keypoints_" + imagename + ".txt"):
+			keypoints = np.loadtxt("keypoints_" + imagename + ".txt")
+			keyp = [keypoints]
+			poses.append(keyp)
+			if keyp[0][1][0] > keyp[0][8][0]:
+				heup, knie, enkel = 9, 10, 11
+				schouder, pols = 2, 4
+				teen = 23
+			else:
+				heup, knie, enkel = 12, 13, 14
+				schouder, pols = 5, 7
+				teen = 20
+			theta = angle(keyp[0][heup], keyp[0][knie], keyp[0][knie], keyp[0][enkel])
+			angles.append(theta)
+			if index > 0:
+				if angles[index] > angles[index - 1]:
+					break
+			index += 1
+
+		else:   	
+			datum = op.Datum()
+			imageToProcess = cv2.imread(imagePath)
+			datum.cvInputData = imageToProcess
+			opWrapper.emplaceAndPop([datum])
+			keyp = datum.poseKeypoints
+			np.savetxt("keypoints_" + imagename + ".txt", keyp[0])
+			poses.append(keyp)
+			if keyp[0][1][0] > keyp[0][8][0]:
+				heup, knie, enkel = 9, 10, 11
+				schouder, pols = 2, 4
+				teen = 23
+			else:
+				heup, knie, enkel = 12, 13, 14
+				schouder, pols = 5, 7
+				teen = 20
+			theta = angle(keyp[0][heup], keyp[0][knie], keyp[0][knie], keyp[0][enkel])
+			angles.append(theta)
+			if index > 0:
+				if angles[index] > angles[index - 1]:
+					break
+			index += 1
 
 
 	check(poses, angles, index - 1)
@@ -128,5 +153,5 @@ try:
 	end = time.time()
 	print("Total time: " + str(end - start) + " seconds")
 except Exception as e:
-    print(e)
-    sys.exit(-1)
+	print(e)
+	sys.exit(-1)
