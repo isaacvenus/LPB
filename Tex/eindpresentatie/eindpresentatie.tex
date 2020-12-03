@@ -7,10 +7,13 @@
 \usepackage[dutch]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{siunitx}
 
-\title[Korte titel]{Human Pose Estimation}
+\title[HPE]{Human Pose Estimation}
 \subtitle{Toepassing}
-\author[Korte naam]{Mathieu Vanooteghem, Isaac Venus en Stan vanhecke} 
+\author[Korte naam]{Mathieu Vanooteghem, Isaac Venus \\ 
+	en Stan vanhecke} 
 \institute[Kulak]{KU Leuven Kulak}
 \date{Academiejaar 2020 -- 2021}
 
@@ -55,22 +58,61 @@
 
 \begin{frame}
 \frametitle{HPE, revolutionair?}
+\begin{center}
+	\begin{tabular}{l|l} 
+		\textbf{3D motion capture pak} & \textbf{Human pose estimation}\\
+		\hline
+		- veel rekenkracht & + HPE mogelijk met gewone laptop\\
+		- hoogtechnologische apparatuur & + alleen laptop en camera nodig\\
+		- mensen ter plaatse aanwezig & + vanop afstand via foto of video\\
+		+ heel precieze & - ruwe schatting van \\
+		  lichaamspositiebepaling & lichaamspositie\\
+	\end{tabular}
+\end{center}
 \end{frame}
 
 \begin{frame}
-\frametitle{Werking van Openpose}
+\frametitle{Werking van Openpose: Bepalen van de lichaamspositie}
+
+\begin{center}
+	\begin{tabular}{l|l} 
+		\textbf{Top-down aanpak} & \textbf{Bottom-up aanpak}\\
+		\hline
+		1. personendetector & 1. belangrijke knooppunten bepalen\\
+		2. pose schatten per persoon & 2. punten op juiste manier linken\\
+		& => poses bepalen\\
+		\hline
+		- runtime \textasciitilde \#personen  & + veel efficiënter dan Top-down\\
+		- fout in stap 1 niet goed  & \\
+		 te maken in stap 2 & \\
+	\end{tabular}
+\end{center}
 \end{frame}
 
-
+\begin{frame}
+	nog iets over part affinity fields en heatmaps??
+\end{frame}
 
 \section{Toepassing 1: Opvolgen van revalidatie na schouderoperatie}
 
 \begin{frame}
-\frametitle{Bepalen van de hoek tussen arm en lichaam}
+\frametitle{Bepalen van de hoek tussen arm en borst}
+\begin{itemize}
+	\item hoek tussen [32] en [21] of [15] en [56]
+	\item m.b.v. cosinusregel via coördinaten
+\end{itemize}
+\begin{figure}
+	\centering
+	\includegraphics[width= .3\textwidth]{HPE_skelet}
+\end{figure}
 \end{frame}
 
 \begin{frame}
 \frametitle{Resultaten en conclusies}
+\begin{itemize}
+	\item foto recht nemen (Openpose werkt in 2D)
+	\item telkens vanuit zelfde positie om revalidatie te evalueren
+\end{itemize}
 \end{frame}
 
 
@@ -79,22 +121,52 @@
 
 \begin{frame}
 	\frametitle{Wat is een bikefit?}
+	\begin{itemize}
+		\item analyseren van de positie op de fiets
+		\item eventuele aanpassingen voorstellen obv analyse
+		\item doel: blessurepreventie en aerodynamica
+	\end{itemize}
+\begin{figure}
+	\includegraphics[width= .4\textwidth]{bikefit_hoeken_foto}
+\end{figure}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Algoritme voor het wijzigen van de zadelhoogte}
+	\begin{itemize}
+		\item zadelhoogte beïnvloedt kniehoek
+		\item zorg dat kniehoek tussen 140° en 145° zit
+		\item berekent met hoeveel pixels zadelhoogte moet wijzigen
+		\item pixels --> \si{cm} via lengte van dijbeen als input
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Algoritme voor het wijzigen van de stuurpenlengte}
+	\begin{itemize}
+		\item stuurpenlengte beïnvloedt schouderhoek
+		\item beschikbaar in lengte van 40 tot 140 \si{mm}
+		\item nadeel: nieuwe stuurpen kopen om lengte aan te passen
+		
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Conclusies}
+	\begin{itemize}
+		\item invloed van de resolutie
+		\item pose is slechts een schatting van Openpose
+		\item fouten op omzetting van pixels naar \si{cm}
+		\item probleem met rug bij bepalen schouderhoek
+	\end{itemize}
+Besluit: Bikefitting is heel precieze wetenschap <-> Openpose maakt slechts schatting
 \end{frame}
 
 \begin{frame}
 	\frametitle{Demonstratie}
+	\begin{figure}
+		\includegraphics[width= .55\textwidth]{prof_bikefit}
+	\end{figure}
 \end{frame}
 
 
@@ -103,18 +175,33 @@
 
 \begin{frame}
 	\frametitle{Richtlijnen voor een goeie squat}
+	1. Knie boven de tenen
+	\begin{figure}
+		\includegraphics[width= \textwidth]{squat_knie}
+	\end{figure}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Algoritme voor het bepalen van een goeie squat}
+\frametitle{Richtlijnen voor een goeie squat}
+2. Heup op dezelfde hoogte als knie
+\begin{figure}
+	\includegraphics[width= \textwidth]{squat_heup}
+\end{figure}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Conclusies}
+	\begin{itemize}
+		\item komt niet aan op millimeters
+		\item beter geschikt voor Openpose
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Demonstratie}
+	\begin{figure}
+		\includegraphics[width= .4\textwidth]{squat_HPE}
+	\end{figure}
 \end{frame}
 
 
