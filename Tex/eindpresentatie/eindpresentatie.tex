@@ -1,0 +1,129 @@
+%% This classfile tries to implement the lay-out of the beamer style beamerthemekuleuven2. This .sty-file can be downloaded here: https://www.kuleuven.be/communicatie/marketing/templates/presentatiemateriaal/index.html Not all options of the style are implemented in this class, for its purpose is merely to mimic the lay-out, and to provide a way to change the lay-out of presentations that were made using the "old" kulakbeamer class. For new documents, we recommend using the .sty-file instead.
+
+\documentclass
+   [kulak] % options: kul or kulak (default), handout 
+   {kulakbeamer}
+
+\usepackage[dutch]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\title[Korte titel]{Human Pose Estimation}
+\subtitle{Toepassing}
+\author[Korte naam]{Mathieu Vanooteghem, Isaac Venus en Stan vanhecke} 
+\institute[Kulak]{KU Leuven Kulak}
+\date{Academiejaar 2020 -- 2021}
+
+%% Overview at begin of each section; delete if unwanted.
+
+\AtBeginSection[]{
+	\begin{frame}
+	\frametitle{Overzicht} %Change to "Outline" for English presentation
+	{
+		\hypersetup{hidelinks} %disable link colors
+		\hfill	{\large\parbox{.95\textwidth}{\tableofcontents[currentsection,hideothersubsections]}}
+	}
+\end{frame}}
+
+\begin{document}
+
+\begin{titleframe}
+\titlepage
+\end{titleframe}
+
+\begin{outlineframe}[Overzicht]
+\tableofcontents
+\end{outlineframe}
+
+ % % % Here you go  % % % 
+
+\section{Inleiding}
+
+\begin{frame}
+\frametitle{Inleiding}
+	\begin{itemize}
+		\item stevig prijskaartje aan medische toepassingen
+		\item werken met alledaagse technologie
+		\item HPE: schatten van lichaamspositie
+		\item verschillende toepassingen
+	\end{itemize}
+\end{frame}
+
+
+
+\section[Korte titel]{Theoretische achtergrond}
+
+\begin{frame}
+\frametitle{HPE, revolutionair?}
+\end{frame}
+
+\begin{frame}
+\frametitle{Werking van Openpose}
+\end{frame}
+
+
+
+\section{Toepassing 1: Opvolgen van revalidatie na schouderoperatie}
+
+\begin{frame}
+\frametitle{Bepalen van de hoek tussen arm en lichaam}
+\end{frame}
+
+\begin{frame}
+\frametitle{Resultaten en conclusies}
+\end{frame}
+
+
+
+\section{Toepassing 2: Fietspositie bepalen}
+
+\begin{frame}
+	\frametitle{Wat is een bikefit?}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Algoritme voor het wijzigen van de zadelhoogte}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Algoritme voor het wijzigen van de stuurpenlengte}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Conclusies}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Demonstratie}
+\end{frame}
+
+
+
+\section{Toepassing 3: Correct uitvoeren van fitnessoefeningen}
+
+\begin{frame}
+	\frametitle{Richtlijnen voor een goeie squat}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Algoritme voor het bepalen van een goeie squat}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Conclusies}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Demonstratie}
+\end{frame}
+
+
+
+\section{Besluit}
+
+\begin{frame}
+\frametitle{Besluit}
+Afsluitende tekst.
+\end{frame}
+
+\end{document}
