@@ -100,7 +100,7 @@ Een neuraal netwerk bestaat uit meerdere lagen van neuronen, meer bepaald de \em
 	\begin{center}
 		\includegraphics[width=8cm]{netwerk.png}
 	\end{center}
-	\caption{Voorbeeld van een neuraal netwerk. (afbeelding van wikipedia.org)}
+	\caption{Voorbeeld van een neuraal netwerk. (afbeelding van \href{wikipedia.org}{Wikipedia})}
 	\label{netwerk}
 \end{figure}
 
@@ -214,7 +214,7 @@ Dit kunnen we dan vergelijken met de hoogte van de heup en dan een correctie voo
 	\begin{center}
 		\includegraphics[width=8cm]{fiets.pdf}
 	\end{center}
-	\caption{Verduidelijkende figuur bij het bepalen van de zadelhoogte. Afbeelding van redbull.com}
+	\caption{Verduidelijkende figuur bij het bepalen van de zadelhoogte. Afbeelding van \href{redbull.com}{Redbull}}
 	\label{fiets}
 \end{figure}
 
@@ -229,7 +229,7 @@ Nu kijken we naar de invloed van de lengte van de stuurpen. Dit heeft enkel invl
 	\begin{center}
 		\includegraphics[width=8cm]{yeye.pdf}
 	\end{center}
-	\caption{Verduidelijkende figuur bij het bepalen van de stuurpenlengte.}
+	\caption{Verduidelijkende figuur bij het bepalen van de stuurpenlengte. Afbeelding van \href{redbull.com}{Redbull}}
 	\label{stuurpenlengte}
 \end{figure}
 We willen graag de verandering in de x-coördinaat van de pols (\(B_x\)) berekenen om de gewenste hoek $\theta$ tussen de rug en de arm te bekomen. Hiervoor gebruiken we weer de cosinusregel om de lengte tussen de heup en de pols te bepalen als deze in de goede positie staat.
@@ -255,7 +255,7 @@ Openpose kiest niet altijd de keypoints juist op de gewrichten omdat het slechts
 	\centering
 	\includegraphics[width= \textwidth]{prof_bikefit}
 	\label{proffessionele_bikefit}
-	\caption{foto van professionele bikefitting waarop we Openpose laten lopen hebben om het verschil te analyseren. (screenshot van https://www.youtube.com/watch?v=CTYmJi6zH6oabchannel=STTSystems)}
+	\caption{foto van professionele bikefitting waarop we Openpose laten lopen hebben om het verschil te analyseren. (screenshot van \href{https://www.youtube.com/watch?v=CTYmJi6zH6oabchannel=STTSystems}{STTSystems op Youtube})}
 \end{figure}
 
 \paragraph{Omzetten van pixels naar centimeter}
@@ -288,9 +288,23 @@ Ten eerste controleren we de positie van de knie. Deze moet zich op het laagste 
 	\label{squat_heup}
 	\caption{Op het laagste punt van de squat moeten de heup en knie zich op dezelfde hoogte bevinden. (afbeelding van \cite{squats})}
 \end{figure}
+
+\subsection{invloed van camerapositie op output van OpenPose}
+Bij het nemen van een foto of video dat je wil analyseren zijn er heel wat variabelen: hoe ver je staat, hoe hoog de camera staat en vanuit welke hoek t.o.v.  de persoon de foto genomen is. Daarom is het belangrijk dat we testen wat de invloed is van deze variabelen op de uitkomst van het ons programma. We hebben dit op een systematische manier getest, zo hoopten we duidelijke conclusies te kunnen trekken uit de data.
+\paragraph{Methode}
+Eerst werden vijf foto’s genomen vanop één meter afstand recht op de zij van de persoon die de squat uitvoert. Deze 5 foto’s zijn op hoogtes van 120, 100, 80, 60 en 40 centimeter genomen. Dit zal zo zijn voor elke reeks. De tweede reeks werd vanop 1,50m afstand genomen en de derde reeks vanop 2m afstand . De vierde en vijfde reeks werden dan weer van 1,50m afstand genomen meer één keer 50cm naar links en de andere keer 50cm naar rechts. Tussen de foto’s van een reeks werd de squatpositie aangehouden en dus amper bewogen, maar tussen de verschillende reeksen kan wel een duidelijk verschil zitten omdat de squat dan opnieuw werd uitgevoerd.
+\paragraph{Besluit}
+Deze afstanden werden steeds afgemeten maar kunnen imperfecties bevatten. Ook de kanteling van de camera was niet consistent wat heel wat invloed had op de data. Hierdoor is het moeilijk om een duidelijk besluit te kunnen nemen.  Omdat openpose in 2D werkt en je hoeken en afstanden meet van een 3D object, hebben we te maken met een projectie, wat heel wat distorsie met zich meebrengt. Bij deze testen hebben we dit ook gemerkt. Zelfs als we proberen de foto’s op een systematische manier te nemen zodat we mogelijks verbanden kunnen zien. Ook het fiets dat de positie niet perfect gelijk is tussen de reeksen foto’s maakt het moeilijk om conclusies te trekken. Als je de data bekijkt is het duidelijk dat het de hoeken en afstanden heel willekeurig veranderen. Hierdoor is het niet mogelijk het exacte effect van de cameraposities te achterhalen. Wel is het logisch dat een foto recht voor de persoon een realistischer beeld en resultaat zal geven dan een foto die vanuit een grote hoek is genomen. Hoe ver je staat van de persoon maakt ook niet zoveel uit, het is gewoon belangrijk dat je niet super dicht staat waardoor bijvoorbeeld niet heel de persoon op het beeld staat of dat je niet te ver staat, want dan heeft openpose minder data om mee te werken.
+
  
 \chapter{Vakintegratie}
 Het is natuurlijk belangrijk om dit project een plaats te geven binnen onze opleiding ingenieurswetenschappen. We bekijken welke vakken uit de eerste 3 semesters van onze bachelor het meest gebruikt worden tijdens dit project. De belangrijkste link is met het vak begingselen van programmeren. In dit vak leerden we werken met Python en verworven we inzicht in het programmeren. Wat heel handig is, want tijdens ons project maken we veelvuldig gebruik van Python. Elk zelfgemaakt programma is geschreven in Python want Openpose heeft een uitstekende Python API. Verder maakt wiskunde ook een groot deel uit van ons project, want het berekenen van hoeken of afstanden kan niet zonder de wiskunde. We gebruiken hierbij kennis uit verschillende wiskundige vakken zoals, Analyse \& calclus en Lineaire algebra. Als laatste kunnen we Statistiek ook nog linken aan dit project aangezien Openpose enkel een schatting geeft van de lichaamspositie. Het werkt met \textit{heatmaps} en kiest per knooppunt dan het coördinaat met de hoogste kans. We gebruiken zelf geen statistische technieken, maar het helpt ons wel bij het begrijpen van Openpose.
+
+\chapter*{Besluit}
+Je bent tot het einde van het verslag gekomen. Tijd voor het besluit dus.\\
+Het is moeilijk om een 'echt' besluit te schrijven want keer op keer kwamen wij tot de conclusie dat Openpose niet echt geschikt was voor wat wij er mee willen doen. Maar hierdoor was het ook wel een leerrijk traject. Dit was namelijk de eerste keer in onze carrière dat we ons moesten neerleggen bij het feit dat iets niet zal werken. Uiteindelijk hebben we  wel gevonden dat bij het controleren van fitnessoefeningen Openpose  toch voldoende precies is omdat we hier niet echt medische precisie nodig hebben. Gelukkig iets dat werkt, anders zou dit maar een zielig verslag zijn... \\
+Er zijn natuurlijk nog andere dingen die we  geleerd hebben die nuttig waren voor ons. Bijvoorbeeld de kennismaking met lichaamspositiebepalingssoftware zoals Openpose en de theorie hier achter. Ook hebben we regelmatig onze probleemoplossende vaardigheden moeten gebruiken, en er is ook uit de gebruikte wiskunde gebleken dat je niet altijd ver moet zoeken naar het antwoord en dat je niet altijd moeilijke wiskunde moet gebruiken om iets nuttig te doen.\\
+Al bij al was het toch wel een leuke opdracht waar we met veel plezier aan hebben gewerkt.
 
 \chapter{Planning}
 
