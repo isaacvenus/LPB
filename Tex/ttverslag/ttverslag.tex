@@ -27,14 +27,14 @@
 % In een standaard article-document zijn er minder mogelijkheden
 \faculty{Wetenschap \& Technologie Kulak}
 \group{}
-\title{Human Pose Estimation:\\Toepassing}
+\title{Human Pose Estimation met Openpose: een toepassing}
 \subtitle{}
 \author{Isaac venus\\Stan Vanhecke\\Mathieu Vanooteghem}
 % \\Stan Vanhecke\\Mathieu Vanooteghem
 \emailaddress{isaac.venus@student.kuleuven.be}
 % \\stan.vanhecke@student.kuleuven.be\\mathieu.vanooteghem@student.kuleuven.be
 \institute{KU Leuven Kulak, Wetenschap \& Technologie}
-\date{Titularis: Koen Van Den Abeele\\Begleider: Jens Goemare\\Academiejaar 2020 -- 2021}
+\date{Titularis: Koen Van Den Abeele\\Begeleider: Jens Goemaere\\Academiejaar 2020 -- 2021}
 \address{
    KU Leuven Kulak           \\
    Wetenschap \& Technologie \\
@@ -50,7 +50,7 @@
 \tableofcontents
 
 \chapter*{Inleiding}
-Aan materiaal in de medische wereld hangt vaak een stevig prijskaartje. Wij vroegen ons af hoe we deze kost kunnen verlichten en verschillende medische toepassingen beter beschikbaar kunnen maken voor de gewone burger. Daarom maken we gebruik van technologie die iedereen ter beschikking heeft: een laptop of een smartphone.
+Aan materiaal in de paramedische wereld hangt vaak een stevig prijskaartje. Wij vroegen ons af hoe we deze kost kunnen verlichten en verschillende medische toepassingen beter beschikbaar kunnen maken voor de gewone burger. Daarom maken we gebruik van technologie die iedereen ter beschikking heeft: een laptop of een smartphone.
 In dit verslag richten wij ons op \emph{human pose estimation} (HPE), of lichaamspositiebepaling. We gebruiken hiervoor de open-source HPE software Openpose die via neurale netwerken de positie van een persoon schat op een foto en de coördinaten van verschillende knooppunten in het menselijk lichaam teruggeeft waarmee we dan berekeningen kunnen uitvoeren. We zullen Openpose gebruiken voor verschillende toepassing met als doel een goeie en goedkope oplossing aan te bieden die gemakkelijk toegankelijk is voor iedereen.
 
 \chapter{Theoretische achtergrond}
@@ -66,22 +66,6 @@ Een 3D \emph{motion capture} pak zorgt wel nog altijd voor een preciezere lichaa
 		(afbeeldingen van \href{https://www.pinterest.com/pin/718324209297102981/}{Pinterest} en \href{https://beyondminds.ai/an-overview-of-human-pose-estimation-with-deep-learning/}{beyondminds.ai})}
 		\label{3D_pak}
 	\end{figure}
-
-\section{Openpose}
-
-Over het algemeen zijn er 2 manieren om menselijke poses te schatten. Ten eerste heb je de top-down aanpak. Hierbij maak je eerst gebruik van een personendetector en schat je dan voor elke persoon apart hun pose.  Deze methode heeft enkele minpunten, namelijk dat de looptijd evenredig is met het aantal personen en als een persoon in de eerste stap niet herkend is, is er geen mogelijkheid om de fout toch nog goed te maken. Een bottom-up aanpak daarentegen heeft deze problemen niet. Deze methode bepaalt alle belangrijke knooppunten en probeert dan de punten op de juiste manier aan elkaar te linken zodat het de poses van verschillende mensen vormt. Openpose is een voorbeeld van zo’n bottom-up aanpak en is een van de meest efficiënte neurale netwerken voor positiebepaling. Openpose was de eerste open-source library voor realtime lichaams-, voet-, hand- en gezichtsdetectie. Het maakt gebruik van een “two-branch multistage CNN”, heel kort betekent dit het volgende: CNN staat voor convolutioneel neuraal netwerk, “two-branch” wijst op het feit dat het CNN twee takken heeft en multistage wil zeggen dat het netwerk meerdere keren op elkaar is gestapeld.
-
-\subsection{werking}
-
-Het systeem neemt een kleurenfoto met grootte $w \times h$ als input en geeft als output voor elke persoon op de foto de 2D locaties van zijn lichaamsdelen. Eerst wordt een eerste voorspelling gedaan van de set van 2D vectorvelden ($\textbf{L}$), de \textit{part affinity fields} (PAF's), die de graad van associatie tussen de lichaamsdelen vastleggen en van de 2D betrouwbaarheidskaarten ($\textbf{S}$) van de lichaamsdelen. Dit zijn respectievelijk de eerste en de tweede tak van het CNN. Deze eerste voorspelling wordt dan door het netwerk verbeterd. Vervolgens wordt deze verbeterde voorspelling samen met de initiële voorspelling nog eens gevoerd aan het netwerk. Na zes keer is het resultaat goed genoeg en wordt het samengevoegd om de uiteindelijke output te geven. Omdat het netwerk meerdere keren doorlopen wordt, noemt men dit een \textit{multistage} CNN. De volledige uitleg van het netwerk en hoe men van de heatmaps en PAF's tot het uiteindelijke resultaat komt, vind je in het origineel artikel.
-
-De set \textbf{L} bestaat uit $C$ vectorvelden, één per connectie tussen twee knooppunten, $\textbf{L} = (\textbf{L}_1,\textbf{L}_2,...,\textbf{L}_C)$. Elke $\textbf{L}_c \in \mathbb{R}^{w \times h \times 2}$ , met $c \in \{1...C\}.$ De PAF’s  zijn velden die de graad van associatie representeren tussen de verschillende lichaamsdelen. Er wordt gestart met een set van connecties tussen twee punten, dit zijn de lijnen op Figuur… Voor elke connectie wordt dan zo’n veld opgesteld. Het is eigenlijk een tensor met in elke cel een 2d-vector die de richting van de connectie aangeeft, bijvoorbeeld van de rechterschouder naar de rechter elleboog.
-De set $\textbf{S} = (\textbf{S}_1,\textbf{S}_2,...,\textbf{S}_j)$ bestaat dus uit $\textbf{J}$ betrouwbaarheidskaarten, één per lichaamsdeel en $\textbf{S}_j \in \mathbb{R} ^{w \times h}$ , $j \in \{1...J\}$.
-Deze worden heel duidelijk voorgesteld met heatmaps. Hierop zie je voor elke positie de kans dat het lichaamsdeel zich daar bevindt. Indien er meerdere mensen op de foto staan, zal je meerdere punten zien met een hoge kans. (zie figuur…)
-
-Zoals eerder gezegd worden uiteindelijk de betrouwbaarheidskaarten en PAF's samengevoegd om als output de 2D knooppunten van alle mensen op de foto te geven.
-
-
 \section{Neurale netwerken}
 Een (artificieel) neuraal netwerk of ANN is een netwerk geïnspireerd op een biologisch neuraal netwerk zoals dat voorkomt in de hersenen, met als doel deze iets te doen leren. Het ANN is opgebouwd uit artificiële neuronen die neuronen in een brein moeten voorstellen. Al de neuronen zijn verbonden met andere neuronen en kunnen signalen uitsturen en ontvangen. In een ANN zijn de signalen getallen en kan elk neuron een bepaalde bewerking uitvoeren op een binnenkomend signaal om deze verder te sturen. Elke connectie heeft ook een gewicht dat bepaalt hoe sterk het signaal is dat hij uitstuurt. Dit gewicht past zich aan als het neuraal netwerk leert. 
 
@@ -105,11 +89,37 @@ Een neuraal netwerk bestaat uit meerdere lagen van neuronen, meer bepaald de \em
 
 \subsection{Trainen van een neuraal netwerk}
 Bij het programmeren van een neuraal netwerk weet je natuurlijk niet wat de gewichten zijn van alle connecties. Je moet het model dus doen leren. Dit doe je door de gewichten (over meerdere leercycli) aan te passen zodat de output zo goed mogelijk past bij het gewenste resultaat. Er zal altijd een bepaalde fout op de output zitten dus het model zal nooit perfect zijn. Het trainen van een model is voltooid als de fout op de output niet meer verkleint en dus een minimum heeft bereikt. Het aanpassen van de gewichten gebeurt met een zekere \emph{learning rate}. Dit bepaalt de grootte van de correcties die gebeuren bij de gewichten. Bij een grote \emph{learning rate} kan je model sneller klaar zijn met leren, maar is er meer kans op een grotere fout op de output. Een kleine \emph{learning rate} zal het trainen vertragen maar je uiteindelijke resultaat zal beter zijn. Openpose is getraind met twee datasets \cite{openpose}: de COCO dataset, die bestaat uit meer dan 100.000 beelden en meer dan 1.000.000 \emph{keypoints}, en de MPII dataset.
+\section{Openpose}
 
+Over het algemeen zijn er 2 manieren om menselijke poses te schatten. Ten eerste heb je de \textit{top-down} aanpak. Hierbij maak je eerst gebruik van een personendetector en schat je dan voor elke persoon apart hun pose.  Deze methode heeft enkele minpunten, namelijk dat de looptijd evenredig is met het aantal personen en als een persoon in de eerste stap niet herkend is, is er geen mogelijkheid om de fout toch nog goed te maken. Een \textit{bottom-up} aanpak daarentegen heeft deze problemen niet. Deze methode bepaalt alle belangrijke knooppunten en probeert dan de punten op de juiste manier aan elkaar te linken zodat het de poses van verschillende mensen vormt. Openpose is een voorbeeld van zo’n \textit{bottom-up} aanpak en is een van de meest efficiënte neurale netwerken voor positiebepaling. Openpose was de eerste open-source software voor realtime lichaams-, voet-, hand- en gezichtsdetectie. Het maakt gebruik van een “\textit{two-branch multistage} CNN”, heel kort betekent dit het volgende: CNN staat voor convolutioneel neuraal netwerk, “\textit{two-branch}” wijst op het feit dat het CNN twee takken heeft en \textit{multistage} wil zeggen dat het netwerk meerdere keren op elkaar is gestapeld. Op figuur \ref{algoritme} zie je de architectuur van het netwerk.
+
+\subsection{Werking}
+
+Het systeem neemt een kleurenfoto met grootte $w \times h$ als input en geeft als output voor elke persoon op de foto de 2D locaties van zijn lichaamsdelen. Eerst wordt een eerste voorspelling gedaan van de set van 2D vectorvelden ($\textbf{L}$). Dit zijn \textit{part affinity fields} (PAF's), zij leggen de graad van associatie tussen de lichaamsdelen vast. Ook van de 2D betrouwbaarheidskaarten ($\textbf{S}$) van de lichaamsdelen wordt een eerste schatting gedaan. Dit zijn respectievelijk de eerste en de tweede tak van het CNN. Deze eerste voorspelling wordt dan door het netwerk verbeterd. Vervolgens wordt deze verbeterde voorspelling samen met de initiële voorspelling nog eens gevoerd aan het netwerk. Na zes keer is het resultaat goed genoeg en wordt het samengevoegd om de uiteindelijke output te geven. Omdat het netwerk meerdere keren doorlopen wordt, noemt men dit een \textit{multistage} CNN. De volledige uitleg van het netwerk en hoe men van de heatmaps en PAF's tot het uiteindelijke resultaat komt, vind je in het origineel artikel.\cite{cao2019openpose}
+
+\begin{figure}[H]
+	\centering
+	\label{algoritme}
+	\includegraphics[width=0.8\textwidth]{algoritme_architectuur}
+	\caption{Architectuur van het CNN. De eerste set stappen voorspelt de PAF's, terwijl de tweede set de batrouwbaarheidskaarten voorspelt. De voorspellingen van elke stage worden dan aaneengeschakeld voor elke volgende stage. \cite{cao2019openpose}}
+\end{figure}
+
+De set \textbf{L} bestaat uit $C$ vectorvelden, één per connectie tussen twee knooppunten, $\textbf{L} = (\textbf{L}_1,\textbf{L}_2,...,\textbf{L}_C)$. Elke $\textbf{L}_c \in \mathbb{R}^{w \times h \times 2}$ , met $c \in \{1...C\}.$ De PAF’s  zijn velden die de graad van associatie representeren tussen de verschillende lichaamsdelen. Er wordt gestart met een set van connecties tussen twee punten. Voor elke connectie wordt dan zo’n veld opgesteld. Het is eigenlijk een tensor met in elke cel een 2D-vector die de richting van de connectie aangeeft, bijvoorbeeld van de rechterschouder naar de rechter elleboog.
+De set $\textbf{S} = (\textbf{S}_1,\textbf{S}_2,...,\textbf{S}_j)$ bestaat dus uit $\textbf{J}$ betrouwbaarheidskaarten, één per lichaamsdeel en $\textbf{S}_j \in \mathbb{R} ^{w \times h}$ , $j \in \{1...J\}$.
+Deze worden heel duidelijk voorgesteld met heatmaps. Hierop zie je voor elke positie de kans dat het lichaamsdeel zich daar bevindt. Indien er meerdere mensen op de foto staan, zal je meerdere punten zien met een hoge kans. Figuur \ref{heatmap} is bijvoorbeeld de heatmap voor de rechter elleboog. Er zijn duidelijk vier zone's met hoge kans zichtbaar. De zone helemaal links heeft geen rood, dit wijst op een laag vertrouwen dat het juist is. Dit komt doordat de elleboog niet duidelijk zichtbaar is.
+
+Zoals eerder gezegd worden uiteindelijk de betrouwbaarheidskaarten en PAF's samengevoegd om als output de 2D knooppunten van alle mensen op de foto te geven.
+
+\begin{figure}
+	\centering
+	\label{heatmap}
+	\includegraphics[width=0.8\textwidth]{heatmap_1}
+	\caption{Dit is de heatmap voor de rechter elleboog. Je ziet de elleboog van de meest rechtse persoon niet heel duidelijk zichtbaar is, de voorspelling in dat punt heeft daarom een lage zekerheid.}
+\end{figure}
 
 
 \chapter{Toepassingen}
-Zoals eerder al gezegd zullen we ons focussen op toepassingen in de medische wereld waarop HPE kan toegepast worden. Wij proberen hiervoor dan een goedkope oplossing te ontwikkelen. Hierbij testen we mogelijke problemen en analyseren we of dit  een goede optie is. We proberen dit dan allemaal op een methodische manier uit te werken, waarbij we een specifiek geval steeds breder gaan bekijken.
+Zoals eerder al gezegd zullen we ons focussen op toepassingen in de paramedische wereld waarop HPE kan toegepast worden. Wij proberen hiervoor dan een goedkope oplossing te ontwikkelen. Hierbij testen we mogelijke problemen en analyseren we of dit  een goede optie is. We proberen dit dan allemaal op een methodische manier uit te werken, waarbij we een specifiek geval steeds breder gaan bekijken.
 
 Een eerste toepassing is het opvolgen van de revalidatie na een schouderoperatie. Met een foto gemaakt met een gsm kunnen we een analyse uitvoeren van de beweeglijkheid van de schouder na de operatie en dan doorheen de revalidatie opvolgen.
 
@@ -120,7 +130,7 @@ Tenslotte analyseren we via een filmpje het uitvoeren van fitnessoefeningen. Hie
 \section{Toepassing 1: opvolgen van revalidatie na schouderoperatie}
 \subsection{Bepalen van de hoek tussen arm en lichaam}
 
-We willen meten hoe ver een persoon zijn arm kan roteren voor de opvolging van de revalidatie na een schouderoperatie. Hiervoor kunnen we de hoek tussen het opperarmbeen en de romp bepalen. (We gaan ervan uit dat deze hoek het meest relevant is voor het meten van de beweeglijkheid van de schouder.) Op figuur \ref{fig:skelet} komt dat dus neer op de hoek bepalen tussen de lijnstukken [32] en [21] of tussen de lijnstukken [15] en [65]. Als we Openpose gebruiken om de positie te schatten van een persoon op een foto krijgen we als output de coördinaten van de verschillende knooppunten. Met deze coördinaten hebben we voldoende informatie om de hoek te berekenen en zo objectieve informatie te krijgen over het verloop van de revalidatie.
+We willen meten hoe ver een persoon zijn arm kan roteren voor de opvolging van de revalidatie na een schouderoperatie. Hiervoor kunnen we de hoek tussen het opperarmbeen en de romp bepalen. (We gaan ervan uit dat deze hoek het meest relevant is voor het meten van de beweeglijkheid van de schouder.) Op figuur \ref{fig:skelet} komt dat dus neer op de hoek bepalen tussen de lijnstukken [3,2] en [2,1] of tussen de lijnstukken [1,5] en [6,5]. Als we Openpose gebruiken om de positie te schatten van een persoon op een foto krijgen we als output de coördinaten van de verschillende knooppunten. Met deze coördinaten hebben we voldoende informatie om de hoek te berekenen en zo objectieve informatie te krijgen over het verloop van de revalidatie.
 
 Bij een foto vanuit vooraanzicht kunnen we berekenen hoe ver de patiënt zijn arm zijwaarts omhoog kan brengen. Bij een foto genomen vanuit zijaanzicht kunnen we berekenen hoe ver hij de arm vooruit omhoog kan brengen. Het is wel belangrijk dat de foto altijd vanuit dezelfde positie wordt getrokken omdat er anders variatie kan zijn op de hoek.
 
@@ -177,13 +187,13 @@ Door deze  toepassing weten we dat het relatief eenvoudig is om met Openpose zin
 
 
 \section{Toepassing 2: fietspositie bepalen}
-Als tweede toepassing willen we een goedkoper alternatief bieden voor een bikefitting. Hierbij worden er foto's getrokken van de persoon op de fiets en kunnen we dan op basis van de positie bepaald met Openpose eventuele correcties uitvoeren op de fiets.
+Als tweede toepassing willen onderzoeken of we een goedkoper alternatief bieden voor een \textit{bikefitting}. Hierbij worden er foto's getrokken van de persoon op de fiets en kunnen we dan op basis van de positie bepaald met Openpose eventuele correcties uitvoeren op de fiets.
 
 Een \emph{bikefit} is eigenlijk het analyseren en eventueel aanpassen van de positie op de fiets. Het belangrijkste doel daarvan is het voorkomen van blessures. Bij wielrenners die aan competitie doen heeft een \emph{bikefit} ook als doel om een zo aerodynamisch mogelijke positie op de fiets aan te nemen. Ook kan een betere positie ervoor zorgen dat men een groter vermogen kan leveren op de pedalen. Alleen maar voordelen dus.
 
 \subsection{Principe}
 
-Op Figuur \ref{fig:bikefit} staan enkele hoeken die voor de doorsnee persoon als optimaal gezien worden voor de positie op een koersfiets. Deze hoeken kunnen wel wat variëren afhankelijk van hoe flexibel de persoon is. Met behulp van Openpose berekenen we deze hoeken met als input een foto of video van de wielrenner. Het is belangrijk dat de foto genomen wordt vanuit een zo loodrecht mogelijk zijaanzicht en dat de wielrenner het stuur vasthoudt bij de \emph{shifters}. Ideaal wordt de foto getrokken op ongeveer de helft van de hoogte van de fietser als die zit. Als de berekende hoeken te veel afwijken van wat voorop gesteld wordt, dan kunnen we een verbetering voorstellen. Dit kan een verhoging van het zadel zijn of een verandering van de lengte van de stuurpen.
+Op Figuur \ref{fig:bikefit} staan enkele hoeken die voor de doorsnee persoon als optimaal gezien worden voor de positie op een koersfiets. Deze hoeken kunnen wel wat variëren afhankelijk van hoe flexibel de persoon is. Met behulp van Openpose berekenen we deze hoeken met als input een of meerdere foto's van de wielrenner. Het is belangrijk dat de foto genomen wordt vanuit een zo loodrecht mogelijk zijaanzicht en dat de wielrenner het stuur vasthoudt bij de \emph{shifters}. Ideaal wordt de foto getrokken op ongeveer de helft van de hoogte van de fietser als die zit. Als de berekende hoeken te veel afwijken van wat voorop gesteld wordt, dan kunnen we een verbetering voorstellen. Dit kan een verhoging van het zadel zijn of een verandering van de lengte van de stuurpen.
 
 
 \begin{figure}[H]
@@ -196,10 +206,10 @@ Op Figuur \ref{fig:bikefit} staan enkele hoeken die voor de doorsnee persoon als
 \subsection{Algoritme voor wijzigen van de zadelhoogte}
 
 We zullen beginnen met een algoritme te schrijven voor het veranderen van één parameter, namelijk de zadelhoogte. Voornamelijk de kniehoek zal variëren als gevolg van een wijziging in zadelhoogte. Dit zal ook een klein effect hebben op de schouderhoek maar dit laten we hier voor het gemak achterwege. De mate waarin je de zadelhoogte kan wijzigen hangt af van de lengte van de zadelpen. Op de meeste zadelpennen staat de minimale diepte waarmee de pen in het frame moet zitten. Indien dit niet zo is, is de vuistregel dat de zadelpen minstens 90 \si{mm} diep in het frame moet zitten. Zet je zadel dus zeker niet hoger dan dat. Als je dit niet doet, bestaat de kans dat de zadelpen breekt.
-Eerst berekenen we de kniehoek. We kijken initieel hoe groot die is. Indien de hoek tussen 140 \degree en 145 \degree ligt (zie Figuur \ref{fig:bikefit}), wordt er geen voorstel gedaan voor een wijziging van de zadelhoogte. Indien de hoek buiten dit interval ligt, berekent het algoritme met hoeveel pixels de y-coördinaat van het knooppunt van de heup moet wijzigen om de hoek in dit interval te krijgen. Vooraf wordt door het programma de lengte van bijvoorbeeld het bovenbeen gevraagd in \si{cm}. Via openpose kunnen we dan het aantal pixels berekenen tussen het knooppunt van de knie en de heup. Op die manier kunnen we de eenheid pixels overzetten naar \si{cm}. De output is dan het aantal \si{cm} dat het algoritme voorstelt om het zadel te wijzigen. Een positief getal betekent verhogen, een negatief verlagen.
+Eerst berekenen we de kniehoek. We kijken initieel hoe groot die is. Indien de hoek tussen 140\degree en 145\degree ligt (zie Figuur \ref{fig:bikefit}), wordt er geen voorstel gedaan voor een wijziging van de zadelhoogte. Indien de hoek buiten dit interval ligt, berekent het algoritme met hoeveel pixels de y-coördinaat van het knooppunt van de heup moet wijzigen om de hoek in dit interval te krijgen. Vooraf wordt door het programma de lengte van bijvoorbeeld het bovenbeen gevraagd in \si{cm}. Via openpose kunnen we dan het aantal pixels berekenen tussen het knooppunt van de knie en de heup. Op die manier kunnen we de eenheid pixels overzetten naar \si{cm}. De output is dan het aantal \si{cm} dat het algoritme voorstelt om het zadel te wijzigen. Een positief getal betekent verhogen, een negatief verlagen.
 
 \paragraph{Wiskundige redenering en implementatie}
-Het programma veronderstelt een aantal constanten; natuurlijk de lengten van het boven- en onderbeen, punt B en de x-coördinaat van A die te zien zijn op figuur \ref{fiets}. Met deze veronderstellingen kunnen we de hoek van de knie $\theta$ kiezen en de y-coördinaat van A berekenen om dan de verandering van de hoogte van het zadel te bepalen.
+Het programma veronderstelt een aantal constanten; natuurlijk de lengtes van het boven- en onderbeen, punt B en de x-coördinaat van A die te zien zijn op figuur \ref{fiets}. Met deze veronderstellingen kunnen we de hoek van de knie $\theta$ kiezen en de y-coördinaat van A berekenen om dan de verandering van de hoogte van het zadel te bepalen.
 
 We kunnen de lengte van c bepalen met de gewenste hoek $\theta$.
 \[c^2 = a^2 + b^2 -2\cdot a \cdot b \cdot cos(\theta)\]
@@ -211,7 +221,7 @@ Waaruit volgt dat
 \[A_y = \sqrt{c^2 - (A_x - B_x)^2} + B_y\]
 
 Dit kunnen we dan vergelijken met de hoogte van de heup en dan een correctie voorstellen van \(heup_y - A_y\).
-\begin{figure}
+\begin{figure}[H]
 	\begin{center}
 		\includegraphics[width=8cm]{fiets.pdf}
 	\end{center}
@@ -226,13 +236,7 @@ Nu kijken we naar de invloed van de lengte van de stuurpen. Dit heeft enkel invl
 
 \paragraph{Wiskundige redenering en implementatie}
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=8cm]{yeye.pdf}
-	\end{center}
-	\caption{Verduidelijkende figuur bij het bepalen van de stuurpenlengte. Afbeelding van \href{redbull.com}{Redbull}}
-	\label{stuurpenlengte}
-\end{figure}
+
 We willen graag de verandering in de x-coördinaat van de pols (\(B_x\)) berekenen om de gewenste hoek $\theta$ tussen de rug en de arm te bekomen. Hiervoor gebruiken we weer de cosinusregel om de lengte tussen de heup en de pols te bepalen als deze in de goede positie staat.
 \[c^2 = a^2 + b^2 -2\cdot a\cdot b\cdot \cos(\theta)\]
 
@@ -243,30 +247,37 @@ Waaruit volgt dat
 \[B_x = \pm \sqrt{c^2 -(B_y - A_y)^2 } + A_x\]
 
 We weten nu welke x-coördinaat de pols zou moeten hebben om de hoek $\theta$ te bekomen tussen de rug en de arm. Hiermee kunnen we een wijziging in de positie van het stuur voorstellen. Of je een + of - moet nemen hangt af van de richting waarin de persoon op de fiets kijkt.
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=8cm]{yeye.pdf}
+	\end{center}
+	\caption{Verduidelijkende figuur bij het bepalen van de stuurpenlengte. Afbeelding van \href{redbull.com}{Redbull}}
+	\label{stuurpenlengte}
+\end{figure}
 
 \subsection{Opmerkingen}
 
-\paragraph{invloed van de resolutie}
-Om de invloed van de resolutie van de genomen foto na te gaan, zijn we gestart met een foto van 1500 op 1500 pixels als referentie. We hebben deze foto dan herschaald naar foto's van lagere en hogere resoluties. Bij foto's die een hogere resolutie hadden dan 500x500 bleven de hoeken tamelijk stabiel met een maximale spreiding van 2\degree. Bij foto's met een nog kleinere resolutie werd dit al snel 7\degree. Dit is een veel te grote fout voor een bikefitting. Als we dan keken naar de afwijking van de voorgestelde verhoging/verlaging van het zadel kwamen we op een veel grotere spreiding. Bij foto's van een resolutie hoger dan 1000x1000 bedroeg de afwijking 2 tot 3 \si{mm}, maar bij lagere resoluties liep dit op tot 5 à 6 \si{mm}. Dit is een veel te grote foutenmarge voor een bikefitting waar juist die enkele millimeters bepalend kunnen zijn.
+\paragraph{Invloed van de resolutie}
+Om de invloed van de resolutie van de genomen foto na te gaan, zijn we gestart met een foto van 1500 op 1500 pixels als referentie. We hebben deze foto dan herschaald naar foto's van lagere en hogere resoluties. Bij foto's die een hogere resolutie hadden dan 500x500 bleven de hoeken tamelijk stabiel met een maximale spreiding van 2\degree. Bij foto's met een nog kleinere resolutie werd dit al snel 7\degree. Dit is een veel te grote fout voor een \textit{bikefitting}. Als we dan keken naar de afwijking van de voorgestelde verhoging/verlaging van het zadel kwamen we op een veel grotere spreiding. Bij foto's van een resolutie hoger dan 1000x1000 bedroeg de afwijking 2 tot 3 \si{mm}, maar bij lagere resoluties liep dit op tot 5 à 6 \si{mm}. Dit is een veel te grote foutenmarge voor een \textit{bikefitting} waar juist die enkele millimeters bepalend kunnen zijn.
 
 \paragraph{Openpose maakt slechts een schatting van de positie}
-Openpose kiest niet altijd de keypoints juist op de gewrichten omdat het slechts een schatting maakt van de pose. Hierdoor kom je vaak een andere waarde uit voor een hoek dan de werkelijke waarde. Dit vormt een probleem aangezien we de optimale zadelhoogte baseren op werkelijke hoeken. We hebben online een foto van een professionele bikefitting gevonden en ons programma daarop laten lopen. Op Figuur \ref{proffessionele_bikefit} is duidelijk te zien dat een afwijking van de keypoints een grote invloed heeft op de aanpassingen die ons algoritme voorstelt. Zo ligt het juiste knooppunt van de heup verder naar achter en van de schouder meer naar boven. Ook dat van de arm ligt meer schuin naar boven. Al deze afwijkingen van de keypoints geschat door Openpose zorgen voor fouten op ons algoritme en de aanpassingen die voorgesteld worden.
+Openpose kiest niet altijd de \textit{keypoints} juist op de gewrichten omdat het slechts een schatting maakt van de pose. Hierdoor kom je vaak een andere waarde uit voor een hoek dan de werkelijke waarde. Dit vormt een probleem aangezien we de optimale zadelhoogte baseren op werkelijke hoeken. We hebben online een foto van een professionele \textit{bikefitting} gevonden en ons programma daarop laten lopen. Op Figuur \ref{proffessionele_bikefit} is duidelijk te zien dat een afwijking van de \textit{keypoints} een grote invloed heeft op de aanpassingen die ons algoritme voorstelt. Zo ligt het juiste knooppunt van de heup verder naar achter, waardoor de hoek van de knie in het echt scherper is. Het knooppunt van de schouder ligt ook meer naar boven en dat van de arm meer schuin naar boven. Al deze afwijkingen van de \textit{keypoints} geschat door Openpose zorgen voor fouten op ons algoritme en de aanpassingen die voorgesteld worden.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width= \textwidth]{prof_bikefit}
 	\label{proffessionele_bikefit}
-	\caption{foto van professionele bikefitting waarop we Openpose laten lopen hebben om het verschil te analyseren. (screenshot van \href{https://www.youtube.com/watch?v=CTYmJi6zH6oabchannel=STTSystems}{STTSystems op Youtube})}
+	\caption{foto van professionele \textit{bikefitting} waarop we Openpose laten lopen hebben om het verschil te analyseren. (screenshot van \href{https://www.youtube.com/watch?v=CTYmJi6zH6oabchannel=STTSystems}{STTSystems op Youtube})}
 \end{figure}
 
 \paragraph{Omzetten van pixels naar centimeter}
-De output van Openpose zijn de coördinaten van de keypoints. De eenheid van deze coördinaten is echter pixels en is dus relatief ten opzichte van de resolutie van de foto. Om over te gaan naar een absolute eenheid vroegen we als input de lengte van het dijbeen die we dan ook kunnen berekenen in openpose en zo bepalen hoeveel pixels er in een \si{cm} gaan. Het grote probleem is nu dat je nooit op dezelfde manier de lengte van je dijbeen zal meten zoals Openpose die berekent. Als je dus van bij de start al te maken hebt met fouten zal je dus nooit de juiste waarde kunnen uitkomen.
+De output van Openpose zijn de coördinaten van de \textit{keypoints}. De eenheid van deze coördinaten is echter pixels en is dus relatief ten opzichte van de resolutie van de foto. Om over te gaan naar een absolute eenheid vragen we als input de lengte van het dijbeen die we dan ook kunnen berekenen in openpose en zo bepalen hoeveel pixels er in een \si{cm} gaan. Het grote probleem is nu dat je nooit op dezelfde manier de lengte van je dijbeen zal meten zoals Openpose die berekent. Als je dus van bij de start al fout gemeten hebt, zal je verder rekenen met fouten en nooit de juiste waarde uitkomen.
 
 \paragraph{Probleem bij bepalen van de schouderhoek}
 De ideale schouderhoek is 90\degree. Openpose ziet de rug echter als een recht stuk terwijl er in het echt wel enige buiging in zit. (zie ook Figuur \ref{proffessionele_bikefit}) Daardoor kan de hoek in het echt rond de 90\degree liggen terwijl Openpose een compleet andere waarde zal geven.
 
 \subsection{Conclusie}
-Bikefitting is een heel precieze wetenschap. Het gaat om die laatste millimeters waarmee de parameters aangepast worden. We hebben echter gemerkt dat openpose hier niet de goeie toepassing voor is om de redenen die hierboven opgelijst staan. We concluderen dus dat een bikefitting programma gebaseerd op openpose veel te omslachtig is en dat je waarschijnlijk een beter en sneller resultaat zal hebben indien je de zadelhoogte op het gevoel aanpast in de wetenschap dat je knie nog lichtjes gebogen moet zijn als je voet beneden staat.
+\textit{Bikefitting} is een heel precieze wetenschap. Het gaat om die laatste millimeters waarmee de parameters aangepast worden. We hebben echter gemerkt dat openpose hier niet de goeie toepassing voor is om de redenen die hierboven opgelijst staan. We concluderen dus dat een \textit{bikefitting} programma gebaseerd op openpose veel te omslachtig is en dat je waarschijnlijk een beter en sneller resultaat zal hebben indien je de zadelhoogte op het gevoel aanpast in de wetenschap dat je knie nog lichtjes gebogen moet zijn als je voet beneden staat.
 
 
 \section{Toepassing 3: Correct uitvoeren van fitnessoefeningen}
@@ -291,9 +302,13 @@ Ten eerste controleren we de positie van de knie. Deze moet zich op het laagste 
 \end{figure}
 
 \subsection{Invloed van camerapositie op output van OpenPose}
-Bij het nemen van een foto of video die je wil analyseren zijn er heel wat variabelen: hoe ver je staat, hoe hoog de camera staat en vanuit welke hoek t.o.v. de persoon de foto genomen is. Daarom is het belangrijk dat we testen wat de invloed is van deze variabelen op de uitkomst van ons programma. We hebben dit op een systematische manier getest, zo hoopten we duidelijke conclusies te kunnen trekken uit de data.
+In de vorige toepassingen namen we aan dat de foto vanuit een goede positie werd genomen, voor deze toepassing wilden we een concreet antwoord vind op de vraag: "Wat is het effect van de camerapositie? Bij het nemen van een foto of video die je wil analyseren zijn er heel wat variabelen: hoe ver je staat, hoe hoog de camera staat en vanuit welke hoek t.o.v. de persoon de foto genomen is. Daarom is het belangrijk dat we testen wat de invloed is van deze variabelen op de uitkomst van ons programma. We hebben dit op een systematische manier getest, zo hoopten we duidelijke conclusies te kunnen trekken uit de data.
 \paragraph{Methode}
 Eerst werden vijf foto’s genomen vanop één meter afstand recht op de zijkant van de persoon die de squat uitvoert. Deze 5 foto’s zijn op hoogtes van 120, 100, 80, 60 en 40 centimeter genomen. Dit zal zo zijn voor elke reeks. De tweede reeks werd vanop 1,50m afstand genomen en de derde reeks vanop 2m afstand . De vierde en vijfde reeks werden dan weer van 1,50m afstand genomen maar één keer 50cm naar links en de andere keer 50cm naar rechts. Tussen de foto’s van een reeks werd de squatpositie aangehouden en dus amper bewogen, maar tussen de verschillende reeksen kan wel een verschil zitten omdat de squat dan opnieuw werd uitgevoerd.
+\begin{figure}
+	\includegraphics[width=\textwidth]{cameraopstelling}
+	\caption{nog invullen}
+\end{figure}
 \paragraph{Besluit}
 De afstanden werden steeds afgemeten maar kunnen meetfouten bevatten. Ook de kanteling van de camera was niet consistent wat heel wat invloed had op de data. Hierdoor is het moeilijk om een duidelijk besluit te kunnen nemen. Omdat Openpose in 2D werkt en je hoeken en afstanden meet van een 3D object, hebben we te maken met een projectie, wat heel wat distorsie met zich meebrengt. Bij deze testen hebben we dit ook gemerkt, zelfs als we proberen de foto’s op een systematische manier te nemen zodat we mogelijks verbanden kunnen zien. Ook het feit dat de positie niet perfect gelijk is tussen de reeksen foto’s maakt het moeilijk om conclusies te trekken. Als je de data bekijkt, is het duidelijk dat de hoeken en afstanden heel willekeurig veranderen. Hierdoor is het niet mogelijk het exacte effect van de cameraposities te achterhalen. Wel is het logisch dat een foto recht voor de persoon een realistischer beeld en resultaat zal geven dan een foto die vanuit een grote hoek is genomen. Hoe ver je staat van de persoon maakt ook niet zoveel uit, het is gewoon belangrijk dat de volledige persoon in beeld is, want anders heeft Openpose minder data om mee te werken.
 
