@@ -50,7 +50,7 @@
 \tableofcontents
 
 \chapter*{Inleiding}
-Aan materiaal in de paramedische wereld hangt vaak een stevig prijskaartje. Wij vroegen ons af hoe we deze kost kunnen verlichten en verschillende medische toepassingen beter beschikbaar kunnen maken voor de gewone burger. Daarom maken we gebruik van technologie die iedereen ter beschikking heeft: een laptop of een smartphone.
+Aan materiaal in de paramedische wereld hangt vaak een stevig prijskaartje. Wij vroegen ons af hoe we deze kost kunnen verlichten en verschillende medische toepassingen gemakkelijker beschikbaar kunnen maken voor de gewone burger. Daarom maken we gebruik van technologie die iedereen ter beschikking heeft: een laptop of een smartphone.
 In dit verslag richten wij ons op \emph{human pose estimation} (HPE), of lichaamspositiebepaling. We gebruiken hiervoor de open-source HPE software OpenPose die via neurale netwerken de positie van een persoon schat op een foto en de coördinaten van verschillende knooppunten in het menselijk lichaam teruggeeft waarmee we dan berekeningen kunnen uitvoeren. We zullen OpenPose gebruiken voor verschillende toepassing met als doel een goeie en goedkope oplossing aan te bieden die gemakkelijk toegankelijk is voor iedereen.
 
 \chapter{Theoretische achtergrond}
@@ -71,7 +71,7 @@ Een (artificieel) neuraal netwerk of ANN is een netwerk geïnspireerd op een bio
 
 \subsection{Opbouw van een neuraal netwerk}
 \paragraph{Neuronen}
-Zoals er hierboven staat, is een artificieel neuron geïnspireerd op een neuron uit een brein. Elk neuron heeft een of meerdere inputs en één output die kan verzonden worden naar meerdere andere neuronen. De input van een neuron kan ofwel komen van de data die in het neuraal netwerk wordt gestoken of van andere neuronen. De output van de outputneuronen is wat uit het programma komt. Om de output van een neuron te berekenen neem je de gewogen som van de inputs, met als gewicht de waarden van de connecties. Daarbij wordt ook nog eens een bias of vertekening opgeteld.
+Zoals er hierboven staat, is een artificieel neuron geïnspireerd op een neuron uit een brein. Elk neuron heeft een of meerdere inputs en één output die kan verzonden worden naar meerdere andere neuronen. De input van een neuron kan ofwel komen van de data die in het neuraal netwerk wordt gestoken of van andere neuronen. De output van de outputneuronen is wat uit het programma komt. Om de output van een neuron te berekenen neem je de gewogen som van de inputs, met als gewicht de waarden van de connecties. Daarbij wordt ook nog eens een \emph{bias} of vertekening opgeteld.
 
 \paragraph{Connecties}
 Om te kunnen leren moet het natuurlijk mogelijk zijn om de data door te geven van het ene neuron naar het andere. Dit verloopt via een “connectie” die een bepaald gewicht heeft dat de sterkte en daarmee ook het belang van een bepaalde connectie weergeeft.
@@ -91,7 +91,7 @@ Een neuraal netwerk bestaat uit meerdere lagen van neuronen, meer bepaald de \em
 Bij het programmeren van een neuraal netwerk weet je natuurlijk niet wat de gewichten zijn van alle connecties. Je moet het model dus doen leren. Dit doe je door de gewichten (over meerdere leercycli) aan te passen zodat de output zo goed mogelijk past bij het gewenste resultaat. Er zal altijd een bepaalde fout op de output zitten dus het model zal nooit perfect zijn. Het trainen van een model is voltooid als de fout op de output niet meer verkleint en dus een minimum heeft bereikt. Het aanpassen van de gewichten gebeurt met een zekere \emph{learning rate}. Dit bepaalt de grootte van de correcties die gebeuren bij de gewichten. Bij een grote \emph{learning rate} kan je model sneller klaar zijn met leren, maar is er meer kans op een grotere fout op de output. Een kleine \emph{learning rate} zal het trainen vertragen maar je uiteindelijke resultaat zal beter zijn. OpenPose is getraind met twee datasets \cite{openpose}: de COCO dataset, die bestaat uit meer dan 100.000 beelden en meer dan 1.000.000 \emph{keypoints}, en de MPII dataset.
 \section{OpenPose}
 
-Over het algemeen zijn er 2 manieren om menselijke poses te schatten. Ten eerste heb je de \textit{top-down} aanpak. Hierbij maak je eerst gebruik van een personendetector en schat je dan voor elke persoon apart hun pose.  Deze methode heeft enkele minpunten, namelijk dat de looptijd evenredig is met het aantal personen en als een persoon in de eerste stap niet herkend is, is er geen mogelijkheid om de fout toch nog goed te maken. Een \textit{bottom-up} aanpak daarentegen heeft deze problemen niet. Deze methode bepaalt alle belangrijke knooppunten en probeert dan de punten op de juiste manier aan elkaar te linken zodat het de poses van verschillende mensen vormt. OpenPose is een voorbeeld van zo’n \textit{bottom-up} aanpak en is een van de meest efficiënte neurale netwerken voor positiebepaling. OpenPose was de eerste open-source software voor realtime lichaams-, voet-, hand- en gezichtsdetectie. Het maakt gebruik van een “\textit{two-branch multistage} CNN”, heel kort betekent dit het volgende: CNN staat voor convolutioneel neuraal netwerk, “\textit{two-branch}” wijst op het feit dat het CNN twee takken heeft en \textit{multistage} wil zeggen dat het netwerk meerdere keren op elkaar is gestapeld. Op figuur \ref{algoritme} zie je de architectuur van het netwerk.
+Over het algemeen zijn er 2 manieren om menselijke poses te schatten. Ten eerste heb je de \textit{top-down} aanpak. Hierbij maak je eerst gebruik van een personendetector en schat je dan voor elke persoon apart hun \emph{pose}.  Deze methode heeft enkele minpunten, namelijk dat de looptijd evenredig is met het aantal personen en als een persoon in de eerste stap niet herkend is, is er geen mogelijkheid om de fout toch nog goed te maken. Een \textit{bottom-up} aanpak daarentegen heeft deze problemen niet. Deze methode bepaalt alle belangrijke knooppunten en probeert dan de punten op de juiste manier aan elkaar te linken zodat het de poses van verschillende mensen vormt. OpenPose is een voorbeeld van zo’n \textit{bottom-up} aanpak en is een van de meest efficiënte neurale netwerken voor positiebepaling. OpenPose was de eerste open-source software voor realtime lichaams-, voet-, hand- en gezichtsdetectie. Het maakt gebruik van een “\textit{two-branch multistage} CNN”, heel kort betekent dit het volgende: CNN staat voor convolutioneel neuraal netwerk, “\textit{two-branch}” wijst op het feit dat het CNN twee takken heeft en \textit{multistage} wil zeggen dat het netwerk meerdere keren op elkaar is gestapeld. Op figuur \ref{algoritme} zie je de architectuur van het netwerk.
 
 \subsection{Werking}
 
@@ -112,9 +112,9 @@ Zoals eerder gezegd worden uiteindelijk de betrouwbaarheidskaarten en PAF's same
 
 \begin{figure}
 	\centering
-	\label{heatmap}
 	\includegraphics[width=0.8\textwidth]{heatmap_1}
 	\caption{Dit is de heatmap voor de rechter elleboog. Je ziet de elleboog van de meest rechtse persoon niet heel duidelijk zichtbaar is, de voorspelling in dat punt heeft daarom een lage zekerheid.}
+	\label{heatmap}
 \end{figure}
 
 
@@ -146,7 +146,7 @@ Bij een foto vanuit vooraanzicht kunnen we berekenen hoe ver de patiënt zijn ar
 
 \subsection{Resultaten}
 
-Via OpenPose krijgen we de coördinaten van alle punten die OpenPose kan herkennen. Hiermee kunnen we dan verder onderzoek doen. Op dit moment zijn we in staat om hoeken tussen bepaalde lichaamsdelen te berekenen met als doel objectieve gegevens te bekomen tijdens bijvoorbeeld een revalidatie na een ongeval.
+We krijgen de coördinaten van alle punten die OpenPose kan herkennen. Hiermee kunnen we dan verder onderzoek doen. Op dit moment zijn we in staat om hoeken tussen bepaalde lichaamsdelen te berekenen met als doel objectieve gegevens te bekomen tijdens bijvoorbeeld een revalidatie na een ongeval.
 
 \paragraph{Wiskundige achtergrond}
 Om de hoek tussen twee lichaamsdelen te berekenen gebruiken we de cosinusregel. Hier volgt een klein beetje duiding over hoe we die precies gebruiken (zie figuur \ref{cos}).\\
