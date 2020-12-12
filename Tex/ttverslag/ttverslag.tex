@@ -185,7 +185,7 @@ Een voorbeeld bij het bepalen van een hoek tussen de bovenarm en de romp is afbe
 	\label{samen}
 \end{figure}
 \subsection{Conclusies}
-Door deze  toepassing weten we dat het relatief eenvoudig is om met OpenPose zinvolle berekeningen te doen. We zouden dit programma nog verder kunnen uitwerken zodat het bruikbaar is voor bijvoorbeeld kinesisten. Door de coördinaten die gegeven worden als output kunnen we gemakkelijk programma's schrijven die hiermee werken. Doordat OpenPose werkt in 2D moeten de foto's wel recht genomen worden. Als de hoek die we willen berekenen schuin afgebeeld staat op de inputfoto komt de berekening niet overeen met de werkelijke waarde van de hoek. Meer informatie hierover in \ref{camerapositie}.
+Door deze  toepassing weten we dat het relatief eenvoudig is om met OpenPose zinvolle berekeningen te doen. We zouden dit programma nog verder kunnen uitwerken zodat het bruikbaar is voor bijvoorbeeld kinesisten. Door de coördinaten die gegeven worden als output kunnen we gemakkelijk programma's schrijven die hiermee werken. Doordat OpenPose werkt in 2D moeten de foto's wel recht genomen worden. Als de hoek die we willen berekenen schuin afgebeeld staat op de inputfoto komt de berekening niet overeen met de werkelijke waarde van de hoek. Meer informatie hierover in sectie \ref{camerapositie}.
 
 
 \section{Toepassing 2: fietspositie bepalen}
@@ -242,7 +242,7 @@ Nu kijken we naar de invloed van de lengte van de stuurpen. Dit heeft vooral inv
 We willen graag de verandering van de x-coördinaat van de pols (\(B_x\)) berekenen om de gewenste hoek $\theta$ tussen de rug en de arm te bekomen. Hiervoor gebruiken we weer de cosinusregel om de lengte tussen de heup en de pols te bepalen als deze in de goede positie staat.
 \[c^2 = a^2 + b^2 -2\cdot a\cdot b\cdot \cos(\theta)\]
 
-Met \(a\) de lengte van de rug, \(b\) de lengte van de arm (schouder tot pols) en \(c\) de lengte tussen de heup en de pols\ref{stuurpenlengte}. We weten ook dat
+Met \(a\) de lengte van de rug, \(b\) de lengte van de arm (schouder tot pols) en \(c\) de lengte tussen de heup en de pols (zie Figuur \ref{stuurpenlengte}). We weten ook dat
 \[c^2 = (B_x - A_x)^2 + (B_y - A_y)^2\]
 
 Waaruit volgt dat
@@ -268,8 +268,9 @@ OpenPose kiest niet altijd de \textit{keypoints} juist op de gewrichten omdat he
 \begin{figure}[H]
 	\centering
 	\includegraphics[width= \textwidth]{prof_bikefit}
-	\label{proffessionele_bikefit}
+	
 	\caption{foto van professionele \textit{bikefitting} waarop we OpenPose laten lopen hebben om het verschil te analyseren. (screenshot van \href{https://www.youtube.com/watch?v=CTYmJi6zH6oabchannel=STTSystems}{STTSystems op Youtube})}
+	\label{proffessionele_bikefit}
 \end{figure}
 
 \paragraph{Omzetten van pixels naar centimeter}
@@ -312,7 +313,7 @@ In de vorige toepassingen namen we aan dat de foto vanuit een goede positie werd
 \label{camerapositie}
 \paragraph{Methode}
 Eerst werden vijf foto’s genomen vanop één meter afstand recht op de zijkant van de persoon die de squat uitvoert. Deze 5 foto’s zijn op hoogtes van 120, 100, 80, 60 en 40 centimeter genomen. Dit zal zo zijn voor elke reeks. De tweede reeks werd vanop 1,50m afstand genomen en de derde reeks vanop 2m afstand . De vierde en vijfde reeks werden dan weer van 1,50m afstand genomen maar één keer 50cm naar links en de andere keer 50cm naar rechts. Tussen de foto’s van een reeks werd de squatpositie aangehouden en dus amper bewogen, maar tussen de verschillende reeksen kan wel een verschil zitten omdat de squat dan opnieuw werd uitgevoerd.
-\begin{figure}
+\begin{figure}[H]
 	\includegraphics[width=\textwidth]{cameraopstelling}
 	\caption{nog invullen}
 \end{figure}
