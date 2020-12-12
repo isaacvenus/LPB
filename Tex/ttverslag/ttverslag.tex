@@ -301,6 +301,10 @@ Ten eerste controleren we de positie van de knie. Deze moet zich op het laagste 
 	\caption{Op het laagste punt van de squat moeten de heup en knie zich op dezelfde hoogte bevinden. (afbeelding van \cite{squats})}
 \end{figure}
 
+\subsection{Algoritme voor het bepalen van een goeie squat}
+Voor de implementatie van het analyseren van een squat houden we rekening met de twee richtlijnen die we hierboven vermeld hebben. We hebben dus de coördinaten van de knooppunten van de tenen, knie en heup nodig. Voor de eerste richtlijn controleren we dan of de x-coördinaat van de tenen en die van de knie niet te veel verschillen. Voor het tweede voorschrift controleren we of de y-coördinaat van de knie en de heup niet te ver uit elkaar liggen. Op basis van de twee verschillen wordt dan een score voor de squat gegeven.
+
+
 \subsection{Invloed van camerapositie op output van OpenPose}
 In de vorige toepassingen namen we aan dat de foto vanuit een goede positie werd genomen, voor deze toepassing wilden we een concreet antwoord vind op de vraag: "Wat is het effect van de camerapositie? Bij het nemen van een foto of video die je wil analyseren zijn er heel wat variabelen: hoe ver je staat, hoe hoog de camera staat en vanuit welke hoek t.o.v. de persoon de foto genomen is. Daarom is het belangrijk dat we testen wat de invloed is van deze variabelen op de uitkomst van ons programma. We hebben dit op een systematische manier getest, zo hoopten we duidelijke conclusies te kunnen trekken uit de data.
 \label{camerapositie}
