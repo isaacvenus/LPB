@@ -20,7 +20,6 @@
 \usepackage{siunitx}
 \usepackage{hyperref}
 \usepackage{amssymb}
-\usepackage{booktabs}
 \bibliographystyle{abbrvnat}
 
 
@@ -207,7 +206,7 @@ Op Figuur \ref{fig:bikefit} staan enkele hoeken die voor de doorsnee persoon als
 \subsection{Algoritme voor wijzigen van de zadelhoogte}
 
 We zullen beginnen met een algoritme te schrijven voor het veranderen van één parameter, namelijk de zadelhoogte. Voornamelijk de kniehoek zal variëren als gevolg van een wijziging in zadelhoogte. Dit zal ook een klein effect hebben op de schouderhoek maar dit laten we hier voor het gemak achterwege. De mate waarin je de zadelhoogte kan wijzigen hangt af van de lengte van de zadelpen. Op de meeste zadelpennen staat de minimale diepte waarmee de pen in het frame moet zitten. Indien dit niet zo is, is de vuistregel dat de zadelpen minstens 90 \si{mm} diep in het frame moet zitten. Zet je zadel dus zeker niet hoger dan dat. Als je dit niet doet, bestaat de kans dat de zadelpen breekt.
-Eerst berekenen we de kniehoek. We kijken initieel hoe groot die is. Indien de hoek tussen 140\degree en 145\degree ligt (zie Figuur \ref{fig:bikefit}), wordt er geen voorstel gedaan voor een wijziging van de zadelhoogte. Indien de hoek buiten dit interval ligt, berekent het algoritme met hoeveel pixels de y-coördinaat van het knooppunt van de heup moet wijzigen om de hoek in dit interval te krijgen. Vooraf wordt door het programma de lengte van bijvoorbeeld het bovenbeen gevraagd in \si{cm}. Via OpenPose kunnen we dan het aantal pixels berekenen tussen het knooppunt van de knie en de heup. Op die manier kunnen we de eenheid pixels overzetten naar \si{cm}. De output is dan het aantal \si{cm} dat het algoritme voorstelt om het zadel te wijzigen. Een positief getal betekent verhogen, een negatief verlagen.
+Eerst berekenen we de kniehoek. We kijken initieel hoe groot die is en we weten welke hoek we willen bereiken. Deze ligt ideaal tussen 140\degree en 145\degree (zie Figuur \ref{fig:bikefit}). Het algoritme berekent dan met hoeveel pixels de y-coördinaat van het knooppunt van de heup moet wijzigen om de hoek te bekomen. Vooraf wordt door het programma de lengte van bijvoorbeeld het bovenbeen gevraagd in \si{cm}. Via OpenPose kunnen we dan het aantal pixels berekenen tussen het knooppunt van de knie en de heup. Op die manier kunnen we de eenheid pixels overzetten naar \si{cm}. De output is dan het aantal \si{cm} dat het algoritme voorstelt om het zadel te wijzigen. Een positief getal betekent verhogen, een negatief verlagen.
 
 \paragraph{Wiskundige redenering en implementatie}
 Het programma veronderstelt een aantal constanten; natuurlijk de lengtes van het boven- en onderbeen, punt B en de x-coördinaat van A die te zien zijn op figuur \ref{fiets}. Met deze veronderstellingen kunnen we de hoek van de knie $\theta$ kiezen en de y-coördinaat van A berekenen om dan de verandering van de hoogte van het zadel te bepalen.
@@ -221,7 +220,7 @@ Voor deze lengte geldt ook dat:
 Waaruit volgt dat
 \[A_y = \sqrt{c^2 - (A_x - B_x)^2} + B_y\]
 
-Dit kunnen we dan vergelijken met de hoogte van de heup en dan een correctie voorstellen van \(heup_y - A_y\).
+Dit kunnen we dan vergelijken met de hoogte van de heup en dan een correctie voorstellen van \(heup_y - A_y\) met \(heup_y\) de hoogte van de heup.
 \begin{figure}[H]
 	\begin{center}
 		\includegraphics[width=8cm]{fiets.pdf}
@@ -232,13 +231,13 @@ Dit kunnen we dan vergelijken met de hoogte van de heup en dan een correctie voo
 
 \subsection{Algoritme voor wijzigen van de stuurpenlengte}
 
-Nu kijken we naar de invloed van de lengte van de stuurpen. Dit heeft enkel invloed op de schouderhoek. Het probleem is dat als we de lengte van de stuurpen willen aanpassen, we een nieuwe stuurpen moeten kopen. Er zijn ook bepaalde grenzen aan de lengte van een stuurpen. De minimale lengte is 40 \si{mm}, korter is bijna onmogelijk. Het maximum ligt rond de 140 \si{mm}, groter kan nog maar dat is heel uitzonderlijk. De output van het algoritme is het aantal \si{cm} dat het stuur naar voor of naar achter moet.
+Nu kijken we naar de invloed van de lengte van de stuurpen. Dit heeft vooral invloed op de schouderhoek. Het probleem is dat als we de lengte van de stuurpen willen aanpassen, we een nieuwe stuurpen moeten kopen. Er zijn ook bepaalde grenzen aan de lengte van een stuurpen. De minimale lengte is 40 \si{mm}, korter is bijna onmogelijk. Het maximum ligt rond de 140 \si{mm}, groter kan nog maar dat is heel uitzonderlijk. De output van het algoritme is het aantal \si{cm} dat het stuur naar voor of naar achter moet.
 
 
 \paragraph{Wiskundige redenering en implementatie}
 
 
-We willen graag de verandering in de x-coördinaat van de pols (\(B_x\)) berekenen om de gewenste hoek $\theta$ tussen de rug en de arm te bekomen. Hiervoor gebruiken we weer de cosinusregel om de lengte tussen de heup en de pols te bepalen als deze in de goede positie staat.
+We willen graag de verandering van de x-coördinaat van de pols (\(B_x\)) berekenen om de gewenste hoek $\theta$ tussen de rug en de arm te bekomen. Hiervoor gebruiken we weer de cosinusregel om de lengte tussen de heup en de pols te bepalen als deze in de goede positie staat.
 \[c^2 = a^2 + b^2 -2\cdot a\cdot b\cdot \cos(\theta)\]
 
 Met \(a\) de lengte van de rug, \(b\) de lengte van de arm (schouder tot pols) en \(c\) de lengte tussen de heup en de pols\ref{stuurpenlengte}. We weten ook dat
@@ -275,7 +274,7 @@ OpenPose kiest niet altijd de \textit{keypoints} juist op de gewrichten omdat he
 De output van OpenPose zijn de coördinaten van de \textit{keypoints}. De eenheid van deze coördinaten is echter pixels en is dus relatief ten opzichte van de resolutie van de foto. Om over te gaan naar een absolute eenheid vragen we als input de lengte van het dijbeen die we dan ook kunnen berekenen in OpenPose en zo bepalen hoeveel pixels er in een \si{cm} gaan. Het grote probleem is nu dat je nooit op dezelfde manier de lengte van je dijbeen zal meten zoals OpenPose die berekent. Als je dus van bij de start al fout gemeten hebt, zal je verder rekenen met fouten en nooit de juiste waarde uitkomen.
 
 \paragraph{Probleem bij bepalen van de schouderhoek}
-De ideale schouderhoek is 90\degree. OpenPose ziet de rug echter als een recht stuk terwijl er in het echt wel enige buiging in zit. (zie ook Figuur \ref{proffessionele_bikefit}) Daardoor kan de hoek in het echt rond de 90\degree liggen terwijl OpenPose een compleet andere waarde zal geven.
+De ideale schouderhoek is 90\degree. OpenPose ziet de rug echter als een recht stuk terwijl er in het echt wel enige buiging in zit (zie ook Figuur \ref{proffessionele_bikefit}). Daardoor kan de hoek in het echt rond de 90\degree liggen terwijl OpenPose een compleet andere waarde zal geven.
 
 \subsection{Conclusie}
 \textit{Bikefitting} is een heel precieze wetenschap. Het gaat om die laatste millimeters waarmee de parameters aangepast worden. We hebben echter gemerkt dat OpenPose hier niet de goeie toepassing voor is om de redenen die hierboven opgelijst staan. We concluderen dus dat een \textit{bikefitting} programma gebaseerd op OpenPose veel te omslachtig is en dat je waarschijnlijk een beter en sneller resultaat zal hebben indien je de zadelhoogte op het gevoel aanpast in de wetenschap dat je knie nog lichtjes gebogen moet zijn als je voet beneden staat.
@@ -283,7 +282,7 @@ De ideale schouderhoek is 90\degree. OpenPose ziet de rug echter als een recht s
 
 \section{Toepassing 3: Correct uitvoeren van fitnessoefeningen}
 
-Als derde toepassing maken we een programma dat helpt om op de correcte manier een squat uit te voeren. Dit is meer geschikt voor OpenPose omdat het niet aankomt op millimeters. Als input wordt een filmpje van een aantal squats gevraagd. Er wordt dan per squat een score gegeven op basis van een aantal richtlijnen voor het uitvoeren van een goeie squat.\cite{squats} 
+Als derde toepassing maken we een programma dat helpt om op de correcte manier een squat uit te voeren. Dit is meer geschikt voor OpenPose omdat het niet aankomt op millimeters. Als input wordt collectie foto's van een aantal squats gevraagd. Er wordt dan per squat een score gegeven op basis van een aantal richtlijnen voor het uitvoeren van een goeie squat.\cite{squats} 
 
 \subsection{Richtlijnen voor een goeie squat}
 
@@ -310,39 +309,10 @@ Voor de implementatie van het analyseren van een squat houden we rekening met de
 In de vorige toepassingen namen we aan dat de foto vanuit een goede positie werd genomen, voor deze toepassing wilden we een concreet antwoord vind op de vraag: "Wat is het effect van de camerapositie? Bij het nemen van een foto of video die je wil analyseren zijn er heel wat variabelen: hoe ver je staat, hoe hoog de camera staat en vanuit welke hoek t.o.v. de persoon de foto genomen is. Daarom is het belangrijk dat we testen wat de invloed is van deze variabelen op de uitkomst van ons programma. We hebben dit op een systematische manier getest, zo hoopten we duidelijke conclusies te kunnen trekken uit de data.
 \label{camerapositie}
 \paragraph{Methode}
-Eerst werden vijf foto’s genomen vanop één meter afstand recht op de zijkant van de persoon die de squat uitvoert. Deze 5 foto’s zijn op hoogtes van 120, 100, 80, 60 en 40 centimeter genomen. Dit zal zo zijn voor elke reeks. De tweede reeks werd vanop 1,50m afstand genomen en de derde reeks vanop 2m afstand . De vierde en vijfde reeks werden dan weer van 1,50m afstand genomen maar één keer 50cm naar links en de andere keer 50cm naar rechts. Op figuur \ref{cameraopstelling} worden de cameraposities visueel verduidelijkt. Tussen de foto’s van een reeks werd de squatpositie aangehouden en dus amper bewogen, maar tussen de verschillende reeksen kan wel een verschil zitten omdat de squat dan opnieuw werd uitgevoerd. De resultaten zijn te zien in tabel \ref{tabelhoek} en tabel \ref{tabelafstand}. 
-\begin{table}[htbp]
-	\centering
-	\caption{Hoek van knie gemeten tijdens laagste punt van een squat. De waarden in de tabel zijn de hoeken gemeten van een bepaalde camerapositie (verticaal) en een bepaalde camerahoogte (horizontaal). Alle hoeken zijn uitgedrukt in graden.}
-	\begin{tabular}{l|rrrrr} \toprule
-			plaats/hoogte & 0,40m & 0,60m & 0,80m & 1,00m & 1,20m\\ \midrule
-		1,00m & 83,65 & 84,38 & 84,15 & 79,51 & 80,32 \\
-		1,50m & 95,64 & 93,79 & 92,49 & 91,51 & 93,57 \\
-		2,00m & 82,11 & 84,33 & 85,40 & 85,36 & 91,22 \\
-		links & 91,61 & 92,77 & 93,88 & 95,42 & 93,00 \\
-		rechts & 79,34 & 79,49 & 78,26 & 73,88 & 73,92 \\
-	\end{tabular}%
-	\label{tabelhoek}%
-\end{table}%
-% Table generated by Excel2LaTeX from sheet 'Blad1'
-\begin{table}[htbp]
-	\centering
-	\caption{Afstand van knie over de voet tijdens het laagste punt van de squat. De waarden in de tabel zijn de afstanden gemeten van een bepaalde camerapositie (verticaal) en een bepaalde camerahoogte (horizontaal). Alle afstanden zijn uitgedrukt in pixels. Het minteken duid erop dat de knie van de persoon zich voor de voet bevond, zoals de eerste foto op figuur \ref{squat_knie}}
-	\begin{tabular}{l|rrrrr}
-		plaats/hoogte & \multicolumn{1}{l}{0,40m} & \multicolumn{1}{l}{0,60m} & \multicolumn{1}{l}{0,80m} & \multicolumn{1}{l}{1,00m} & \multicolumn{1}{l}{1,20m} \\\midrule
-		1,00m & -113,22 & -96,49 & -50,97 & -90,70 & -62,27 \\
-		1,50m & -17,17 & -28,23 & -34,07 & -34,12 & -33,96 \\
-		2,00m & -39,58 & -39,90 & -34,00 & -39,64 & -28,36 \\
-		links & -11,54 & -11,42 & -16,89 & -28,51 & -17,17 \\
-		rechts & -76,85 & -67,82 & -62,46 & -76,54 & -45,47 \\
-	\end{tabular}%
-	\label{tabelafstand}%
-\end{table}%
+Eerst werden vijf foto’s genomen vanop één meter afstand recht op de zijkant van de persoon die de squat uitvoert. Deze 5 foto’s zijn op hoogtes van 120, 100, 80, 60 en 40 centimeter genomen. Dit zal zo zijn voor elke reeks. De tweede reeks werd vanop 1,50m afstand genomen en de derde reeks vanop 2m afstand . De vierde en vijfde reeks werden dan weer van 1,50m afstand genomen maar één keer 50cm naar links en de andere keer 50cm naar rechts. Tussen de foto’s van een reeks werd de squatpositie aangehouden en dus amper bewogen, maar tussen de verschillende reeksen kan wel een verschil zitten omdat de squat dan opnieuw werd uitgevoerd.
 \begin{figure}
-	\centering
-	\label{cameraopstelling}
-	\includegraphics[width=1.2\textwidth]{cameraopstelling}
-	\caption{Cameraopstelling gebruikt voor de test. Links is het bovenaanzicht van de 5 verschillende posities vanwaar foto's genomen zijn. De rechter figuur toont het zijaanzicht van de positie recht naast de persoon op 1.50m afstand.}
+	\includegraphics[width=\textwidth]{cameraopstelling}
+	\caption{nog invullen}
 \end{figure}
 \paragraph{Besluit}
 De afstanden werden steeds afgemeten maar kunnen meetfouten bevatten. Ook de kanteling van de camera was niet consistent wat heel wat invloed had op de data. Hierdoor is het moeilijk om een duidelijk besluit te kunnen nemen. Omdat OpenPose in 2D werkt en je hoeken en afstanden meet van een 3D object, hebben we te maken met een projectie, wat heel wat distorsie met zich meebrengt. Bij deze testen hebben we dit ook gemerkt, zelfs als we proberen de foto’s op een systematische manier te nemen zodat we mogelijks verbanden kunnen zien. Ook het feit dat de positie niet perfect gelijk is tussen de reeksen foto’s maakt het moeilijk om conclusies te trekken. Als je de data bekijkt, is het duidelijk dat de hoeken en afstanden heel willekeurig veranderen. Hierdoor is het niet mogelijk het exacte effect van de cameraposities te achterhalen. Wel is het logisch dat een foto recht voor de persoon een realistischer beeld en resultaat zal geven dan een foto die vanuit een grote hoek is genomen. Hoe ver je staat van de persoon maakt ook niet zoveel uit, het is gewoon belangrijk dat de volledige persoon in beeld is, want anders heeft OpenPose minder data om mee te werken.
