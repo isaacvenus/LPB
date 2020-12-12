@@ -30,7 +30,7 @@
 \group{}
 \title{Human Pose Estimation met OpenPose: een toepassing}
 \subtitle{}
-\author{Isaac venus\\Stan Vanhecke\\Mathieu Vanooteghem}
+\author{Isaac Venus\\Stan Vanhecke\\Mathieu Vanooteghem}
 % \\Stan Vanhecke\\Mathieu Vanooteghem
 \emailaddress{isaac.venus@student.kuleuven.be}
 % \\stan.vanhecke@student.kuleuven.be\\mathieu.vanooteghem@student.kuleuven.be
@@ -52,7 +52,7 @@
 
 \chapter*{Inleiding}
 Aan materiaal in de paramedische wereld hangt vaak een stevig prijskaartje. Wij vroegen ons af hoe we deze kost kunnen verlichten en verschillende medische toepassingen gemakkelijker beschikbaar kunnen maken voor de gewone burger. Daarom maken we gebruik van technologie die iedereen ter beschikking heeft: een laptop of een smartphone.
-In dit verslag richten wij ons op \emph{human pose estimation} (HPE), of lichaamspositiebepaling. We gebruiken hiervoor de open-source HPE software OpenPose die via neurale netwerken de positie van een persoon schat op een foto en de coördinaten van verschillende knooppunten in het menselijk lichaam teruggeeft waarmee we dan berekeningen kunnen uitvoeren. We zullen OpenPose gebruiken voor verschillende toepassing met als doel een goeie en goedkope oplossing aan te bieden die gemakkelijk toegankelijk is voor iedereen.
+In dit verslag richten wij ons op \emph{human pose estimation} (HPE), of lichaamspositiebepaling. We gebruiken hiervoor de open-source HPE software OpenPose die via neurale netwerken de positie van een persoon schat op een foto en de coördinaten van verschillende knooppunten in het menselijk lichaam teruggeeft waarmee we dan berekeningen kunnen uitvoeren. We zullen OpenPose gebruiken voor verschillende toepassingen met als doel een goede en goedkope oplossing aan te bieden die gemakkelijk toegankelijk is voor iedereen.
 
 \chapter{Theoretische achtergrond}
 \section{HPE, revolutionair?}
@@ -72,7 +72,7 @@ Een (artificieel) neuraal netwerk of ANN is een netwerk geïnspireerd op een bio
 
 \subsection{Opbouw van een neuraal netwerk}
 \paragraph{Neuronen}
-Zoals er hierboven staat, is een artificieel neuron geïnspireerd op een neuron uit een brein. Elk neuron heeft een of meerdere inputs en één output die kan verzonden worden naar meerdere andere neuronen. De input van een neuron kan ofwel komen van de data die in het neuraal netwerk wordt gestoken of van andere neuronen. De output van de outputneuronen is wat uit het programma komt. Om de output van een neuron te berekenen neem je de gewogen som van de inputs, met als gewicht de waarden van de connecties. Daarbij wordt ook nog eens een \emph{bias} of vertekening opgeteld.
+Zoals er hierboven staat, is een artificieel neuron geïnspireerd op een neuron uit een brein. Elk neuron heeft een of meerdere inputs en één output die kan verzonden worden naar meerdere andere neuronen. De input van een neuron kan ofwel komen van de data die aan het neuraal netwerk wordt gevoerd of van andere neuronen. De output van de outputneuronen is wat uit het programma komt. Om de output van een neuron te berekenen neem je de gewogen som van de inputs, met als gewicht de waarden van de connecties. Daarbij wordt ook nog eens een \emph{bias} of vertekening opgeteld.
 
 \paragraph{Connecties}
 Om te kunnen leren moet het natuurlijk mogelijk zijn om de data door te geven van het ene neuron naar het andere. Dit verloopt via een “connectie” die een bepaald gewicht heeft dat de sterkte en daarmee ook het belang van een bepaalde connectie weergeeft.
@@ -190,7 +190,7 @@ Door deze  toepassing weten we dat het relatief eenvoudig is om met OpenPose zin
 
 
 \section{Toepassing 2: fietspositie bepalen}
-Als tweede toepassing willen onderzoeken of we een goedkoper alternatief bieden voor een \textit{bikefitting}. Hierbij worden er foto's getrokken van de persoon op de fiets en kunnen we dan op basis van de positie bepaald met OpenPose eventuele correcties uitvoeren op de fiets.
+Als tweede toepassing willen we onderzoeken of we een goedkoper alternatief kunnen bieden voor een \textit{bikefitting}. Hierbij worden er foto's getrokken van de persoon op de fiets en kunnen we dan op basis van de positie bepaald met OpenPose eventuele correcties uitvoeren op de fiets.
 
 Een \emph{bikefit} is eigenlijk het analyseren en eventueel aanpassen van de positie op de fiets. Het belangrijkste doel daarvan is het voorkomen van blessures. Bij wielrenners die aan competitie doen heeft een \emph{bikefit} ook als doel om een zo aerodynamisch mogelijke positie op de fiets aan te nemen. Ook kan een betere positie ervoor zorgen dat men een groter vermogen kan leveren op de pedalen. Alleen maar voordelen dus.
 
@@ -275,7 +275,7 @@ OpenPose kiest niet altijd de \textit{keypoints} juist op de gewrichten omdat he
 \end{figure}
 
 \paragraph{Omzetten van pixels naar centimeter}
-De output van OpenPose zijn de coördinaten van de \textit{keypoints}. De eenheid van deze coördinaten is echter pixels en is dus relatief ten opzichte van de resolutie van de foto. Om over te gaan naar een absolute eenheid vragen we als input de lengte van het dijbeen die we dan ook kunnen berekenen in OpenPose en zo bepalen hoeveel pixels er in een \si{cm} gaan. Het grote probleem is nu dat je nooit op dezelfde manier de lengte van je dijbeen zal meten zoals OpenPose die berekent. Als je dus van bij de start al fout gemeten hebt, zal je verder rekenen met fouten en nooit de juiste waarde uitkomen.
+De output van OpenPose zijn de coördinaten van de \textit{keypoints}. De eenheid van deze coördinaten is echter pixels en is dus relatief ten opzichte van de resolutie van de foto. Om over te gaan naar een absolute eenheid vragen we als input de lengte van het dijbeen die we dan ook kunnen berekenen in OpenPose en zo bepalen we hoeveel pixels er in een \si{cm} gaan. Het grote probleem is nu dat je nooit op dezelfde manier de lengte van je dijbeen zal meten zoals OpenPose die berekent. Als je dus van bij de start al fout gemeten hebt, zal je verder rekenen met fouten en nooit de juiste waarde uitkomen.
 
 \paragraph{Probleem bij bepalen van de schouderhoek}
 De ideale schouderhoek is 90\degree. OpenPose ziet de rug echter als een recht stuk terwijl er in het echt wel enige buiging in zit (zie ook Figuur \ref{proffessionele_bikefit}). Daardoor kan de hoek in het echt rond de 90\degree liggen terwijl OpenPose een compleet andere waarde zal geven.
@@ -286,7 +286,7 @@ De ideale schouderhoek is 90\degree. OpenPose ziet de rug echter als een recht s
 
 \section{Toepassing 3: Correct uitvoeren van fitnessoefeningen}
 
-Als derde toepassing maken we een programma dat helpt om op de correcte manier een squat uit te voeren. Dit is meer geschikt voor OpenPose omdat het niet aankomt op millimeters. Als input wordt collectie foto's van een aantal squats gevraagd. Er wordt dan per squat een score gegeven op basis van een aantal richtlijnen voor het uitvoeren van een goeie squat.\cite{squats} 
+Als derde toepassing maken we een programma dat helpt om op de correcte manier een squat uit te voeren. Dit is meer geschikt voor OpenPose omdat het niet aankomt op millimeters. Als input wordt een collectie foto's van een aantal squats gevraagd. Er wordt dan per squat een score gegeven op basis van een aantal richtlijnen voor het uitvoeren van een goeie squat.\cite{squats} 
 
 \subsection{Richtlijnen voor een goeie squat}
 
@@ -309,7 +309,7 @@ Ten eerste controleren we de positie van de knie. Deze moet zich op het laagste 
 Voor de implementatie van het analyseren van een squat houden we rekening met de twee richtlijnen die we hierboven vermeld hebben. We hebben dus de coördinaten van de knooppunten van de tenen, knie en heup nodig. Voor de eerste richtlijn controleren we dan of de x-coördinaat van de tenen en die van de knie niet te veel verschillen. Voor het tweede voorschrift controleren we of de y-coördinaat van de knie en de heup niet te ver uit elkaar liggen. Op basis van de twee verschillen wordt dan een score voor de squat gegeven.
 
 
-\subsection{Invloed van camerapositie op output van OpenPose}
+\subsection{Invloed van camerapositie op output van OpenPose} \label{camerapositie}
 In de vorige toepassingen namen we aan dat de foto vanuit een goede positie werd genomen, voor deze toepassing wilden we een concreet antwoord vind op de vraag: "Wat is het effect van de camerapositie? Bij het nemen van een foto of video die je wil analyseren zijn er heel wat variabelen: hoe ver je staat, hoe hoog de camera staat en vanuit welke hoek t.o.v. de persoon de foto genomen is. Daarom is het belangrijk dat we testen wat de invloed is van deze variabelen op de uitkomst van ons programma. We hebben dit op een systematische manier getest, zo hoopten we duidelijke conclusies te kunnen trekken uit de data.
 
 \paragraph{Methode}
@@ -337,7 +337,7 @@ Eerst werden vijf foto’s genomen vanop één meter afstand recht op de zijkant
 % Table generated by Excel2LaTeX from sheet 'Blad1'
 \begin{table}[htbp]
 	\centering
-	\caption{Afstand van knie over de voet tijdens het laagste punt van de squat. De waarden in de tabel zijn de afstanden gemeten van een bepaalde camerapositie (verticaal) en een bepaalde camerahoogte (horizontaal). Alle afstanden zijn uitgedrukt in pixels. Het minteken duid erop dat de knie van de persoon zich voor de voet bevond, zoals de eerste foto op figuur \ref{squat_knie}}
+	\caption{Afstand van knie over de voet tijdens het laagste punt van de squat. De waarden in de tabel zijn de afstanden gemeten van een bepaalde camerapositie (verticaal) en een bepaalde camerahoogte (horizontaal). Alle afstanden zijn uitgedrukt in pixels. Het minteken duidt erop dat de knie van de persoon zich voor de voet bevond, zoals de eerste foto op figuur \ref{squat_knie}}
 	\begin{tabular}{l|rrrrr}
 		plaats/hoogte & \multicolumn{1}{l}{0,40m} & \multicolumn{1}{l}{0,60m} & \multicolumn{1}{l}{0,80m} & \multicolumn{1}{l}{1,00m} & \multicolumn{1}{l}{1,20m} \\\midrule
 		1,00m & -113,22 & -96,49 & -50,97 & -90,70 & -62,27 \\
@@ -353,7 +353,6 @@ Eerst werden vijf foto’s genomen vanop één meter afstand recht op de zijkant
 De afstanden werden steeds afgemeten maar kunnen meetfouten bevatten. Ook de kanteling van de camera was niet consistent wat heel wat invloed had op de data. Hierdoor is het moeilijk om een duidelijk besluit te kunnen nemen. Omdat OpenPose in 2D werkt en je hoeken en afstanden meet van een 3D object, hebben we te maken met een projectie, wat heel wat distorsie met zich meebrengt. Bij deze testen hebben we dit ook gemerkt, zelfs als we proberen de foto’s op een systematische manier te nemen zodat we mogelijks verbanden kunnen zien. Ook het feit dat de positie niet perfect gelijk is tussen de reeksen foto’s maakt het moeilijk om conclusies te trekken. Als je de data bekijkt, is het duidelijk dat de hoeken en afstanden heel willekeurig veranderen. Hierdoor is het niet mogelijk het exacte effect van de cameraposities te achterhalen. Wel is het logisch dat een foto recht voor de persoon een realistischer beeld en resultaat zal geven dan een foto die vanuit een grote hoek is genomen. Hoe ver je staat van de persoon maakt ook niet zoveel uit, het is gewoon belangrijk dat de volledige persoon in beeld is, want anders heeft OpenPose minder data om mee te werken.
 
 \chapter*{Besluit}
-Je bent tot het einde van het verslag gekomen. Tijd voor het besluit dus.\\
 Het is moeilijk om een 'echt' besluit te schrijven want keer op keer kwamen wij tot de conclusie dat OpenPose niet echt geschikt was voor wat wij er mee willen doen. Maar hierdoor was het ook wel een leerrijk traject. Dit was namelijk de eerste keer in onze carrière dat we ons moesten neerleggen bij het feit dat iets niet zal werken. Uiteindelijk hebben we  wel gevonden dat bij het controleren van fitnessoefeningen OpenPose  toch voldoende precies is omdat we hier niet echt medische precisie nodig hebben. Gelukkig iets dat werkt, anders zou dit maar een zielig verslag zijn... \\
 Er zijn natuurlijk nog andere dingen die we  geleerd hebben die nuttig waren voor ons. Bijvoorbeeld de kennismaking met lichaamspositiebepalingssoftware zoals OpenPose en de theorie hier achter. Ook hebben we regelmatig onze probleemoplossende vaardigheden moeten gebruiken, en er is ook uit de gebruikte wiskunde gebleken dat je niet altijd ver moet zoeken naar het antwoord en dat je niet altijd moeilijke wiskunde moet gebruiken om iets nuttig te doen.\\
 Al bij al was het toch wel een leuke opdracht waar we met veel plezier aan hebben gewerkt.
@@ -367,7 +366,7 @@ Al bij al was het toch wel een leuke opdracht waar we met veel plezier aan hebbe
 %\printindex
 
 \chapter*{Vakintegratie}
-Het is natuurlijk belangrijk om dit project een plaats te geven binnen onze opleiding ingenieurswetenschappen. We bekijken welke vakken uit de eerste 3 semesters van onze bachelor het meest gebruikt worden tijdens dit project. De belangrijkste link is met het vak begingselen van programmeren. In dit vak leerden we werken met Python en verworven we inzicht in het programmeren. Wat heel handig is, want tijdens ons project maken we veelvuldig gebruik van Python. Elk zelfgemaakt programma is geschreven in Python want OpenPose heeft een uitstekende Python API. Verder maakt wiskunde ook een groot deel uit van ons project, want het berekenen van hoeken of afstanden kan niet zonder de wiskunde. We gebruiken hierbij kennis uit verschillende wiskundige vakken zoals, Analyse \& calclus en Lineaire algebra. Als laatste kunnen we Statistiek ook nog linken aan dit project aangezien OpenPose enkel een schatting geeft van de lichaamspositie. Het werkt met \textit{heatmaps} en kiest per knooppunt dan het coördinaat met de hoogste kans. We gebruiken zelf geen statistische technieken, maar het helpt ons wel bij het begrijpen van OpenPose.
+Het is natuurlijk belangrijk om dit project een plaats te geven binnen onze opleiding ingenieurswetenschappen. We bekijken welke vakken uit de eerste 3 semesters van onze bachelor het meest gebruikt worden tijdens dit project. De belangrijkste link is met het vak beginselen van programmeren. In dit vak leerden we werken met Python en verworven we inzicht in het programmeren. Wat heel handig is, want tijdens ons project maken we veelvuldig gebruik van Python. Elk zelfgemaakt programma is geschreven in Python want OpenPose heeft een uitstekende Python API. Verder maakt wiskunde ook een groot deel uit van ons project, want het berekenen van hoeken of afstanden kan niet zonder de wiskunde. We gebruiken hierbij kennis uit verschillende wiskundige vakken zoals, Analyse \& calculus en Lineaire algebra. Als laatste kunnen we Statistiek ook nog linken aan dit project aangezien OpenPose enkel een schatting geeft van de lichaamspositie. Het werkt met \textit{heatmaps} en kiest per knooppunt dan het coördinaat met de hoogste kans. We gebruiken zelf geen statistische technieken, maar het helpt ons wel bij het begrijpen van OpenPose.
 
 \chapter*{Planning}
 
