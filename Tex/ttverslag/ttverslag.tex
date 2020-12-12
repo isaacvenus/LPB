@@ -301,8 +301,8 @@ Ten eerste controleren we de positie van de knie. Deze moet zich op het laagste 
 
 \begin{figure}[H]
 	\includegraphics[width= \textwidth]{squat_heup}
-	\label{squat_heup}
 	\caption{Op het laagste punt van de squat moeten de heup en knie zich op dezelfde hoogte bevinden. (afbeelding van \cite{squats})}
+	\label{squat_heup}
 \end{figure}
 
 \subsection{Algoritme voor het bepalen van een goeie squat}
@@ -316,9 +316,9 @@ In de vorige toepassingen namen we aan dat de foto vanuit een goede positie werd
 Eerst werden vijf foto’s genomen vanop één meter afstand recht op de zijkant van de persoon die de squat uitvoert. Deze 5 foto’s zijn op hoogtes van 120, 100, 80, 60 en 40 centimeter genomen. Dit zal zo zijn voor elke reeks. De tweede reeks werd vanop 1,50m afstand genomen en de derde reeks vanop 2m afstand . De vierde en vijfde reeks werden dan weer van 1,50m afstand genomen maar één keer 50cm naar links en de andere keer 50cm naar rechts. Op figuur \ref{cameraopstelling} worden de cameraposities visueel verduidelijkt. Tussen de foto’s van een reeks werd de squatpositie aangehouden en dus amper bewogen, maar tussen de verschillende reeksen kan wel een verschil zitten omdat de squat dan opnieuw werd uitgevoerd. De resultaten zijn te zien in tabel \ref{tabelhoek} en tabel \ref{tabelafstand}. 
 \begin{figure}
 	\centering
-	\label{cameraopstelling}
 	\includegraphics[width=1.2\textwidth]{cameraopstelling}
 	\caption{Cameraopstelling gebruikt voor de test. Links is het bovenaanzicht van de 5 verschillende posities vanwaar foto's genomen zijn. De rechter figuur toont het zijaanzicht van de positie recht naast de persoon op 1.50m afstand.}
+	\label{cameraopstelling}
 \end{figure}
 
 \begin{table}[htbp]
@@ -352,17 +352,24 @@ Eerst werden vijf foto’s genomen vanop één meter afstand recht op de zijkant
 \paragraph{Besluit}
 De afstanden werden steeds afgemeten maar kunnen meetfouten bevatten. Ook de kanteling van de camera was niet consistent wat heel wat invloed had op de data. Hierdoor is het moeilijk om een duidelijk besluit te kunnen nemen. Omdat OpenPose in 2D werkt en je hoeken en afstanden meet van een 3D object, hebben we te maken met een projectie, wat heel wat distorsie met zich meebrengt. Bij deze testen hebben we dit ook gemerkt, zelfs als we proberen de foto’s op een systematische manier te nemen zodat we mogelijks verbanden kunnen zien. Ook het feit dat de positie niet perfect gelijk is tussen de reeksen foto’s maakt het moeilijk om conclusies te trekken. Als je de data bekijkt, is het duidelijk dat de hoeken en afstanden heel willekeurig veranderen. Hierdoor is het niet mogelijk het exacte effect van de cameraposities te achterhalen. Wel is het logisch dat een foto recht voor de persoon een realistischer beeld en resultaat zal geven dan een foto die vanuit een grote hoek is genomen. Hoe ver je staat van de persoon maakt ook niet zoveel uit, het is gewoon belangrijk dat de volledige persoon in beeld is, want anders heeft OpenPose minder data om mee te werken.
 
- 
-\chapter{Vakintegratie}
-Het is natuurlijk belangrijk om dit project een plaats te geven binnen onze opleiding ingenieurswetenschappen. We bekijken welke vakken uit de eerste 3 semesters van onze bachelor het meest gebruikt worden tijdens dit project. De belangrijkste link is met het vak begingselen van programmeren. In dit vak leerden we werken met Python en verworven we inzicht in het programmeren. Wat heel handig is, want tijdens ons project maken we veelvuldig gebruik van Python. Elk zelfgemaakt programma is geschreven in Python want OpenPose heeft een uitstekende Python API. Verder maakt wiskunde ook een groot deel uit van ons project, want het berekenen van hoeken of afstanden kan niet zonder de wiskunde. We gebruiken hierbij kennis uit verschillende wiskundige vakken zoals, Analyse \& calclus en Lineaire algebra. Als laatste kunnen we Statistiek ook nog linken aan dit project aangezien OpenPose enkel een schatting geeft van de lichaamspositie. Het werkt met \textit{heatmaps} en kiest per knooppunt dan het coördinaat met de hoogste kans. We gebruiken zelf geen statistische technieken, maar het helpt ons wel bij het begrijpen van OpenPose.
-
 \chapter*{Besluit}
 Je bent tot het einde van het verslag gekomen. Tijd voor het besluit dus.\\
 Het is moeilijk om een 'echt' besluit te schrijven want keer op keer kwamen wij tot de conclusie dat OpenPose niet echt geschikt was voor wat wij er mee willen doen. Maar hierdoor was het ook wel een leerrijk traject. Dit was namelijk de eerste keer in onze carrière dat we ons moesten neerleggen bij het feit dat iets niet zal werken. Uiteindelijk hebben we  wel gevonden dat bij het controleren van fitnessoefeningen OpenPose  toch voldoende precies is omdat we hier niet echt medische precisie nodig hebben. Gelukkig iets dat werkt, anders zou dit maar een zielig verslag zijn... \\
 Er zijn natuurlijk nog andere dingen die we  geleerd hebben die nuttig waren voor ons. Bijvoorbeeld de kennismaking met lichaamspositiebepalingssoftware zoals OpenPose en de theorie hier achter. Ook hebben we regelmatig onze probleemoplossende vaardigheden moeten gebruiken, en er is ook uit de gebruikte wiskunde gebleken dat je niet altijd ver moet zoeken naar het antwoord en dat je niet altijd moeilijke wiskunde moet gebruiken om iets nuttig te doen.\\
 Al bij al was het toch wel een leuke opdracht waar we met veel plezier aan hebben gewerkt.
 
-\chapter{Planning}
+
+
+
+
+\bibliographystyle{unsrt}
+\bibliography{bibliografie}
+%\printindex
+
+\chapter*{Vakintegratie}
+Het is natuurlijk belangrijk om dit project een plaats te geven binnen onze opleiding ingenieurswetenschappen. We bekijken welke vakken uit de eerste 3 semesters van onze bachelor het meest gebruikt worden tijdens dit project. De belangrijkste link is met het vak begingselen van programmeren. In dit vak leerden we werken met Python en verworven we inzicht in het programmeren. Wat heel handig is, want tijdens ons project maken we veelvuldig gebruik van Python. Elk zelfgemaakt programma is geschreven in Python want OpenPose heeft een uitstekende Python API. Verder maakt wiskunde ook een groot deel uit van ons project, want het berekenen van hoeken of afstanden kan niet zonder de wiskunde. We gebruiken hierbij kennis uit verschillende wiskundige vakken zoals, Analyse \& calclus en Lineaire algebra. Als laatste kunnen we Statistiek ook nog linken aan dit project aangezien OpenPose enkel een schatting geeft van de lichaamspositie. Het werkt met \textit{heatmaps} en kiest per knooppunt dan het coördinaat met de hoogste kans. We gebruiken zelf geen statistische technieken, maar het helpt ons wel bij het begrijpen van OpenPose.
+
+\chapter*{Planning}
 
 \begin{landscape}
 	\begin{figure}
@@ -372,12 +379,6 @@ Al bij al was het toch wel een leuke opdracht waar we met veel plezier aan hebbe
 		\includegraphics[width= 2\textwidth]{ganttchart_2}
 	\end{figure}
 \end{landscape}
-
-
-
-\bibliographystyle{unsrt}
-\bibliography{bibliografie}
-%\printindex
 
 \includepdf{taakverdeling.pdf}
 
