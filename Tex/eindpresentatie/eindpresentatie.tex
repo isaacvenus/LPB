@@ -9,6 +9,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
 \usepackage{siunitx}
+\usepackage{subcaption}
 
 \title[HPE]{Human Pose Estimation met OpenPose:}
 \subtitle{een toepassing}
@@ -91,6 +92,10 @@
 
 \begin{frame}
 	nog iets over part affinity fields en heatmaps??
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.5\textwidth]{heatmap_1}
+	\end{figure}
 \end{frame}
 
 \section{Toepassing 1: Opvolgen van revalidatie na schouderoperatie}
@@ -158,7 +163,8 @@
 		\item fouten op omzetting van pixels naar \si{cm}
 		\item probleem met rug bij bepalen schouderhoek
 	\end{itemize}
-Besluit: Bikefitting is heel precieze wetenschap <-> Openpose maakt slechts schatting
+
+	Besluit: Bikefitting is heel precieze wetenschap <-> Openpose maakt slechts schatting
 \end{frame}
 
 \begin{frame}
