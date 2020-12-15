@@ -91,10 +91,25 @@
 \end{frame}
 
 \begin{frame}
-	nog iets over part affinity fields en heatmaps??
+\frametitle{Architectuur van het algoritme}
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.5\textwidth]{heatmap_1}
+		\includegraphics[width=\textwidth]{algoritme_architectuur}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Voorbeeld van \textit{heatmap} en \textit{part affinity field}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\textwidth]{heatmap_1}
+	\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{Voorbeeld van \textit{heatmap} en \textit{part affinity field}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{PAF}
 	\end{figure}
 \end{frame}
 
@@ -165,24 +180,46 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Conclusies}
+	\frametitle{Factoren die invloed hebben op de uitkomst}
 	\begin{itemize}
 		\item invloed van de resolutie
+	\end{itemize}
+	\begin{figure}
+		\begin{minipage}[b]{.5\linewidth}
+			\centering\includegraphics[width= \textwidth]{150x150}
+			\subcaption{150x150}\label{fig:1a}
+		\end{minipage}%
+		\begin{minipage}[b]{.5\linewidth}
+			\centering\includegraphics[width= \textwidth]{1500x1500}
+			\subcaption{1500x1500}\label{fig:1b}
+		\end{minipage}
+		%\caption{A figure}\label{fig:1}
+	\end{figure}
+\end{frame}
+\begin{frame}
+	\frametitle{Factoren die invloed hebben op de uitkomst}
+	\begin{itemize}
 		\item pose is slechts een schatting van Openpose
+	\end{itemize}
+	\begin{figure}
+	\includegraphics[width= .55\textwidth]{prof_bikefit}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Factoren die invloed hebben op de uitkomst}
+	\begin{itemize}
 		\item fouten op omzetting van pixels naar \si{cm}
 		\item probleem met rug bij bepalen schouderhoek
 	\end{itemize}
 
-	Besluit: Bikefitting is heel precieze wetenschap <-> Openpose maakt slechts schatting
-\end{frame}
+Besluit: Bikefitting heeft nood aan nauwkeurigheid\\
 
+<-> Openpose maakt slechts schatting
+\end{frame}
 \begin{frame}
-	\frametitle{Demonstratie}
-	\begin{figure}
-		\includegraphics[width= .55\textwidth]{prof_bikefit}
-	\end{figure}
+	\frametitle{Conclusie}
 \end{frame}
-
 
 
 \section{Toepassing 3: Correct uitvoeren van fitnessoefeningen}
@@ -202,6 +239,28 @@
 	\includegraphics[width= \textwidth]{squat_heup}
 \end{figure}
 \end{frame}
+
+\begin{frame}
+	\frametitle{invloed van camerapositie}
+	\begin{itemize}
+		\item concreet antwoord vinden
+		\item systematische aanpak
+		\item testen door het varieren van:\begin{enumerate}
+			\item afstand
+			\item hoogte
+			\item hoek
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{invloed van camerapositie}
+	De cameraopstelling
+	\begin{figure}
+		\includegraphics[width= \textwidth]{cameraopstelling}
+	\end{figure}
+\end{frame}
+
 
 \begin{frame}
 	\frametitle{Conclusies}
