@@ -96,12 +96,12 @@ Over het algemeen zijn er 2 manieren om menselijke poses te schatten. Ten eerste
 
 \subsection{Werking}
 
-Het systeem neemt een kleurenfoto met grootte $w \times h$ als input en geeft als output voor elke persoon op de foto de 2D-locaties van zijn lichaamsdelen. Eerst wordt een eerste voorspelling gedaan van de set van 2D-vectorvelden ($\textbf{L}$). Dit zijn \textit{part affinity fields} (PAF's), zij leggen de graad van associatie tussen de lichaamsdelen vast. Ook van de 2D- etrouwbaarheidskaarten ($\textbf{S}$) van de lichaamsdelen wordt een eerste schatting gedaan. Dit zijn respectievelijk de eerste en de tweede tak van het CNN. Deze eerste voorspelling wordt dan door het netwerk verbeterd. Vervolgens wordt deze verbeterde voorspelling samen met de initiële voorspelling nog eens gevoerd aan het netwerk. Na zes keer is het resultaat goed genoeg en wordt het samengevoegd om de uiteindelijke output te geven. Omdat het netwerk meerdere keren doorlopen wordt, noemt men dit een \textit{multistage} CNN. De volledige uitleg van het netwerk en hoe men van de heatmaps en PAF's tot het uiteindelijke resultaat komt, vind je in het origineel artikel.\cite{cao2019openpose}
+Het systeem neemt een kleurenfoto met grootte $w \times h$ als input en geeft als output voor elke persoon op de foto de 2D-locaties van zijn lichaamsdelen. Eerst wordt een eerste voorspelling gedaan van de set van 2D-vectorvelden ($\textbf{L}$). Dit zijn \textit{part affinity fields} (PAF's), zij leggen de graad van associatie tussen de lichaamsdelen vast. Ook van de 2D- etrouwbaarheidskaarten ($\textbf{S}$) van de lichaamsdelen wordt een eerste schatting gedaan. Dit zijn respectievelijk de eerste en de tweede tak van het CNN. Deze eerste voorspelling wordt dan door het netwerk verbeterd. Vervolgens wordt deze verbeterde voorspelling samen met de initiële voorspelling nog eens gevoerd aan het netwerk. Na zes keer is het resultaat goed genoeg en wordt het samengevoegd om de uiteindelijke output te geven. Omdat het netwerk meerdere keren doorlopen wordt, noemt men dit een \textit{multistage} CNN. De volledige uitleg van het netwerk en hoe men van de heatmaps en PAF's tot het uiteindelijke resultaat komt, vind je in het origineel artikel.\cite{openpose}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{algoritme_architectuur}
-	\caption{Architectuur van het CNN. De eerste set stappen voorspelt de PAF's, terwijl de tweede set de betrouwbaarheidskaarten voorspelt. De voorspellingen van elke stage worden dan aaneengeschakeld voor elke volgende stage. \cite{cao2019openpose}}
+	\caption{Architectuur van het CNN. De eerste set stappen voorspelt de PAF's, terwijl de tweede set de betrouwbaarheidskaarten voorspelt. De voorspellingen van elke stage worden dan aaneengeschakeld voor elke volgende stage. \cite{openpose}}
 	\label{algoritme}
 \end{figure}
 
@@ -114,7 +114,7 @@ Zoals eerder gezegd worden uiteindelijk de betrouwbaarheidskaarten en PAF's same
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{heatmap_1}
-	\caption{Dit is de heatmap voor de rechterelleboog. Je ziet dat de elleboog van de meest rechtse persoon niet heel duidelijk zichtbaar is, de voorspelling in dat punt heeft daarom een lage zekerheid.}
+	\caption{Dit is de heatmap voor de rechterelleboog. Je ziet dat de elleboog van de meest rechtse persoon niet heel duidelijk zichtbaar is, de voorspelling in dat punt heeft daarom een lage zekerheid. Figuur uit \href{https://github.com/CMU-Perceptual-Computing-Lab/openpose}{OpenPose}.}
 	\label{heatmap}
 \end{figure}
 
