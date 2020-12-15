@@ -81,7 +81,7 @@
 		\hline
 		1. personendetector & 1. belangrijke knooppunten bepalen\\
 		2. pose schatten per persoon & 2. punten op juiste manier linken\\
-		& => poses bepalen\\
+		& $\Rightarrow$ poses bepalen\\
 		\hline
 		- runtime \textasciitilde \#personen  & + veel efficiënter dan Top-down\\
 		- fout in stap 1 niet goed  & \\
@@ -160,7 +160,7 @@
 	\begin{itemize}
 		\item vooral zadelhoogte beïnvloedt kniehoek
 		\item kniehoek moet tussen 140° en 145°
-		\item pixels --> \si{cm}
+		\item pixels $\rightarrow$ \si{cm}
 	\end{itemize}
 	\begin{figure}
 		\includegraphics[width= \textwidth]{zadel.png}
@@ -199,6 +199,7 @@
 \begin{frame}
 	\frametitle{Factoren die invloed hebben op de uitkomst}
 	\begin{itemize}
+		\item fouten op omzetting van pixels naar \si{cm}
 		\item pose is slechts een schatting van Openpose
 	\end{itemize}
 	\begin{figure}
@@ -207,15 +208,15 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Factoren die invloed hebben op de uitkomst}
-	\begin{itemize}
-		\item fouten op omzetting van pixels naar \si{cm}
-		\item probleem met rug bij bepalen schouderhoek
-	\end{itemize}
+\frametitle{Conclusie}
 
-Besluit: Bikefitting heeft nood aan nauwkeurigheid\\
+\begin{center}
+	Bikefitting heeft nood aan nauwkeurigheid\\
+	$\updownarrow$ \\
+	Openpose maakt slechts schatting
+\end{center}
 
-<-> Openpose maakt slechts schatting
+
 \end{frame}
 
 \section{Toepassing 3: Correct uitvoeren van fitnessoefeningen}
