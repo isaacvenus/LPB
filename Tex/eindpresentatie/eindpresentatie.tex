@@ -56,18 +56,47 @@
 
 
 \section[Korte titel]{Theoretische achtergrond}
+\begin{frame}
+	\frametitle{HPE vergelijken met motion capture}
+	\begin{figure}
+		\begin{minipage}[b]{.4\linewidth}
+			\centering\includegraphics[width= \textwidth]{3D_motion_capture}
+			\subcaption{Motion capture pak}\label{fig:1a}
+		\end{minipage}%
+		\begin{minipage}[b]{.4\linewidth}
+			\centering%\includegraphics[width= \textwidth]{motion_capture_openpose}
+			\subcaption{Schatting van OpenPose}\label{fig:1b}
+		\end{minipage}
+		%\caption{A figure}\label{fig:1}
+	\end{figure}
+\end{frame}
+\begin{frame}
+	\frametitle{HPE vergelijken met motion capture}
+	\begin{figure}
+		\begin{minipage}[b]{.4\linewidth}
+			\centering\includegraphics[width= \textwidth]{3D_motion_capture}
+			\subcaption{Motion capture pak}\label{fig:1a}
+		\end{minipage}%
+		\begin{minipage}[b]{.4\linewidth}
+			\centering\includegraphics[width= \textwidth]{motion_capture_openpose}
+			\subcaption{Schatting van OpenPose}\label{fig:1b}
+		\end{minipage}
+		%\caption{A figure}\label{fig:1}
+	\end{figure}
+\end{frame}
 
 \begin{frame}
-\frametitle{HPE, revolutionair?}
+\frametitle{HPE vergelijken met motion capture}
 \begin{center}
 	\begin{tabular}{l|l} 
 		\textbf{3D motion capture pak} & \textbf{Human pose estimation}\\
 		\hline
-		- veel rekenkracht & + HPE mogelijk met gewone laptop\\
-		- hoogtechnologische apparatuur & + alleen laptop en camera nodig\\
-		- mensen ter plaatse aanwezig & + vanop afstand via foto of video\\
-		+ heel precieze & - ruwe schatting van \\
-		  lichaamspositiebepaling & lichaamspositie\\
+		+ heel precieze & + HPE mogelijk met gewone laptop\\
+		lichaamspositiebepaling &  + alleen laptop en camera nodig\\
+		- hoogtechnologische apparatuur & + vanop afstand via foto of video\\
+		- heel duur  &  - ruwe schatting van \\
+		- mensen ter plaatse aanwezig & lichaamspositie\\
+		
 	\end{tabular}
 \end{center}
 \end{frame}
@@ -100,18 +129,20 @@
 
 \begin{frame}
 \frametitle{Voorbeeld van \textit{heatmap} en \textit{part affinity field}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.8\textwidth]{heatmap_1}
-	\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{PAF}
+\end{figure}
 \end{frame}
 \begin{frame}
 \frametitle{Voorbeeld van \textit{heatmap} en \textit{part affinity field}}
 	\begin{figure}
 		\centering
-		\includegraphics[width=\textwidth]{PAF}
+		\includegraphics[width=0.8\textwidth]{heatmap_1}
 	\end{figure}
 \end{frame}
+
+
 
 \section{Toepassing 1: Opvolgen van revalidatie na schouderoperatie}
 
@@ -196,6 +227,7 @@
 		%\caption{A figure}\label{fig:1}
 	\end{figure}
 \end{frame}
+
 \begin{frame}
 	\frametitle{Factoren die invloed hebben op de uitkomst}
 	\begin{itemize}
@@ -203,7 +235,7 @@
 		\item pose is slechts een schatting van Openpose
 	\end{itemize}
 	\begin{figure}
-	\includegraphics[width= .55\textwidth]{prof_bikefit}
+		\includegraphics[width= .55\textwidth]{prof_bikefit}
 	\end{figure}
 \end{frame}
 
